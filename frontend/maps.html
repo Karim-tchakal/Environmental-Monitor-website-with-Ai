@@ -27,6 +27,11 @@
     50%       { box-shadow: 0 0 0 6px rgba(239,68,68,.25), 0 2px 6px rgba(0,0,0,.12); }
   }
   .marker-flash { animation: markerFlash 1.2s ease-in-out infinite; }
+  
+  .form-input { @apply w-full border border-gray-200 rounded-lg px-3 py-2 text-[13px] focus:outline-none focus:border-blue-400 mb-3; }
+  
+  /* Pin Mode Cursor */
+  .pin-mode-active { cursor: crosshair !important; }
 </style>
 </head>
 <body class="flex h-screen overflow-hidden bg-gray-100 text-gray-900">
@@ -49,6 +54,9 @@
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
     <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">🗺 Maps</a>
 
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
     <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
     <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
@@ -59,7 +67,8 @@
   <div id="map"></div>
 
   <div class="absolute top-3 left-3 z-[400] flex flex-col gap-1.5">
-    <button id="toggleBtn" class="w-9 h-9 bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors text-base cursor-pointer">☰</button>
+    <button id="toggleBtn" title="Toggle Sidebar" class="w-9 h-9 bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors text-base cursor-pointer">☰</button>
+    <button id="pinBtn" title="Drop Pin (Add Node)" class="w-9 h-9 bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors text-base cursor-pointer">📍</button>
     <div id="zoom-wrap"></div>
   </div>
 
@@ -67,11 +76,52 @@
     <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
     Live Telemetry
   </div>
+
+  <div id="add-hint" class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-[400] bg-blue-600 text-white px-4 py-2 rounded-full text-[12px] font-medium shadow-2xl animate-bounce">
+    📍 Select area on map to register node
+  </div>
+</div>
+
+<!-- Add Node Modal -->
+<div id="nodeModal" class="hidden fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div class="p-6 border-b border-gray-100">
+            <h3 class="text-[16px] font-bold text-gray-900">📍 Register New Area</h3>
+            <p class="text-[12px] text-gray-400 mt-1">Deploying monitoring vector at <span id="display-coords" class="font-mono text-blue-500"></span></p>
+        </div>
+        <form id="nodeForm" class="p-6">
+            <input type="hidden" id="nodeLat">
+            <input type="hidden" id="nodeLng">
+            
+            <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1 ml-1">Area Name</label>
+            <input type="text" id="nodeName" class="form-input" placeholder="e.g. North Plain Sector" required>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1 ml-1">Initial Status</label>
+                    <select id="nodeStatus" class="form-input">
+                        <option value="normal">Normal</option>
+                        <option value="warning">Warning</option>
+                        <option value="alert">Alert</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1 ml-1">Icon (Emoji)</label>
+                    <input type="text" id="nodeIcon" class="form-input" value="📍">
+                </div>
+            </div>
+
+            <div class="flex gap-2 mt-4">
+                <button type="button" onclick="closeModal()" class="flex-1 py-2 bg-gray-100 text-gray-600 rounded-xl text-[13px] font-semibold hover:bg-gray-200 transition-colors">Cancel</button>
+                <button type="submit" class="flex-1 py-2 bg-blue-600 text-white rounded-xl text-[13px] font-semibold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">Deploy Node</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script>
 const API_BASE = '/api';
-const ZOOM_THRESHOLD = 13;
+let isAddingNode = false;
 
 const STATUS_COLORS = {
     'alert':    { bg:'#fecaca', dot:'#dc2626' },
@@ -80,7 +130,7 @@ const STATUS_COLORS = {
     'normal':   { bg:'#bbf7d0', dot:'#16a34a' }
 };
 
-const map = L.map('map', {zoomControl:false}).setView([36.7, 3.0], 10);
+const map = L.map('map', {zoomControl:false, attributionControl:false}).setView([36.7, 3.0], 10);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 
 L.control.zoom({position:'topleft'}).addTo(map);
@@ -104,7 +154,7 @@ function render() {
 
     const m = L.marker([n.lat, n.lng], {icon}).addTo(layer);
     m.bindPopup(`
-        <div style="padding:10px; font-family:'DM Sans',sans-serif;">
+        <div style="padding:10px; font-family:'DM Sans',sans-serif; min-width:140px;">
             <div style="font-weight:700; font-size:14px; margin-bottom:4px;">${n.name}</div>
             <div style="display:flex; align-items:center; gap:5px; font-size:11px; margin-bottom:10px;">
                 <span style="width:6px; height:6px; background:${config.dot}; border-radius:50%;"></span>
@@ -118,10 +168,73 @@ function render() {
 
 async function load() {
   try {
-    nodes = await fetch(`${API_BASE}/nodes`).then(r => r.json());
+    const res = await fetch(`${API_BASE}/nodes`);
+    nodes = await res.json();
     render();
   } catch(e) {}
 }
+
+document.getElementById('pinBtn').onclick = () => {
+    isAddingNode = !isAddingNode;
+    const btn = document.getElementById('pinBtn');
+    const hint = document.getElementById('add-hint');
+    const mapEl = document.getElementById('map');
+    
+    if (isAddingNode) {
+        btn.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+        btn.classList.remove('bg-white', 'text-gray-700');
+        hint.classList.remove('hidden');
+        mapEl.classList.add('pin-mode-active');
+    } else {
+        btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+        btn.classList.add('bg-white', 'text-gray-700');
+        hint.classList.add('hidden');
+        mapEl.classList.remove('pin-mode-active');
+    }
+};
+
+map.on('click', (e) => {
+    if (!isAddingNode) return;
+    
+    const {lat, lng} = e.latlng;
+    document.getElementById('nodeLat').value = lat;
+    document.getElementById('nodeLng').value = lng;
+    document.getElementById('display-coords').textContent = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+    document.getElementById('nodeModal').classList.remove('hidden');
+    
+    // Disable pin mode after click
+    document.getElementById('pinBtn').click();
+});
+
+function closeModal() {
+    document.getElementById('nodeModal').classList.add('hidden');
+    document.getElementById('nodeForm').reset();
+}
+
+document.getElementById('nodeForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+        name: document.getElementById('nodeName').value,
+        lat: parseFloat(document.getElementById('nodeLat').value),
+        lng: parseFloat(document.getElementById('nodeLng').value),
+        status: document.getElementById('nodeStatus').value,
+        icon: document.getElementById('nodeIcon').value
+    };
+
+    try {
+        const res = await fetch(`${API_BASE}/nodes`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        if (res.ok) {
+            closeModal();
+            load();
+        } else {
+            alert('Failed to save area');
+        }
+    } catch(err) { alert('Network error'); }
+};
 
 document.getElementById('toggleBtn').onclick = () => {
   document.getElementById('sidebar').classList.toggle('closed');

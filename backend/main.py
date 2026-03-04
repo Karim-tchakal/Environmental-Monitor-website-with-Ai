@@ -31,6 +31,10 @@ ALERT_FILE   = os.path.join(BASE_DIR, "data", "alerts.json")
 LOG_FILE     = os.path.join(BASE_DIR, "data", "log.json")
 READINGS_DIR = os.path.join(BASE_DIR, "data", "readings")
 
+# New Input Files for Team/MCU integration
+STATUS_INPUT_FILE = os.path.join(BASE_DIR, "data", "sensor_status.json")
+REPORT_INPUT_FILE = os.path.join(BASE_DIR, "data", "node_report.json")
+
 # Static and Template mounting
 app.mount("/frontend", StaticFiles(directory=os.path.join(BASE_DIR, "..", "frontend")), name="frontend")
 templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "..", "frontend"))
@@ -67,95 +71,74 @@ def read_sensor_readings(sensor_id):
                         readings.append(0.0)
     return timestamps, readings
 
-def get_sensor_graph_color(stype, last_val, thresholds):
-    """Visualization ONLY color based on thresholds"""
-    t = thresholds.get(stype)
-    if not t: return "blue"
-    if stype == "moisture":
-        if last_val <= t["alert"]: return "red"
-        if last_val <= t["warning"]: return "yellow"
-    else:
-        if last_val >= t["alert"]: return "red"
-        if last_val >= t["warning"]: return "yellow"
-    return "blue"
-
-def sync_alerts():
+def sync_from_status_file():
     """
-    Refined Alert Sync:
-    - Uses last_reported_status to detect transitions.
-    - Alert/Warning persistent in alerts.json.
-    - Normal status is ignored.
-    - End time updated only if status remains the same non-normal state.
+    Reads sensor_status.json and updates sensors.json and alerts.json.
+    Format expected: [{"id": "sensor-id", "status": "alert", "timestamp": "ISO-DATE"}]
     """
+    updates = read_json(STATUS_INPUT_FILE)
+    if not updates:
+        return
+        
     sensors = read_json(SENSORS_FILE)
     alerts = read_json(ALERT_FILE)
     
     updated_sensors = False
     updated_alerts = False
     
-    for s in sensors:
-        current_status = s.get("status", "normal").lower()
-        prev_status = s.get("last_reported_status", "normal").lower()
-        current_ts = s.get("last_sync") or datetime.now().isoformat()
+    for up in updates:
+        sid = up.get("id")
+        new_status = up.get("status", "normal").lower()
+        ts = up.get("timestamp") or datetime.now().isoformat()
         
-        if current_status == prev_status:
-            # Status hasn't changed. If it's non-normal, update the end time of the LATEST alert for this sensor.
-            if current_status != "normal":
-                sensor_alerts = [a for a in alerts if a.get("sensor_id") == s["id"]]
-                if sensor_alerts:
-                    latest = sensor_alerts[-1]
-                    if latest.get("status") == current_status:
-                        if current_ts > latest.get("end_timestamp", ""):
-                            latest["end_timestamp"] = current_ts
-                            updated_alerts = True
-                else:
-                    # Fallback: create if it somehow doesn't exist
-                    new_alert = {
-                        "id": int(datetime.now().timestamp() * 1000) + len(alerts),
-                        "sensor_id": s["id"],
-                        "type": s["type"],
-                        "sensor": s["name"],
-                        "status": current_status,
-                        "start_timestamp": current_ts,
-                        "end_timestamp": current_ts,
-                        "area": s["node"]
-                    }
-                    alerts.append(new_alert)
+        # 1. Update sensors.json
+        sensor = next((s for s in sensors if s["id"] == sid), None)
+        if not sensor:
+            continue
+            
+        old_status = sensor.get("status", "normal").lower()
+        sensor["status"] = new_status
+        sensor["last_sync"] = ts
+        updated_sensors = True
+        
+        # 2. Update alerts.json if non-normal
+        if new_status != "normal":
+            # Find latest alert for this sensor to see if we append or update end_timestamp
+            sensor_alerts = [a for a in alerts if a.get("sensor_id") == sid]
+            latest = sensor_alerts[-1] if sensor_alerts else None
+            
+            if latest and latest.get("status") == new_status:
+                # Still the same error, just update end_timestamp
+                if ts > latest.get("end_timestamp", ""):
+                    latest["end_timestamp"] = ts
                     updated_alerts = True
-        else:
-            # Status HAS changed.
-            if current_status != "normal":
-                # Entered a new non-normal state (Warning -> Alert or Normal -> Warning, etc.)
-                new_alert = {
+            else:
+                # Transition to a DIFFERENT non-normal state (e.g. Warning -> Alert)
+                new_entry = {
                     "id": int(datetime.now().timestamp() * 1000) + len(alerts),
-                    "sensor_id": s["id"],
-                    "type": s["type"],
-                    "sensor": s["name"],
-                    "status": current_status,
-                    "start_timestamp": current_ts,
-                    "end_timestamp": current_ts,
-                    "area": s["node"]
+                    "sensor_id": sid,
+                    "type": sensor["type"],
+                    "sensor": sensor["name"],
+                    "status": new_status,
+                    "start_timestamp": ts,
+                    "end_timestamp": ts,
+                    "area": sensor["node"]
                 }
-                alerts.append(new_alert)
+                alerts.append(new_entry)
                 updated_alerts = True
-            
-            s["last_reported_status"] = current_status
-            updated_sensors = True
-            
-    if updated_alerts:
-        write_json(ALERT_FILE, alerts)
+                
     if updated_sensors:
         write_json(SENSORS_FILE, sensors)
+    if updated_alerts:
+        write_json(ALERT_FILE, alerts)
         
-    return alerts
+    # Clear the input file after processing to allow team to push new events
+    write_json(STATUS_INPUT_FILE, [])
 
 def get_computed_nodes():
     nodes = read_json(NODES_FILE)
     sensors = read_json(SENSORS_FILE)
-    
-    # Status hierarchy from SENSORS.JSON status field
     RANK = {"alert": 4, "warning": 3, "incident": 2, "normal": 1}
-    
     for n in nodes:
         node_sensors = [s for s in sensors if s.get("node") == n.get("name")]
         max_rank = 1
@@ -165,18 +148,29 @@ def get_computed_nodes():
             if RANK.get(s_status, 0) > max_rank:
                 max_rank = RANK.get(s_status)
                 max_status = s_status
-        
         n["status"] = max_status
         ICONS = {"alert": "⚠️", "warning": "⚡", "incident": "❗", "normal": "✅"}
         n["icon"] = ICONS.get(n["status"], "📍")
     return nodes
 
 def get_ai_summary_text(context="global"):
-    summaries = {
-        "global": "Neural analysis suggests consistent patterns. Mitidja sensor array reports humidity fluctuations within historical alert margins.",
-        "default": "Station telemetry is stable. No immediate actions required. Battery levels at 85% average."
-    }
-    return summaries.get(context.lower(), summaries["default"])
+    """
+    Reads summaries from node_report.json.
+    Format: [{"name": "Area Name", "report": "..."}]
+    """
+    reports = read_json(REPORT_INPUT_FILE)
+    
+    if context == "global":
+        # Find global report or return default
+        global_rep = next((r for r in reports if r.get("name", "").lower() == "global"), None)
+        return global_rep.get("report") if global_rep else "System telemetry integration active. All monitoring nodes communicating via sensor_status.json."
+        
+    # Find area specific report
+    node_rep = next((r for r in reports if r.get("name", "").lower() == context.lower()), None)
+    if node_rep:
+        return node_rep.get("report")
+        
+    return "Station diagnostic stable. No anomalies reported in node_report.json."
 
 # ── Pydantic Models ────────────────────────────────────────────────────────
 
@@ -214,10 +208,6 @@ async def maps(request: Request):
 async def sensors_page(request: Request):
     return templates.TemplateResponse("sensors.html", {"request": request})
 
-@app.get("/alerts", response_class=HTMLResponse)
-async def alerts_page(request: Request):
-    return templates.TemplateResponse("sense_dashboard.html", {"request": request})
-
 @app.get("/reports", response_class=HTMLResponse)
 async def reports(request: Request):
     return templates.TemplateResponse("reports.html", {"request": request})
@@ -244,6 +234,7 @@ async def logout(request: Request):
 
 @app.get("/dashboard/{station_id}", response_class=HTMLResponse)
 async def station_dashboard(request: Request, station_id: int):
+    sync_from_status_file()
     nodes = get_computed_nodes()
     node  = next((n for n in nodes if str(n.get("id")) == str(station_id)), None)
     if not node:
@@ -258,6 +249,7 @@ def api_ai_summary(node: Optional[str] = None):
 
 @app.get("/api/reports")
 def api_reports():
+    sync_from_status_file()
     nodes = get_computed_nodes()
     sensors = read_json(SENSORS_FILE)
     report_data = []
@@ -280,6 +272,7 @@ def get_settings():
     if not settings or "thresholds" not in settings:
         settings = {
             "thresholds": {
+                "general": {"warning": 50.0, "alert": 80.0},
                 "temperature": {"warning": 25.0, "alert": 35.0},
                 "humidity": {"warning": 70.0, "alert": 85.0},
                 "moisture": {"warning": 20.0, "alert": 10.0},
@@ -296,11 +289,12 @@ def update_settings(settings: SettingsModel):
 
 @app.get("/api/user")
 def get_user():
+    sync_from_status_file()
     user_data = read_json(USER_FILE)
     if not user_data:
         user_data = {"name": "Admin", "avatar": "https://i.pravatar.cc/32"}
         write_json(USER_FILE, user_data)
-    sync_alerts()
+    
     alerts = read_json(ALERT_FILE)
     if alerts:
         sorted_alerts = sorted(alerts, key=lambda x: x.get('end_timestamp', ''), reverse=True)
@@ -311,9 +305,9 @@ def get_user():
 
 @app.get("/api/stats")
 def get_stats():
+    sync_from_status_file()
     sensors = read_json(SENSORS_FILE)
     nodes = get_computed_nodes()
-    sync_alerts()
     alerts = read_json(ALERT_FILE)
     counts = Counter([a.get("status", "").lower() for a in alerts])
     return [
@@ -326,9 +320,8 @@ def get_stats():
 
 @app.get("/api/sensors")
 def get_sensors(area: Optional[str] = None):
+    sync_from_status_file()
     sensors = read_json(SENSORS_FILE)
-    settings = get_settings()
-    thresholds = settings.get("thresholds", {})
     if area:
         sensors = [s for s in sensors if s.get("node") == area]
     for s in sensors:
@@ -338,7 +331,6 @@ def get_sensors(area: Optional[str] = None):
         if rd:
             s["current_value"] = rd[-1]
             s["last_sync"] = ts[-1]
-            s["graph_color"] = get_sensor_graph_color(s["type"], rd[-1], thresholds)
     return sensors
 
 @app.post("/api/sensors")
@@ -355,7 +347,8 @@ def add_sensor(sensor: SensorModel):
 
 @app.get("/api/alerts")
 def get_alerts_api():
-    return sync_alerts()
+    sync_from_status_file()
+    return read_json(ALERT_FILE)
 
 @app.get("/api/alerts/active")
 def get_active_alerts():
@@ -407,6 +400,7 @@ def delete_sensor(item_id: str):
 
 @app.get("/api/nodes")
 def get_nodes_api():
+    sync_from_status_file()
     return get_computed_nodes()
 
 @app.post("/api/nodes")
@@ -441,6 +435,7 @@ def delete_node(item_id: str):
 
 @app.get("/api/station/{station_id}")
 def get_station_data(station_id: int):
+    sync_from_status_file()
     nodes = get_computed_nodes()
     node = next((n for n in nodes if str(n.get("id")) == str(station_id)), None)
     if not node: raise HTTPException(status_code=404, detail="Station not found")

@@ -24,8 +24,8 @@
     <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⬡ Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/alerts"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
+    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
+    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
     <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
@@ -47,6 +47,20 @@
       <h3 class="text-[16px] font-bold text-gray-900 mb-6">⚠️ Sensor Thresholds</h3>
       <form id="settingsForm" class="space-y-8">
         
+        <div class="space-y-4">
+            <h4 class="text-[13px] font-semibold text-gray-600 border-b border-gray-50 pb-2">📊 General Thresholds</h4>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="form-label">Warning Level</label>
+                    <input type="number" step="any" id="gen_warning" class="form-input">
+                </div>
+                <div>
+                    <label class="form-label">Alert Level</label>
+                    <input type="number" step="any" id="gen_alert" class="form-input">
+                </div>
+            </div>
+        </div>
+
         <div class="space-y-4">
             <h4 class="text-[13px] font-semibold text-blue-600 border-b border-blue-50 pb-2">🌡️ Temperature Thresholds (°C)</h4>
             <div class="grid grid-cols-2 gap-4">
@@ -106,6 +120,11 @@ async function loadSettings() {
     const s = await fetch(`${API_BASE}/settings`).then(r => r.json());
     const t = s.thresholds;
     
+    if (t.general) {
+        document.getElementById('gen_warning').value = t.general.warning;
+        document.getElementById('gen_alert').value = t.general.alert;
+    }
+    
     document.getElementById('temp_warning').value = t.temperature.warning;
     document.getElementById('temp_alert').value = t.temperature.alert;
     
@@ -120,6 +139,10 @@ document.getElementById('settingsForm').onsubmit = async (e) => {
     e.preventDefault();
     const data = {
         thresholds: {
+            general: {
+                warning: parseFloat(document.getElementById('gen_warning').value),
+                alert: parseFloat(document.getElementById('gen_alert').value)
+            },
             temperature: {
                 warning: parseFloat(document.getElementById('temp_warning').value),
                 alert: parseFloat(document.getElementById('temp_alert').value)
@@ -132,7 +155,7 @@ document.getElementById('settingsForm').onsubmit = async (e) => {
                 warning: parseFloat(document.getElementById('moist_warning').value),
                 alert: parseFloat(document.getElementById('moist_alert').value)
             },
-            smoke: { warning: 50.0, alert: 150.0 } // Keep default for smoke for now
+            smoke: { warning: 50.0, alert: 150.0 }
         }
     };
     

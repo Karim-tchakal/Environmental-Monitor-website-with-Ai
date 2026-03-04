@@ -1,0 +1,20 @@
+{
+  "thresholds": {
+    "temperature": {
+      "warning": 20.0,
+      "alert": 30.0
+    },
+    "humidity": {
+      "warning": 70.0,
+      "alert": 85.0
+    },
+    "moisture": {
+      "warning": 20.0,
+      "alert": 10.0
+    },
+    "smoke": {
+      "warning": 50.0,
+      "alert": 150.0
+    }
+  }
+}

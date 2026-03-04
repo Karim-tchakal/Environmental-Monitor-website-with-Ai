@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sense Dashboard - Polaris</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: 'DM Sans', sans-serif; }
+  * { scrollbar-width: none; -ms-overflow-style: none; }
+  *::-webkit-scrollbar { display: none; }
+  #sidebar { transition: width .25s ease, min-width .25s ease, opacity .2s ease; }
+  #sidebar.closed { width: 0 !important; min-width: 0 !important; opacity: 0; pointer-events: none; overflow: hidden; }
+</style>
+</head>
+<body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
+
+<aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
+  <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
+    <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+  </div>
+  <nav class="flex-1 p-2 overflow-y-auto">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">⬡ Dashboard</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
+    <a href="/alerts"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">🔔 Alerts</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">⚡ Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">📡 Sensors</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">🗺 Maps</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
+    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">🔧 Settings</a>
+  </nav>
+</aside>
+
+<div class="flex-1 flex flex-col overflow-hidden">
+  <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
+      <h2 class="text-[15px] font-semibold text-gray-900">Telemetry Intelligence</h2>
+    </div>
+    <div class="flex items-center gap-3">
+      <img src="https://i.pravatar.cc/32" class="w-8 h-8 rounded-full border border-gray-200">
+    </div>
+  </header>
+
+  <!-- Fix: Date bar taking full width to right -->
+  <div class="px-5 py-2 bg-white border-b border-gray-100 shrink-0 w-full">
+    <div class="flex items-center justify-between mb-1">
+      <span id="cal-title" class="text-[12px] font-semibold text-gray-700">Diagnostic Calendar</span>
+      <span class="text-[10px] text-blue-500 font-bold uppercase">Live Sync Active</span>
+    </div>
+    <div id="cal-strip" class="flex overflow-x-auto w-full pb-1"></div>
+  </div>
+
+  <main class="flex-1 overflow-auto p-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="sense-grid"></div>
+
+    <div class="mt-8 bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="px-5 py-3 border-b border-gray-100">
+            <h3 class="text-[13px] font-semibold text-gray-700">Critical Diagnostic Vectors</h3>
+        </div>
+        <table class="min-w-full text-left text-[13px]">
+            <thead>
+                <tr class="bg-gray-50 text-gray-400 font-semibold uppercase text-[10px]">
+                    <th class="px-5 py-3">Location</th>
+                    <th class="px-5 py-3">Sensor</th>
+                    <th class="px-5 py-3">Vector Value</th>
+                    <th class="px-5 py-3">Delta</th>
+                </tr>
+            </thead>
+            <tbody id="critical-body" class="text-gray-600"></tbody>
+        </table>
+    </div>
+  </main>
+</div>
+
+<script>
+const API_BASE = '/api';
+let charts = {};
+let settingsCache = null;
+
+async function fetchSettings() {
+    try {
+        settingsCache = await fetch(`${API_BASE}/settings`).then(r => r.json());
+    } catch(e) {}
+}
+
+function getGraphColor(value, type) {
+    if (!settingsCache || !settingsCache.thresholds[type]) return '#3b82f6';
+    const t = settingsCache.thresholds[type];
+    if (type === 'moisture') {
+        if (value <= t.alert) return '#ef4444'; // Red
+        if (value <= t.warning) return '#eab308'; // Yellow
+        return '#3b82f6'; // Blue
+    } else {
+        if (value >= t.alert) return '#ef4444'; // Red
+        if (value >= t.warning) return '#eab308'; // Yellow
+        return '#3b82f6'; // Blue
+    }
+}
+
+function createCard(s) {
+    const lastVal = s.readings?.length ? s.readings[s.readings.length - 1] : "—";
+    const color = getGraphColor(lastVal, s.type);
+    return `
+    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm" id="card-${s.id}">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">${s.node}</span>
+                <h3 class="text-[16px] font-bold text-gray-800">${s.name}</h3>
+            </div>
+            <span class="text-[12px] font-bold" style="color:${color}">${s.unit}</span>
+        </div>
+        <div class="flex items-end gap-2 mb-4">
+            <span class="text-2xl font-bold" style="color: ${color}">${lastVal}</span>
+        </div>
+        <div class="h-24">
+            <canvas id="chart-${s.id}"></canvas>
+        </div>
+    </div>`;
+}
+
+async function loadData() {
+    try {
+        const sensors = await fetch(`${API_BASE}/sensors`).then(r => r.json());
+        const grid = document.getElementById('sense-grid');
+        const body = document.getElementById('critical-body');
+
+        if (grid.children.length !== sensors.length) {
+            grid.innerHTML = sensors.map(s => createCard(s)).join('');
+        }
+
+        body.innerHTML = sensors.map(s => {
+            const lastVal = s.readings?.length ? s.readings[s.readings.length - 1] : "—";
+            const color = getGraphColor(lastVal, s.type);
+            return `
+                <tr class="border-t border-gray-100 hover:bg-gray-50">
+                    <td class="px-5 py-3 font-medium text-gray-800">${s.node}</td>
+                    <td class="px-5 py-3">${s.name}</td>
+                    <td class="px-5 py-3 font-bold" style="color:${color}">${lastVal}${s.unit}</td>
+                    <td class="px-5 py-3 text-[11px] font-mono text-gray-400">±${(Math.random()*0.5).toFixed(2)}</td>
+                </tr>
+            `;
+        }).join('');
+
+        sensors.forEach(s => {
+            const lastVal = s.readings?.length ? s.readings[s.readings.length - 1] : 0;
+            const color = getGraphColor(lastVal, s.type);
+            const chartLabels = s.timestamps?.map(t => t.split('T')[1].slice(0,5)) || [];
+            const chartData = s.readings || [];
+
+            if (charts[s.id]) {
+                charts[s.id].data.labels = chartLabels;
+                charts[s.id].data.datasets[0].data = chartData;
+                charts[s.id].data.datasets[0].borderColor = color;
+                charts[s.id].data.datasets[0].backgroundColor = color + '10';
+                charts[s.id].update('none');
+            } else {
+                const canvas = document.getElementById(`chart-${s.id}`);
+                if (canvas) {
+                    charts[s.id] = new Chart(canvas.getContext('2d'), {
+                        type: 'line',
+                        data: {
+                            labels: chartLabels,
+                            datasets: [{
+                                data: chartData,
+                                borderColor: color,
+                                borderWidth: 1.5,
+                                fill: true,
+                                backgroundColor: color + '10',
+                                tension: 0.4,
+                                pointRadius: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            animation: false,
+                            scales: { x: { display: false }, y: { display: false } }
+                        }
+                    });
+                }
+            }
+        });
+    } catch(e) {}
+}
+
+function renderCal() {
+    const strip = document.getElementById('cal-strip');
+    strip.innerHTML = "";
+    for(let i=-15; i<5; i++) {
+        const d = new Date(); d.setDate(d.getDate() + i);
+        const isToday = i === 0;
+        strip.innerHTML += `
+            <div class="flex-shrink-0 w-12 text-center">
+                <div class="text-[9px] text-gray-400 uppercase mb-1">${d.toLocaleDateString('default', {weekday:'short'})}</div>
+                <div class="w-8 h-8 mx-auto flex items-center justify-center rounded-lg text-[12px] ${isToday ? 'bg-blue-600 text-white font-bold' : 'bg-white border border-gray-100 text-gray-700 shadow-sm'}">${d.getDate()}</div>
+            </div>`;
+    }
+}
+
+document.getElementById('sidebarToggle').onclick = () => document.getElementById('sidebar').classList.toggle('closed');
+
+(async () => {
+    await fetchSettings();
+    await loadData();
+    renderCal();
+})();
+setInterval(async () => {
+    await fetchSettings();
+    await loadData();
+}, 5000);
+</script>
+</body>
+</html>

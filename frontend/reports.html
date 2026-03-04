@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grouped Intelligence Reports - Polaris</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'DM Sans', sans-serif; }
+  * { scrollbar-width: none; -ms-overflow-style: none; }
+  *::-webkit-scrollbar { display: none; }
+  #sidebar { transition: width .25s ease, min-width .25s ease, opacity .2s ease; }
+  #sidebar.closed { width: 0 !important; min-width: 0 !important; opacity: 0; pointer-events: none; overflow: hidden; }
+</style>
+</head>
+<body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
+
+<aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
+  <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
+    <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+  </div>
+  <nav class="flex-1 p-2 overflow-y-auto">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">⬡ Dashboard</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
+    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
+    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">📊 Reports</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
+    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+  </nav>
+</aside>
+
+<div class="flex-1 flex flex-col overflow-hidden">
+  <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
+      <h2 class="text-[15px] font-semibold text-gray-900">Intelligence Reports</h2>
+    </div>
+    <div class="flex items-center gap-3">
+      <input type="text" id="reportSearch" placeholder="Search areas or status…" class="border border-gray-200 rounded-lg px-3 py-1.5 text-[13px] text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-400 w-64 shadow-sm">
+      <img src="https://i.pravatar.cc/32" class="w-8 h-8 rounded-full border border-gray-200">
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-auto p-6">
+    <div class="mb-6">
+        <h1 class="text-[22px] font-bold text-gray-900">Grouped Area Analysis</h1>
+        <p class="text-gray-500 text-[13px]">Real-time intelligence summaries sorted by risk priority.</p>
+    </div>
+
+    <div id="reportsGrid" class="space-y-4 max-w-4xl">
+        <!-- Reports will be injected here -->
+    </div>
+  </main>
+</div>
+
+<script>
+const API_BASE = '/api';
+let reportsCache = [];
+
+const BADGE_CONFIG = {
+  'alert':    { bg:'#fef2f2', text:'#dc2626', dot:'#ef4444' },
+  'warning':  { bg:'#fefce8', text:'#a16207', dot:'#eab308' },
+  'incident': { bg:'#fff7ed', text:'#c2410c', dot:'#f97316' },
+  'normal':   { bg:'#f0fdf4', text:'#15803d', dot:'#22c55e' }
+};
+
+function getBadgeHTML(status) {
+  const b = BADGE_CONFIG[status.toLowerCase()] || { bg:'#f1f5f9', text:'#475569', dot:'#94a3b8' };
+  return `
+    <span class="inline-flex items-center gap-[5px] px-[10px] py-[3px] rounded-full text-[10px] font-bold uppercase tracking-wider" style="background:${b.bg};color:${b.text};">
+      <span style="width:5px;height:5px;border-radius:50%;background:${b.dot};"></span>
+      ${status}
+    </span>
+  `;
+}
+
+async function fetchReports() {
+    try {
+        reportsCache = await fetch(`${API_BASE}/reports`).then(r => r.json());
+        renderReports();
+    } catch(e) {}
+}
+
+function renderReports(filter = "") {
+    const grid = document.getElementById('reportsGrid');
+    const query = filter.toLowerCase();
+    
+    const filtered = reportsCache.filter(r => 
+        r.area.toLowerCase().includes(query) || 
+        r.status.toLowerCase().includes(query)
+    );
+
+    if (filtered.length === 0) {
+        grid.innerHTML = `<div class="p-12 text-center text-gray-400 bg-white rounded-2xl border border-dashed border-gray-300 italic">No matching intelligence reports found.</div>`;
+        return;
+    }
+
+    grid.innerHTML = filtered.map(r => `
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="window.location='/dashboard/${r.id}'">
+            <div class="flex items-start justify-between mb-4">
+                <div>
+                    <h3 class="text-[18px] font-bold text-gray-900">${r.area}</h3>
+                    <div class="flex items-center gap-3 mt-1">
+                        ${getBadgeHTML(r.status)}
+                        <span class="text-[11px] text-gray-400 font-medium">📡 ${r.sensors_count} Active Sensors</span>
+                    </div>
+                </div>
+                <div class="text-[20px] opacity-20">📊</div>
+            </div>
+            <div class="bg-blue-50 rounded-xl p-4 border border-blue-100">
+                <p class="text-[13px] text-blue-800 leading-relaxed font-medium">
+                    <span class="font-bold opacity-50 mr-1">AI SUMMARY:</span>
+                    "${r.summary}"
+                </p>
+            </div>
+            <div class="mt-4 flex justify-end">
+                <span class="text-[11px] font-bold text-blue-600 hover:underline">View Detailed Station Telemetry →</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+document.getElementById('reportSearch').oninput = (e) => renderReports(e.target.value);
+document.getElementById('sidebarToggle').onclick = () => document.getElementById('sidebar').classList.toggle('closed');
+
+fetchReports();
+setInterval(fetchReports, 10000);
+</script>
+</body>
+</html>

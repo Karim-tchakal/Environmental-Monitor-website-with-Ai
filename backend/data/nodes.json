@@ -1,0 +1,10 @@
+[
+  {
+    "id": 15,
+    "name": "new1",
+    "lat": 36.75,
+    "lng": 3.0,
+    "status": "alert",
+    "icon": "\u26a0\ufe0f"
+  }
+]

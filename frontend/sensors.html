@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polaris - Real-Time Sensor Monitor</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'DM Sans', sans-serif; }
+  * { scrollbar-width: none; -ms-overflow-style: none; }
+  *::-webkit-scrollbar { display: none; }
+  #sidebar { transition: width .25s ease, min-width .25s ease, opacity .2s ease; }
+  #sidebar.closed { width: 0 !important; min-width: 0 !important; opacity: 0; pointer-events: none; overflow: hidden; }
+  
+  .graph-container { overflow-x: auto; position: relative; width: 100%; height: 100%; cursor: grab; }
+  .graph-container:active { cursor: grabbing; }
+  .graph-line { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .graph-fill { opacity: 0.15; }
+  .axis-line { stroke: #e5e7eb; stroke-width: 1; }
+  .axis-label { font-size: 10px; fill: #9ca3af; font-family: monospace; }
+</style>
+</head>
+<body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
+
+<aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0 z-50">
+  <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
+    <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+  </div>
+  <nav class="flex-1 p-2 overflow-y-auto">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⬡ Dashboard</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
+    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
+    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">📡 Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
+    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+  </nav>
+  <div class="p-2 border-t border-gray-200">
+    <a href="/logout" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] font-medium text-red-500 hover:bg-red-50 transition-colors">↩ Logout</a>
+  </div>
+</aside>
+
+<div class="flex-1 flex flex-col overflow-hidden">
+  <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
+      <h2 class="text-[15px] font-semibold text-gray-900">Agri-Node Telemetry</h2>
+    </div>
+    <div class="flex items-center gap-3">
+      <select id="areaFilter" class="border border-gray-200 rounded-lg px-3 py-1.5 text-[13px] text-gray-700 focus:outline-none focus:border-blue-400 bg-white shadow-sm">
+        <option value="">📍 All Areas</option>
+      </select>
+      <img src="https://i.pravatar.cc/32" class="w-8 h-8 rounded-full border border-gray-200">
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-auto p-6">
+    <div class="mb-6">
+      <h1 class="text-[22px] font-bold text-gray-900">Live Diagnostic Vectors</h1>
+    </div>
+
+    <div id="graphGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
+
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="text-[12px] font-semibold text-gray-800 bg-white border-b border-gray-100">
+            <th class="px-5 py-4">Node/Area</th>
+            <th class="px-5 py-4">Sensor Name</th>
+            <th class="px-5 py-4">Type</th>
+            <th class="px-5 py-4">Value</th>
+            <th class="px-5 py-4">Sync</th>
+          </tr>
+        </thead>
+        <tbody id="sensorTableBody" class="text-[13px] text-gray-600"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+const API_BASE = '/api';
+const REFRESH_INTERVAL = 2000;
+const POINTS_PER_WIDTH = 10;
+
+let activeArea = "";
+let settingsCache = null;
+
+async function fetchSettings() {
+  try {
+    settingsCache = await fetch(`${API_BASE}/settings`).then(r => r.json());
+  } catch(e) {}
+}
+
+function getGraphColor(value, type) {
+  if (!settingsCache || !settingsCache.thresholds[type]) return '#3b82f6';
+  const t = settingsCache.thresholds[type];
+  
+  if (type === 'moisture') {
+      if (value <= t.alert) return '#ef4444'; // Red
+      if (value <= t.warning) return '#eab308'; // Yellow
+      return '#3b82f6'; // Blue
+  } else {
+      if (value >= t.alert) return '#ef4444'; // Red
+      if (value >= t.warning) return '#eab308'; // Yellow
+      return '#3b82f6'; // Blue
+  }
+}
+
+function createGraphHTML(sensor) {
+  return `
+    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col h-72 overflow-hidden" id="card-${sensor.id}">
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <h3 class="text-[14px] text-gray-500 font-medium">${sensor.name}</h3>
+          <p class="text-[10px] text-gray-400 uppercase">${sensor.node}</p>
+        </div>
+        <span id="val-${sensor.id}" class="text-[16px] font-bold text-blue-600">--</span>
+      </div>
+      <div class="flex-1 graph-container" id="container-${sensor.id}">
+         <svg id="svg-${sensor.id}" class="h-full w-full" preserveAspectRatio="none">
+           <line x1="0" y1="0%" x2="100%" y2="0%" class="axis-line" />
+           <line x1="0" y1="50%" x2="100%" y2="50%" class="axis-line" />
+           <line x1="0" y1="100%" x2="100%" y2="100%" class="axis-line" />
+           <text x="5" y="12" class="axis-label" id="label-max-${sensor.id}"></text>
+           <text x="5" y="98%" class="axis-label">0</text>
+           <path class="graph-fill" fill="currentColor" />
+           <path class="graph-line" stroke="currentColor" />
+         </svg>
+      </div>
+    </div>
+  `;
+}
+
+function updateGraph(sensor) {
+  const svg = document.getElementById(`svg-${sensor.id}`);
+  const container = document.getElementById(`container-${sensor.id}`);
+  if (!svg || !sensor.readings || !sensor.readings.length) return;
+
+  const width = Math.max(sensor.readings.length * POINTS_PER_WIDTH, container.clientWidth);
+  const height = container.clientHeight;
+  svg.setAttribute('width', width);
+  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+  const maxData = Math.max(...sensor.readings, 1);
+  const displayMax = maxData * 1.1; 
+  const range = displayMax;
+
+  document.getElementById(`label-max-${sensor.id}`).textContent = displayMax.toFixed(1) + sensor.unit;
+
+  let points = sensor.readings.map((v, i) => {
+    const x = i * POINTS_PER_WIDTH;
+    const y = height - (v / range) * height;
+    return `${x},${y}`;
+  });
+
+  const dPath = "M" + points.join(" L");
+  const dFill = dPath + ` L${(sensor.readings.length - 1) * POINTS_PER_WIDTH},${height} L0,${height} Z`;
+
+  const lastValue = sensor.readings[sensor.readings.length - 1];
+  const color = getGraphColor(lastValue, sensor.type);
+  
+  svg.querySelector('.graph-line').setAttribute('d', dPath);
+  svg.querySelector('.graph-line').style.color = color;
+  svg.querySelector('.graph-fill').setAttribute('d', dFill);
+  svg.querySelector('.graph-fill').style.color = color;
+  
+  container.scrollLeft = width;
+  document.getElementById(`val-${sensor.id}`).innerText = `${sensor.current_value}${sensor.unit}`;
+  document.getElementById(`val-${sensor.id}`).style.color = color;
+}
+
+async function fetchAreas() {
+  try {
+    const nodes = await fetch(`${API_BASE}/nodes`).then(r => r.json());
+    const filter = document.getElementById('areaFilter');
+    const current = filter.value;
+    filter.innerHTML = '<option value="">📍 All Areas</option>' + 
+      nodes.map(n => `<option value="${n.name}" ${n.name === current ? 'selected' : ''}>${n.name}</option>`).join('');
+  } catch(e) {}
+}
+
+async function fetchData() {
+  try {
+    const response = await fetch(`${API_BASE}/sensors?area=${activeArea}`);
+    const data = await response.json();
+    const grid = document.getElementById('graphGrid');
+
+    data.forEach(sensor => {
+      if (!document.getElementById(`card-${sensor.id}`)) {
+        grid.insertAdjacentHTML('beforeend', createGraphHTML(sensor));
+      }
+      updateGraph(sensor);
+    });
+    
+    const body = document.getElementById('sensorTableBody');
+    body.innerHTML = data.map(s => {
+      const lastSync = s.timestamps && s.timestamps.length ? new Date(s.timestamps[s.timestamps.length-1]).toLocaleTimeString() : '---';
+      return `
+      <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+        <td class="px-5 py-4 font-bold text-gray-900">${s.node}</td>
+        <td class="px-5 py-4 font-medium">${s.name}</td>
+        <td class="px-5 py-4 uppercase text-[11px] font-mono">${s.type}</td>
+        <td class="px-5 py-4 font-bold text-blue-600" style="color:${getGraphColor(s.current_value, s.type)}">${s.current_value}${s.unit}</td>
+        <td class="px-5 py-4 text-gray-400 font-mono text-[11px]">${lastSync}</td>
+      </tr>
+    `}).join('');
+  } catch(e) { console.error(e); }
+}
+
+document.getElementById('sidebarToggle').onclick = () => document.getElementById('sidebar').classList.toggle('closed');
+document.getElementById('areaFilter').onchange = (e) => { 
+  activeArea = e.target.value; 
+  document.getElementById('graphGrid').innerHTML = ''; 
+  fetchData(); 
+};
+
+fetchAreas();
+fetchSettings();
+setInterval(fetchAreas, 10000);
+setInterval(fetchSettings, 30000);
+setInterval(fetchData, REFRESH_INTERVAL);
+fetchData();
+</script>
+</body>
+</html>

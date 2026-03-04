@@ -1,0 +1,12 @@
+[
+  {
+    "id": "node-15",
+    "status": "warning",
+    "battery": "90",
+    "name": "temp",
+    "node": "new1",
+    "type": "temperature",
+    "unit": "C",
+    "last_reported_status": "warning"
+  }
+]

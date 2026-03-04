@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polaris - Station Monitor</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: 'DM Sans', sans-serif; }
+  * { scrollbar-width: none; -ms-overflow-style: none; }
+  *::-webkit-scrollbar { display: none; }
+  #sidebar { transition: width .25s ease, min-width .25s ease, opacity .2s ease; }
+  #sidebar.closed { width: 0 !important; min-width: 0 !important; opacity: 0; pointer-events: none; overflow: hidden; }
+</style>
+</head>
+<body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
+
+<aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
+  <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
+    <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+  </div>
+  <nav class="flex-1 p-2 overflow-y-auto">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">⬡ Dashboard</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
+    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
+    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
+    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+  </nav>
+</aside>
+
+<div class="flex-1 flex flex-col overflow-hidden">
+  <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
+      <div>
+        <h2 id="welcome-text" class="text-[15px] font-semibold text-gray-900">Station Monitor</h2>
+        <p id="station-subtitle" class="text-[12px] text-gray-400 mt-0.5">Fetching location details...</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <img id="user-avatar" src="https://i.pravatar.cc/32" class="w-8 h-8 rounded-full border border-gray-200">
+    </div>
+  </header>
+
+  <div class="px-5 py-2 bg-white border-b border-gray-100 shrink-0">
+    <div class="flex items-center justify-between mb-1">
+      <span id="cal-title" class="text-[12px] font-semibold text-gray-700"></span>
+      <div class="flex items-center gap-2">
+        <span id="cal-range-label" class="hidden text-[11px] font-medium text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg"></span>
+        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">✕ Reset</button>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div id="cal-strip" class="flex overflow-x-auto w-full" style="padding-bottom:4px;margin-top:12px;"></div>
+    </div>
+  </div>
+
+  <main class="flex-1 overflow-auto p-5">
+    <section id="ai-summary-section" class="mb-6">
+        <div class="bg-blue-600 rounded-2xl p-5 text-white shadow-lg relative overflow-hidden">
+          <div class="relative z-10">
+            <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">🤖 AI Intelligence Analysis</h3>
+            <p id="ai-summary-text" class="text-[15px] font-medium leading-relaxed italic">Analyzing telemetry vectors...</p>
+          </div>
+          <div class="absolute right-[-20px] bottom-[-20px] text-[100px] opacity-10 pointer-events-none">🤖</div>
+        </div>
+    </section>
+
+    <section id="active-alerts-section" class="mb-6 hidden">
+      <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+        <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2">⚠️ Sensors Above Thresholds</h3>
+        <div id="active-alerts-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+      </div>
+    </section>
+
+    <div id="sensor-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    
+    <div class="mt-8 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+      <div class="px-5 py-3 border-b border-gray-100 flex items-center justify-between">
+        <h3 class="text-[13px] font-semibold text-gray-700">Station Telemetry Log</h3>
+        <span id="alert-count" class="text-[11px] text-gray-400"></span>
+      </div>
+      <table class="min-w-full">
+        <thead>
+          <tr class="text-[11px] font-semibold uppercase tracking-wider text-gray-400 bg-gray-50">
+            <th class="px-5 py-3 text-left">Alert Type</th>
+            <th class="px-5 py-3 text-left">Sensor</th>
+            <th class="px-5 py-3 text-left">Status</th>
+            <th class="px-5 py-3 text-left">Timestamp</th>
+            <th class="px-5 py-3 text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="alerts-table-body"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+const stationId = window.location.pathname.split('/').pop();
+const API_BASE = '/api';
+let charts = {};
+let settingsCache = null;
+let stationName = "";
+let allAlerts = [];
+
+const SENSOR_TEMPLATES = {
+    "temperature": { icon: "🌡️", unit: "°C" },
+    "humidity":    { icon: "💧", unit: "%" },
+    "co2":         { icon: "☁️", unit: "ppm" },
+    "smoke":       { icon: "🔥", unit: "idx" },
+    "pm25":        { icon: "🌫️", unit: "µg/m³" },
+    "moisture":    { icon: "🌱", unit: "%" }
+};
+
+const BADGE_CONFIG = {
+  'alert':    { bg:'#fef2f2', text:'#dc2626', dot:'#ef4444' },
+  'warning':  { bg:'#fefce8', text:'#a16207', dot:'#eab308' },
+  'incident': { bg:'#fff7ed', text:'#c2410c', dot:'#f97316' },
+  'normal':   { bg:'#f0fdf4', text:'#15803d', dot:'#22c55e' }
+};
+
+function getBadge(status) {
+  return BADGE_CONFIG[status.toLowerCase()] || { bg:'#f1f5f9', text:'#475569', dot:'#94a3b8' };
+}
+
+async function fetchSettings() {
+    try {
+        settingsCache = await fetch(`${API_BASE}/settings`).then(r => r.json());
+    } catch(e) {}
+}
+
+async function fetchAISummary() {
+  if (!stationName) return;
+  try {
+    const data = await fetch(`${API_BASE}/ai/summary?node=${stationName}`).then(r => r.json());
+    document.getElementById('ai-summary-text').textContent = `"${data.summary}"`;
+  } catch(e) {}
+}
+
+function getGraphColor(value, type) {
+    if (!settingsCache || !settingsCache.thresholds[type]) return '#3b82f6';
+    const t = settingsCache.thresholds[type];
+    if (type === 'moisture') {
+        if (value <= t.alert) return '#ef4444';
+        if (value <= t.warning) return '#eab308';
+        return '#3b82f6';
+    } else {
+        if (value >= t.alert) return '#ef4444';
+        if (value >= t.warning) return '#eab308';
+        return '#3b82f6';
+    }
+}
+
+function createSensorBlock(sensor) {
+    const config = SENSOR_TEMPLATES[sensor.type] || { icon: "📊", unit: "" };
+    const lastVal = sensor.readings?.length ? sensor.readings[sensor.readings.length - 1] : "N/A";
+    const color = getGraphColor(lastVal, sensor.type);
+    
+    return `
+    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm" id="sensor-card-${sensor.id}">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">${sensor.type}</span>
+                <h3 class="text-[18px] font-bold text-gray-800">${sensor.name || sensor.type}</h3>
+            </div>
+            <span class="text-2xl">${config.icon}</span>
+        </div>
+        <div class="flex items-end gap-2 mb-4">
+            <span class="text-3xl font-bold sensor-value" style="color: ${color}">${lastVal}</span>
+            <span class="text-sm font-medium text-gray-400 mb-1">${sensor.unit || config.unit}</span>
+        </div>
+        <div class="h-32">
+            <canvas id="chart-${sensor.id}"></canvas>
+        </div>
+    </div>`;
+}
+
+async function loadData() {
+    try {
+        const res = await fetch(`${API_BASE}/station/${stationId}`);
+        const data = await res.json();
+        
+        stationName = data.info.name;
+        document.getElementById('station-subtitle').textContent = `Location: ${data.info.name} • Status: ${data.info.status}`;
+        
+        const grid = document.getElementById('sensor-grid');
+        if (grid.children.length !== data.sensors.length) {
+            grid.innerHTML = "";
+            data.sensors.forEach(s => grid.innerHTML += createSensorBlock(s));
+        }
+
+        data.sensors.forEach(s => {
+            const lastVal = s.readings?.length ? s.readings[s.readings.length - 1] : "—";
+            const color = getGraphColor(lastVal, s.type);
+            const cardValue = document.querySelector(`#sensor-card-${s.id} .sensor-value`);
+            if (cardValue) {
+                cardValue.textContent = lastVal;
+                cardValue.style.color = color;
+            }
+
+            const chartLabels = s.timestamps?.map(t => t.split('T')[1].slice(0,5)) || [];
+            const chartData = s.readings || [];
+
+            if (charts[s.id]) {
+                charts[s.id].data.labels = chartLabels;
+                charts[s.id].data.datasets[0].data = chartData;
+                charts[s.id].data.datasets[0].borderColor = color;
+                charts[s.id].data.datasets[0].backgroundColor = color + '10';
+                charts[s.id].update('none'); 
+            } else {
+                const canvas = document.getElementById(`chart-${s.id}`);
+                if (canvas) {
+                    charts[s.id] = new Chart(canvas.getContext('2d'), {
+                        type: 'line',
+                        data: {
+                            labels: chartLabels,
+                            datasets: [{
+                                data: chartData,
+                                borderColor: color,
+                                borderWidth: 2,
+                                fill: true,
+                                backgroundColor: color + '10',
+                                tension: 0.4,
+                                pointRadius: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            animation: false,
+                            scales: {
+                                x: { display: false },
+                                y: { display: true, grid: { color: '#f3f4f6' }, ticks: { font: { size: 9 } } }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    } catch(e) {}
+}
+
+async function fetchActiveAlerts() {
+  if (!stationName) return;
+  try {
+    const alerts = await fetch(`${API_BASE}/alerts/active`).then(r => r.json());
+    const stationAlerts = alerts.filter(a => a.node === stationName);
+    const section = document.getElementById('active-alerts-section');
+    const list = document.getElementById('active-alerts-list');
+    
+    if (stationAlerts.length === 0) {
+      section.classList.add('hidden');
+      return;
+    }
+    
+    section.classList.remove('hidden');
+    list.innerHTML = stationAlerts.map(a => {
+        const color = a.status === 'alert' ? '#dc2626' : '#ca8a04';
+        const bg = a.status === 'alert' ? '#fff1f2' : '#fefce8';
+        const border = a.status === 'alert' ? '#fecaca' : '#fef08a';
+        return `
+          <div class="p-3 rounded-lg border flex items-center justify-between" style="background:${bg}; border-color:${border}">
+            <div>
+              <div class="text-[10px] font-bold text-gray-500 uppercase">${a.type}</div>
+              <div class="text-[13px] font-bold text-gray-900">${a.name}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-[15px] font-bold" style="color:${color}">${a.value}${a.unit}</div>
+              <div class="text-[8px] font-bold uppercase px-1 py-0.5 rounded text-white" style="background:${color}">${a.status}</div>
+            </div>
+          </div>
+        `;
+    }).join('');
+  } catch(e) {}
+}
+
+const TODAY     = new Date(); TODAY.setHours(0,0,0,0);
+const WIN_START = new Date(TODAY); WIN_START.setDate(WIN_START.getDate() - 60);
+const WIN_END   = new Date(TODAY); WIN_END.setDate(WIN_END.getDate() + 5);
+
+function daysBetween(a, b) { return Math.round((b - a) / 86400000); }
+function addDays(d, n)     { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+function localKey(d)       { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function fmtShort(d)       { return d.toLocaleDateString('default', {month:'short', day:'numeric'}); }
+
+const TOTAL_DAYS = daysBetween(WIN_START, WIN_END) + 1;
+let selStart = addDays(TODAY, -10);
+let selEnd   = new Date(TODAY);
+selEnd.setHours(23,59,59,999);
+
+function filterByRange(alerts) {
+  return alerts.filter(a => {
+    const d = new Date(a.timestamp);
+    if (isNaN(d)) return true;
+    const day = new Date(d); day.setHours(0,0,0,0);
+    return day >= selStart && day <= selEnd;
+  });
+}
+
+function renderAlertsTable() {
+  if (!stationName) return;
+  const filtered = filterByRange(allAlerts.filter(a => a.area === stationName));
+  const body = document.getElementById('alerts-table-body');
+  const countEl = document.getElementById('alert-count');
+  
+  if (countEl) countEl.textContent = `${filtered.length} entries shown`;
+
+  if (!filtered.length) {
+    body.innerHTML = `<tr><td colspan="5" class="px-5 py-8 text-center text-[13px] text-gray-400">No telemetry log entries in selected range</td></tr>`;
+    return;
+  }
+
+  body.innerHTML = filtered.map(a => {
+    const badge = getBadge(a.status);
+    const time  = new Date(a.timestamp).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+    
+    return `
+    <tr class="border-t border-gray-100 hover:bg-gray-50 transition-colors">
+      <td class="px-5 py-3 text-[13px] text-gray-800 font-medium">${a.type || '—'}</td>
+      <td class="px-5 py-3 text-[13px] text-gray-500">${a.sensor || '—'}</td>
+      <td class="px-5 py-3">
+        <span class="inline-flex items-center gap-[5px] px-[10px] py-[3px] rounded-full text-[11px] font-semibold" style="background:${badge.bg};color:${badge.text};">
+          <span style="width:5px;height:5px;border-radius:50%;background:${badge.dot};"></span>
+          ${a.status || '—'}
+        </span>
+      </td>
+      <td class="px-5 py-3 text-[13px] text-gray-400 font-mono">${time}</td>
+      <td class="px-5 py-3">
+        <button onclick="deleteAlert(${a.id})" class="px-3 py-1 text-[12px] font-medium text-red-500 bg-red-50 hover:bg-red-100 rounded-lg transition-colors cursor-pointer">Delete</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+async function fetchAlerts() {
+  try { allAlerts = await fetch(`${API_BASE}/alerts`).then(r => r.json()); } catch(e) {}
+  renderAlertsTable();
+}
+
+async function deleteAlert(id) {
+  if (!confirm('Move this entry to system logs?')) return;
+  try {
+    await fetch(`${API_BASE}/alerts/${id}`, {method:'DELETE'});
+    allAlerts = allAlerts.filter(a => a.id !== id);
+    renderAlertsTable();
+  } catch(e) {}
+}
+
+let dragging  = null;
+let dragStartX = 0;
+
+function renderCalendar() {
+  const dayName = TODAY.toLocaleString('default', {weekday:'long'});
+  const monName = TODAY.toLocaleString('default', {month:'long'});
+  document.getElementById('cal-title').textContent = `${dayName} ${TODAY.getDate()}, ${monName} ${TODAY.getFullYear()}`;
+
+  const rl = document.getElementById('cal-range-label');
+  const cl = document.getElementById('cal-clear');
+  rl.textContent = `${fmtShort(selStart)} – ${fmtShort(selEnd)}`;
+  rl.classList.remove('hidden');
+
+  const isDefault = localKey(selStart) === localKey(addDays(TODAY,-10)) && localKey(selEnd) === localKey(TODAY);
+  isDefault ? cl.classList.add('hidden') : cl.classList.remove('hidden');
+
+  const strip = document.getElementById('cal-strip');
+  strip.innerHTML = '';
+  const dayEls = [];
+
+  for (let i = 0; i < TOTAL_DAYS; i++) {
+    const date    = addDays(WIN_START, i);
+    const key     = localKey(date);
+    const isToday = key === localKey(TODAY);
+    const isWE    = [0, 6].includes(date.getDay());
+    const isFut   = date > TODAY;
+
+    const inSel  = date >= selStart && date <= selEnd;
+    const isSelS = localKey(date) === localKey(selStart);
+    const isSelE = localKey(date) === localKey(selEnd);
+
+    const wrap = document.createElement('div');
+    wrap.dataset.idx = i;
+    wrap.style.cssText = `flex:0 0 calc(100%/${TOTAL_DAYS});min-width:26px;text-align:center;cursor:pointer;position:relative;user-select:none;z-index:20;height:32px;`;
+
+    const numBg  = isToday ? '#111827' : (isSelS||isSelE) ? '#2563eb' : 'transparent';
+    const numClr = (isToday||isSelS||isSelE) ? '#fff' : isFut ? '#d1d5db' : isWE ? '#ef4444' : '#374151';
+    const numFw  = (isToday||isSelS||isSelE) ? '600' : '400';
+
+    let intervalStyle = '';
+    if (inSel && !isSelS && !isSelE)   intervalStyle = 'background:#eff6ff;';
+    if (isSelS && !isSelE)             intervalStyle = 'background:linear-gradient(to right,transparent 50%,#eff6ff 50%);';
+    if (isSelE && !isSelS)             intervalStyle = 'background:linear-gradient(to left,transparent 50%,#eff6ff 50%);';
+
+    wrap.innerHTML += `
+      <div class="num-wrap" style="height:22px;${intervalStyle}position:relative;">
+        <div class="cal-num" style="width:22px;height:22px;border-radius:50%;background:${numBg};color:${numClr};font-size:11px;font-weight:${numFw};display:flex;align-items:center;justify-content:center;margin:0 auto;transition:background .1s;position:relative;z-index:30;box-sizing:border-box;">${date.getDate()}</div>
+      </div>`;
+
+    wrap.addEventListener('click', () => {
+      const d2 = addDays(WIN_START, i);
+      const ds = Math.abs(daysBetween(d2, selStart));
+      const de = Math.abs(daysBetween(d2, selEnd));
+      if (ds <= de) { if (d2 <= selEnd)   selStart = d2; }
+      else          { if (d2 >= selStart) selEnd   = d2; }
+      renderCalendar();
+      renderAlertsTable();
+    });
+
+    dayEls.push(wrap);
+    strip.appendChild(wrap);
+  }
+
+  ['start', 'end'].forEach(side => {
+    const idx = side === 'start' ? daysBetween(WIN_START, selStart) : daysBetween(WIN_START, selEnd);
+    const el = dayEls[idx];
+    if (!el) return;
+    const h = document.createElement('div');
+    h.style.cssText = `position:absolute;top:0;left:0;width:100%;height:22px;cursor:ew-resize;z-index:40;`;
+    h.addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); dragging = side; dragStartX = e.clientX; });
+    el.appendChild(h);
+  });
+}
+
+function onMove(clientX) {
+  if (!dragging) return;
+  const strip = document.getElementById('cal-strip');
+  const dayPx = strip.scrollWidth / TOTAL_DAYS;
+  const delta = Math.round((clientX - dragStartX) / dayPx);
+  if (!delta) return;
+  dragStartX += delta * dayPx;
+  if (dragging === 'start') {
+    const ns = addDays(selStart, delta);
+    if (ns >= WIN_START && ns < selEnd) { selStart = ns; renderCalendar(); renderAlertsTable(); }
+  } else {
+    const ne = addDays(selEnd, delta);
+    if (ne <= WIN_END && ne > selStart) { selEnd = ne; renderCalendar(); renderAlertsTable(); }
+  }
+}
+
+document.addEventListener('mousemove', e => onMove(e.clientX));
+document.addEventListener('mouseup', () => { dragging = null; });
+document.getElementById('cal-clear').onclick = () => {
+  selStart = addDays(TODAY, -10);
+  selEnd = new Date(TODAY);
+  selEnd.setHours(23,59,59,999);
+  renderCalendar();
+  renderAlertsTable();
+};
+
+document.getElementById('sidebarToggle').onclick = () =>
+  document.getElementById('sidebar').classList.toggle('closed');
+
+(async () => {
+    await fetchSettings();
+    await loadData();
+    await fetchAISummary();
+    await fetchAlerts();
+    await fetchActiveAlerts();
+    renderCalendar();
+    const strip = document.getElementById('cal-strip');
+    const todayIdx = daysBetween(WIN_START, TODAY);
+    const scrollPos = (todayIdx * (strip.scrollWidth / TOTAL_DAYS)) - (strip.clientWidth / 2);
+    strip.scrollLeft = scrollPos;
+})();
+
+setInterval(async () => {
+    await loadData();
+    await fetchAlerts();
+    await fetchActiveAlerts();
+}, 5000);
+setInterval(fetchAISummary, 30000);
+</script>
+</body>
+</html>

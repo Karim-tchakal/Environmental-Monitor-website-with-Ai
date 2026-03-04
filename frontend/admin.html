@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration - Polaris</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'DM Sans', sans-serif; }
+  .form-input { @apply w-full border border-gray-200 rounded-lg px-3 py-2 text-[13px] focus:outline-none focus:border-blue-400; }
+  .form-label { @apply block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1; }
+</style>
+</head>
+<body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
+
+<aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
+  <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
+    <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+  </div>
+  <nav class="flex-1 p-2 overflow-y-auto">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⬡ Dashboard</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
+    <a href="/alerts"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
+    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">⚙ Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+  </nav>
+</aside>
+
+<div class="flex-1 flex flex-col overflow-hidden">
+  <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
+    <h2 class="text-[15px] font-semibold text-gray-900">System Administration</h2>
+    <div class="flex items-center gap-3">
+      <img src="https://i.pravatar.cc/32" class="w-8 h-8 rounded-full border border-gray-200">
+    </div>
+  </header>
+
+  <main class="flex-1 overflow-auto p-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Add Node Section -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+        <h3 class="text-[16px] font-bold text-gray-900 mb-4">📍 Add New Monitoring Node</h3>
+        <form id="nodeForm" class="space-y-4">
+          <div>
+            <label class="form-label">Node ID (Numeric)</label>
+            <input type="number" id="nodeId" class="form-input" placeholder="e.g. 15" required>
+          </div>
+          <div>
+            <label class="form-label">Node Name</label>
+            <input type="text" id="nodeName" class="form-input" placeholder="e.g. North Forest" required>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Latitude</label>
+              <input type="number" step="any" id="nodeLat" class="form-input" placeholder="36.75" required>
+            </div>
+            <div>
+              <label class="form-label">Longitude</label>
+              <input type="number" step="any" id="nodeLng" class="form-input" placeholder="3.05" required>
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Status</label>
+            <select id="nodeStatus" class="form-input">
+              <option value="normal">Normal</option>
+              <option value="warning">Warning</option>
+              <option value="incident">Incident</option>
+              <option value="alert">Alert</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded-lg text-[13px] font-semibold hover:bg-blue-700 transition-colors">Register Node</button>
+        </form>
+
+        <div class="mt-8">
+            <h4 class="form-label">Existing Nodes</h4>
+            <div id="nodeList" class="space-y-2 mt-2"></div>
+        </div>
+      </div>
+
+      <!-- Add Sensor Section -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+        <h3 class="text-[16px] font-bold text-gray-900 mb-4">📡 Add New Sensor</h3>
+        <form id="sensorForm" class="space-y-4">
+          <div>
+            <label class="form-label">Sensor ID (Unique String)</label>
+            <input type="text" id="sensorId" class="form-input" placeholder="e.g. node-15-temp" required>
+          </div>
+          <div>
+            <label class="form-label">Sensor Name</label>
+            <input type="text" id="sensorName" class="form-input" placeholder="e.g. Ambient Temperature" required>
+          </div>
+          <div>
+            <label class="form-label">Assigned Node</label>
+            <select id="sensorNode" class="form-input" required>
+              <option value="">Select a node...</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Type</label>
+              <select id="sensorType" class="form-input">
+                <option value="temperature">Temperature</option>
+                <option value="humidity">Humidity</option>
+                <option value="moisture">Soil Moisture</option>
+                <option value="smoke">Smoke Level</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Unit</label>
+              <input type="text" id="sensorUnit" class="form-input" placeholder="e.g. °C, %" required>
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Initial Battery %</label>
+            <input type="number" id="sensorBattery" class="form-input" value="100" min="0" max="100">
+          </div>
+          <button type="submit" class="w-full py-2 bg-green-600 text-white rounded-lg text-[13px] font-semibold hover:bg-green-700 transition-colors">Deploy Sensor</button>
+        </form>
+
+        <div class="mt-8">
+            <h4 class="form-label">Active Sensors</h4>
+            <div id="sensorList" class="space-y-2 mt-2"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Coming Soon Section Kept Intact but shifted -->
+    <div class="mt-12 text-center border-t border-gray-200 pt-8">
+       <h4 class="text-gray-400 text-[13px] font-medium italic">More administrative tools coming soon...</h4>
+       <p class="text-gray-300 text-[11px] mt-1">User Management • System Logs • Firmware Updates</p>
+    </div>
+  </main>
+</div>
+
+<script>
+const API_BASE = '/api';
+
+async function loadNodes() {
+  try {
+    const nodes = await fetch(`${API_BASE}/nodes`).then(r => r.json());
+    const select = document.getElementById('sensorNode');
+    select.innerHTML = '<option value="">Select a node...</option>' + 
+      nodes.map(n => `<option value="${n.name}">${n.name}</option>`).join('');
+      
+    const list = document.getElementById('nodeList');
+    list.innerHTML = nodes.map(n => `
+      <div id="node-item-${n.id}" class="p-3 bg-gray-50 rounded-lg border border-gray-100">
+        <div class="flex items-center justify-between">
+          <span class="text-[13px] font-medium">${n.icon} ${n.name} (ID: ${n.id}) — <span class="uppercase text-[10px] font-bold text-blue-500">${n.status}</span></span>
+          <div class="flex gap-2">
+            <button onclick="editNode(${n.id}, '${n.name}', ${n.lat}, ${n.lng}, '${n.icon}')" class="text-blue-500 hover:text-blue-700 text-[11px] font-bold">EDIT</button>
+            <button onclick="deleteNode(${n.id})" class="text-red-500 hover:text-red-700 text-[11px] font-bold">DELETE</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+
+function editNode(id, name, lat, lng, icon) {
+  const div = document.getElementById(`node-item-${id}`);
+  div.innerHTML = `
+    <div class="space-y-2">
+      <input type="text" id="edit-name-${id}" value="${name}" class="form-input text-[12px]">
+      <div class="grid grid-cols-2 gap-2">
+        <input type="number" step="any" id="edit-lat-${id}" value="${lat}" class="form-input text-[12px]">
+        <input type="number" step="any" id="edit-lng-${id}" value="${lng}" class="form-input text-[12px]">
+      </div>
+      <input type="text" id="edit-icon-${id}" value="${icon}" class="form-input text-[12px]" placeholder="Icon (emoji)">
+      <div class="flex gap-2 mt-2">
+        <button onclick="saveNodeEdit(${id})" class="flex-1 bg-blue-600 text-white py-1 rounded text-[11px] font-bold">SAVE</button>
+        <button onclick="loadNodes()" class="flex-1 bg-gray-200 text-gray-600 py-1 rounded text-[11px] font-bold">CANCEL</button>
+      </div>
+    </div>
+  `;
+}
+
+async function saveNodeEdit(id) {
+  const data = {
+    name: document.getElementById(`edit-name-${id}`).value,
+    lat: parseFloat(document.getElementById(`edit-lat-${id}`).value),
+    lng: parseFloat(document.getElementById(`edit-lng-${id}`).value),
+    icon: document.getElementById(`edit-icon-${id}`).value
+  };
+  
+  await fetch(`${API_BASE}/nodes/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  loadNodes();
+}
+
+async function loadSensors() {
+  try {
+    const sensors = await fetch(`${API_BASE}/sensors`).then(r => r.json());
+    const list = document.getElementById('sensorList');
+    list.innerHTML = sensors.map(s => `
+      <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-100">
+        <span class="text-[13px] font-medium">📡 ${s.name} (${s.id}) @ ${s.node}</span>
+        <button onclick="deleteSensor('${s.id}')" class="text-red-500 hover:text-red-700 text-[11px] font-bold">DELETE</button>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+
+async function deleteNode(id) {
+  if (!confirm('Are you sure you want to delete this node?')) return;
+  await fetch(`${API_BASE}/nodes/${id}`, { method: 'DELETE' });
+  loadNodes();
+}
+
+async function deleteSensor(id) {
+  if (!confirm('Are you sure you want to delete this sensor and its data?')) return;
+  await fetch(`${API_BASE}/sensors/${id}`, { method: 'DELETE' });
+  loadSensors();
+}
+
+document.getElementById('nodeForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const data = {
+    id: parseInt(document.getElementById('nodeId').value),
+    name: document.getElementById('nodeName').value,
+    lat: float(document.getElementById('nodeLat').value),
+    lng: float(document.getElementById('nodeLng').value),
+    status: document.getElementById('nodeStatus').value,
+    icon: document.getElementById('nodeStatus').value === 'normal' ? '✅' : '⚠️'
+  };
+  
+  try {
+    const res = await fetch(`${API_BASE}/nodes`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      alert('Node registered successfully!');
+      document.getElementById('nodeForm').reset();
+      loadNodes();
+    } else {
+      const err = await res.json();
+      alert('Error: ' + err.detail);
+    }
+  } catch(err) { alert('Failed to connect to server'); }
+};
+
+document.getElementById('sensorForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const data = {
+    id: document.getElementById('sensorId').value,
+    name: document.getElementById('sensorName').value,
+    node: document.getElementById('sensorNode').value,
+    type: document.getElementById('sensorType').value,
+    unit: document.getElementById('sensorUnit').value,
+    battery: document.getElementById('sensorBattery').value,
+    status: 'ok'
+  };
+  
+  try {
+    const res = await fetch(`${API_BASE}/sensors`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      alert('Sensor deployed successfully!');
+      document.getElementById('sensorForm').reset();
+      loadSensors();
+    } else {
+      const err = await res.json();
+      alert('Error: ' + err.detail);
+    }
+  } catch(err) { alert('Failed to connect to server'); }
+};
+
+// Helper for float parsing
+function float(v) { return parseFloat(v) || 0; }
+
+loadNodes();
+loadSensors();
+</script>
+</body>
+</html>

@@ -74,7 +74,7 @@ def read_sensor_readings(sensor_id):
 def sync_from_status_file():
     """
     Reads sensor_status.json and updates sensors.json and alerts.json.
-    Format expected: [{"id": "sensor-id", "status": "alert", "timestamp": "ISO-DATE"}]
+    Format expected: [{"id": "sensor-id", "status": "alert", "timestamp": "ISO-DATE", "comment": "text"}]
     """
     updates = read_json(STATUS_INPUT_FILE)
     if not updates:
@@ -89,6 +89,7 @@ def sync_from_status_file():
     for up in updates:
         sid = up.get("id")
         new_status = up.get("status", "normal").lower()
+        new_comment = up.get("comment", "")
         ts = up.get("timestamp") or datetime.now().isoformat()
         
         # 1. Update sensors.json
@@ -99,21 +100,21 @@ def sync_from_status_file():
         old_status = sensor.get("status", "normal").lower()
         sensor["status"] = new_status
         sensor["last_sync"] = ts
+        if new_comment:
+            sensor["comment"] = new_comment
         updated_sensors = True
         
         # 2. Update alerts.json if non-normal
         if new_status != "normal":
-            # Find latest alert for this sensor to see if we append or update end_timestamp
             sensor_alerts = [a for a in alerts if a.get("sensor_id") == sid]
             latest = sensor_alerts[-1] if sensor_alerts else None
             
             if latest and latest.get("status") == new_status:
-                # Still the same error, just update end_timestamp
                 if ts > latest.get("end_timestamp", ""):
                     latest["end_timestamp"] = ts
+                    if new_comment: latest["comment"] = new_comment
                     updated_alerts = True
             else:
-                # Transition to a DIFFERENT non-normal state (e.g. Warning -> Alert)
                 new_entry = {
                     "id": int(datetime.now().timestamp() * 1000) + len(alerts),
                     "sensor_id": sid,
@@ -122,7 +123,8 @@ def sync_from_status_file():
                     "status": new_status,
                     "start_timestamp": ts,
                     "end_timestamp": ts,
-                    "area": sensor["node"]
+                    "area": sensor["node"],
+                    "comment": new_comment
                 }
                 alerts.append(new_entry)
                 updated_alerts = True
@@ -132,7 +134,6 @@ def sync_from_status_file():
     if updated_alerts:
         write_json(ALERT_FILE, alerts)
         
-    # Clear the input file after processing to allow team to push new events
     write_json(STATUS_INPUT_FILE, [])
 
 def get_computed_nodes():
@@ -190,6 +191,7 @@ class SensorModel(BaseModel):
     node: str
     type: str
     unit: str
+    comment: Optional[str] = ""
 
 class SettingsModel(BaseModel):
     thresholds: dict[str, Any]
@@ -265,6 +267,49 @@ def api_reports():
             "sensors_count": len(node_sensors)
         })
     return sorted(report_data, key=lambda x: x["rank"], reverse=True)
+
+@app.post("/api/populate_dummy")
+def populate_dummy_data():
+    """TODO: Generate massive dummy data for testing"""
+    import random
+    nodes = []
+    sensors = []
+    
+    # 25 Areas
+    for i in range(1, 26):
+        area_name = f"Agri-Sector {i:02d}"
+        nodes.append({
+            "id": i,
+            "name": area_name,
+            "lat": 36.7 + (random.random() - 0.5) * 0.5,
+            "lng": 3.0 + (random.random() - 0.5) * 0.5,
+            "status": "normal",
+            "icon": random.choice(["🌾", "🍇", "🌽", "🥔", "🥕", "🍅"])
+        })
+        
+        # 15 Sensors per area
+        for j in range(1, 16):
+            stype = random.choice(["temperature", "humidity", "moisture", "general", "smoke", "co2", "pm25"])
+            sid = f"node-{i:02d}-{stype}-{j:02d}"
+            sensors.append({
+                "id": sid,
+                "name": f"{stype.title()} Sensor {j}",
+                "node": area_name,
+                "type": stype,
+                "unit": "unit", # Simplified
+                "battery": str(random.randint(20, 100)),
+                "status": "normal",
+                "comment": ""
+            })
+            
+            # Create CSV
+            os.makedirs(READINGS_DIR, exist_ok=True)
+            with open(os.path.join(READINGS_DIR, f"{sid}.csv"), "w") as f:
+                pass # Empty readings for now or generate some?
+                
+    write_json(NODES_FILE, nodes)
+    write_json(SENSORS_FILE, sensors)
+    return {"message": f"Generated {len(nodes)} nodes and {len(sensors)} sensors"}
 
 @app.get("/api/settings")
 def get_settings():

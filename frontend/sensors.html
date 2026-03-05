@@ -12,13 +12,6 @@
   *::-webkit-scrollbar { display: none; }
   #sidebar { transition: width .25s ease, min-width .25s ease, opacity .2s ease; }
   #sidebar.closed { width: 0 !important; min-width: 0 !important; opacity: 0; pointer-events: none; overflow: hidden; }
-  
-  .graph-container { overflow-x: auto; position: relative; width: 100%; height: 100%; cursor: grab; }
-  .graph-container:active { cursor: grabbing; }
-  .graph-line { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-  .graph-fill { opacity: 0.15; }
-  .axis-line { stroke: #e5e7eb; stroke-width: 1; }
-  .axis-label { font-size: 10px; fill: #9ca3af; font-family: monospace; }
 </style>
 </head>
 <body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
@@ -67,25 +60,55 @@
     </div>
   </header>
 
-  <main class="flex-1 overflow-auto p-6">
-    <div class="mb-6">
-      <h1 class="text-[22px] font-bold text-gray-900">Live Diagnostic Vectors</h1>
+  <div class="px-5 py-2 bg-white border-b border-gray-100 shrink-0">
+    <div class="flex items-center justify-between mb-1">
+      <span id="cal-title" class="text-[12px] font-semibold text-gray-700"></span>
+      <div class="flex items-center gap-2">
+        <span id="cal-range-label" class="hidden text-[11px] font-medium text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg"></span>
+        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">✕ Reset</button>
+      </div>
     </div>
+    <div style="position:relative;">
+      <div id="cal-strip" class="flex overflow-x-auto w-full" style="padding-bottom:4px;margin-top:12px;"></div>
+    </div>
+  </div>
 
-    <div id="graphGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
+  <main class="flex-1 overflow-auto p-6">
+    
+    <section id="active-alerts-section" class="mb-6 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex flex-col min-w-0">
+          <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">⚠️ Active Anomalies</h3>
+          <div id="active-alerts-list" class="flex overflow-x-auto gap-3 pb-2"></div>
+        </div>
+        <div class="bg-blue-600 rounded-xl p-4 text-white shadow-lg relative overflow-hidden flex flex-col justify-center">
+          <div class="relative z-10">
+            <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">🤖 AI Fleet Analysis</h3>
+            <p id="ai-summary-text" class="text-[14px] font-medium leading-relaxed italic">Analyzing current telemetry vectors...</p>
+          </div>
+          <div class="absolute right-[-15px] bottom-[-15px] text-[80px] opacity-10 pointer-events-none">🤖</div>
+        </div>
+      </div>
+    </section>
 
-    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
-      <table class="w-full text-left border-collapse">
+    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+      <div class="px-5 py-3 border-b border-gray-100 flex items-center justify-between">
+        <h3 class="text-[13px] font-semibold text-gray-700">Telemetry History log</h3>
+        <span id="alert-count" class="text-[11px] text-gray-400"></span>
+      </div>
+      <table class="min-w-full">
         <thead>
-          <tr class="text-[12px] font-semibold text-gray-800 bg-white border-b border-gray-100">
-            <th class="px-5 py-4">Node/Area</th>
-            <th class="px-5 py-4">Sensor Name</th>
-            <th class="px-5 py-4">Type</th>
-            <th class="px-5 py-4">Value</th>
-            <th class="px-5 py-4">Sync</th>
+          <tr class="text-[11px] font-semibold uppercase tracking-wider text-gray-400 bg-gray-50">
+            <th class="px-5 py-3 text-left">Alert Type</th>
+            <th class="px-5 py-3 text-left">Sensor</th>
+            <th class="px-5 py-3 text-left">Status</th>
+            <th class="px-5 py-3 text-left">Start Time</th>
+            <th class="px-5 py-3 text-left">End Time</th>
+            <th class="px-5 py-3 text-left">Comment</th>
+            <th class="px-5 py-3 text-left">Actions</th>
           </tr>
         </thead>
-        <tbody id="sensorTableBody" class="text-[13px] text-gray-600"></tbody>
+        <tbody id="alerts-table-body"></tbody>
       </table>
     </div>
   </main>
@@ -93,99 +116,121 @@
 
 <script>
 const API_BASE = '/api';
-const REFRESH_INTERVAL = 2000;
-const POINTS_PER_WIDTH = 10;
-
 let activeArea = "";
 let settingsCache = null;
+let allAlerts = [];
+let nodesCache = [];
+
+const BADGE_CONFIG = {
+  'alert':    { bg:'#fef2f2', text:'#dc2626', dot:'#ef4444' },
+  'warning':  { bg:'#fefce8', text:'#a16207', dot:'#eab308' },
+  'incident': { bg:'#fff7ed', text:'#c2410c', dot:'#f97316' },
+  'normal':   { bg:'#f0fdf4', text:'#15803d', dot:'#22c55e' }
+};
+
+function getBadge(status) {
+  return BADGE_CONFIG[status.toLowerCase()] || { bg:'#f1f5f9', text:'#475569', dot:'#94a3b8' };
+}
 
 async function fetchSettings() {
+  try { settingsCache = await fetch(`${API_BASE}/settings`).then(r => r.json()); } catch(e) {}
+}
+
+async function fetchAISummary() {
   try {
-    settingsCache = await fetch(`${API_BASE}/settings`).then(r => r.json());
+    const data = await fetch(`${API_BASE}/ai/summary`).then(r => r.json());
+    document.getElementById('ai-summary-text').textContent = `"${data.summary}"`;
   } catch(e) {}
 }
 
-function getGraphColor(value, type) {
-  if (!settingsCache || !settingsCache.thresholds[type]) return '#3b82f6';
-  const t = settingsCache.thresholds[type];
-  
-  if (type === 'moisture') {
-      if (value <= t.alert) return '#ef4444'; // Red
-      if (value <= t.warning) return '#eab308'; // Yellow
-      return '#3b82f6'; // Blue
-  } else {
-      if (value >= t.alert) return '#ef4444'; // Red
-      if (value >= t.warning) return '#eab308'; // Yellow
-      return '#3b82f6'; // Blue
-  }
+async function fetchActiveAlerts() {
+  try {
+    const alerts = await fetch(`${API_BASE}/alerts/active`).then(r => r.json());
+    const filtered = activeArea ? alerts.filter(a => a.node === activeArea) : alerts;
+    const section = document.getElementById('active-alerts-section');
+    const list = document.getElementById('active-alerts-list');
+    if (filtered.length === 0) { section.classList.add('hidden'); return; }
+    section.classList.remove('hidden');
+    list.innerHTML = filtered.map(a => {
+        const color = a.status === 'alert' ? '#dc2626' : '#ca8a04';
+        const bg = a.status === 'alert' ? '#fff1f2' : '#fefce8';
+        const border = a.status === 'alert' ? '#fecaca' : '#fef08a';
+        return `
+          <div class="p-3 rounded-lg border flex items-center justify-between shadow-sm flex-shrink-0 w-64" style="background:${bg}; border-color:${border}">
+            <div>
+              <div class="text-[10px] font-bold text-gray-500 uppercase">${a.type} @ ${a.node}</div>
+              <div class="text-[13px] font-bold text-gray-900 truncate w-32">${a.name}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-[15px] font-bold" style="color:${color}">${a.value}${a.unit}</div>
+              <div class="text-[8px] font-bold uppercase px-1 py-0.5 rounded text-white" style="background:${color}">${a.status}</div>
+            </div>
+          </div>
+        `;
+    }).join('');
+  } catch(e) {}
 }
 
-function createGraphHTML(sensor) {
-  return `
-    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col h-72 overflow-hidden" id="card-${sensor.id}">
-      <div class="flex justify-between items-center mb-4">
-        <div>
-          <h3 class="text-[14px] text-gray-500 font-medium">${sensor.name}</h3>
-          <p class="text-[10px] text-gray-400 uppercase">${sensor.node}</p>
-        </div>
-        <span id="val-${sensor.id}" class="text-[16px] font-bold text-blue-600">--</span>
-      </div>
-      <div class="flex-1 graph-container" id="container-${sensor.id}">
-         <svg id="svg-${sensor.id}" class="h-full w-full" preserveAspectRatio="none">
-           <line x1="0" y1="0%" x2="100%" y2="0%" class="axis-line" />
-           <line x1="0" y1="50%" x2="100%" y2="50%" class="axis-line" />
-           <line x1="0" y1="100%" x2="100%" y2="100%" class="axis-line" />
-           <text x="5" y="12" class="axis-label" id="label-max-${sensor.id}"></text>
-           <text x="5" y="98%" class="axis-label">0</text>
-           <path class="graph-fill" fill="currentColor" />
-           <path class="graph-line" stroke="currentColor" />
-         </svg>
-      </div>
-    </div>
-  `;
-}
+const TODAY     = new Date(); TODAY.setHours(0,0,0,0);
+const WIN_START = new Date(TODAY); WIN_START.setDate(WIN_START.getDate() - 60);
+const WIN_END   = new Date(TODAY); WIN_END.setDate(WIN_END.getDate() + 1);
 
-function updateGraph(sensor) {
-  const svg = document.getElementById(`svg-${sensor.id}`);
-  const container = document.getElementById(`container-${sensor.id}`);
-  if (!svg || !sensor.readings || !sensor.readings.length) return;
+function daysBetween(a, b) { return Math.round((b - a) / 86400000); }
+function addDays(d, n)     { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+function localKey(d)       { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function fmtShort(d)       { return d.toLocaleDateString('default', {month:'short', day:'numeric'}); }
 
-  const width = Math.max(sensor.readings.length * POINTS_PER_WIDTH, container.clientWidth);
-  const height = container.clientHeight;
-  svg.setAttribute('width', width);
-  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+const TOTAL_DAYS = daysBetween(WIN_START, WIN_END) + 1;
+let selStart = addDays(TODAY, -10);
+let selEnd   = new Date(TODAY);
+selEnd.setHours(23,59,59,999);
 
-  const maxData = Math.max(...sensor.readings, 1);
-  const displayMax = maxData * 1.1; 
-  const range = displayMax;
-
-  document.getElementById(`label-max-${sensor.id}`).textContent = displayMax.toFixed(1) + sensor.unit;
-
-  let points = sensor.readings.map((v, i) => {
-    const x = i * POINTS_PER_WIDTH;
-    const y = height - (v / range) * height;
-    return `${x},${y}`;
+function filterByRange(alerts) {
+  return alerts.filter(a => {
+    const d = new Date(a.start_timestamp);
+    if (isNaN(d)) return true;
+    const day = new Date(d); day.setHours(0,0,0,0);
+    return day >= selStart && day <= selEnd;
   });
+}
 
-  const dPath = "M" + points.join(" L");
-  const dFill = dPath + ` L${(sensor.readings.length - 1) * POINTS_PER_WIDTH},${height} L0,${height} Z`;
-
-  const lastValue = sensor.readings[sensor.readings.length - 1];
-  const color = getGraphColor(lastValue, sensor.type);
-  
-  svg.querySelector('.graph-line').setAttribute('d', dPath);
-  svg.querySelector('.graph-line').style.color = color;
-  svg.querySelector('.graph-fill').setAttribute('d', dFill);
-  svg.querySelector('.graph-fill').style.color = color;
-  
-  container.scrollLeft = width;
-  document.getElementById(`val-${sensor.id}`).innerText = `${sensor.current_value}${sensor.unit}`;
-  document.getElementById(`val-${sensor.id}`).style.color = color;
+function renderAlertsTable() {
+  const filtered = filterByRange(allAlerts.filter(a => !activeArea || a.area === activeArea));
+  const body = document.getElementById('alerts-table-body');
+  const countEl = document.getElementById('alert-count');
+  if (countEl) countEl.textContent = `${filtered.length} entries shown`;
+  if (!filtered.length) {
+    body.innerHTML = `<tr><td colspan="7" class="px-5 py-8 text-center text-[13px] text-gray-400">No entries in range</td></tr>`;
+    return;
+  }
+  body.innerHTML = filtered.map(a => {
+    const badge = getBadge(a.status);
+    const startTime = new Date(a.start_timestamp).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+    const endTime = a.end_timestamp ? new Date(a.end_timestamp).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : 'Active';
+    return `
+    <tr class="border-t border-gray-100 hover:bg-gray-50 transition-colors">
+      <td class="px-5 py-3 text-[13px] text-gray-800 font-medium">${a.type || '—'}</td>
+      <td class="px-5 py-3 text-[13px] text-gray-500">${a.sensor || '—'}</td>
+      <td class="px-5 py-3">
+        <span class="inline-flex items-center gap-[5px] px-[10px] py-[3px] rounded-full text-[11px] font-semibold" style="background:${badge.bg};color:${badge.text};">
+          <span style="width:5px;height:5px;border-radius:50%;background:${badge.dot};"></span>
+          ${a.status || '—'}
+        </span>
+      </td>
+      <td class="px-5 py-3 text-[12px] text-gray-400 font-mono">${startTime}</td>
+      <td class="px-5 py-3 text-[12px] text-gray-400 font-mono">${endTime}</td>
+      <td class="px-5 py-3 text-[12px] text-gray-500 max-w-[150px] truncate" title="${a.comment||''}">${a.comment || '—'}</td>
+      <td class="px-5 py-3">
+        <button onclick="deleteAlert(${a.id})" class="px-3 py-1 text-[12px] font-medium text-red-500 bg-red-50 hover:bg-red-100 rounded-lg transition-colors cursor-pointer">Archive</button>
+      </td>
+    </tr>`;
+  }).reverse().join('');
 }
 
 async function fetchAreas() {
   try {
     const nodes = await fetch(`${API_BASE}/nodes`).then(r => r.json());
+    nodesCache = nodes;
     const filter = document.getElementById('areaFilter');
     const current = filter.value;
     filter.innerHTML = '<option value="">📍 All Areas</option>' + 
@@ -193,47 +238,74 @@ async function fetchAreas() {
   } catch(e) {}
 }
 
-async function fetchData() {
-  try {
-    const response = await fetch(`${API_BASE}/sensors?area=${activeArea}`);
-    const data = await response.json();
-    const grid = document.getElementById('graphGrid');
+async function fetchAlerts() {
+  try { allAlerts = await fetch(`${API_BASE}/alerts`).then(r => r.json()); } catch(e) {}
+  renderAlertsTable();
+}
 
-    data.forEach(sensor => {
-      if (!document.getElementById(`card-${sensor.id}`)) {
-        grid.insertAdjacentHTML('beforeend', createGraphHTML(sensor));
-      }
-      updateGraph(sensor);
-    });
-    
-    const body = document.getElementById('sensorTableBody');
-    body.innerHTML = data.map(s => {
-      const lastSync = s.timestamps && s.timestamps.length ? new Date(s.timestamps[s.timestamps.length-1]).toLocaleTimeString() : '---';
-      return `
-      <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-        <td class="px-5 py-4 font-bold text-gray-900">${s.node}</td>
-        <td class="px-5 py-4 font-medium">${s.name}</td>
-        <td class="px-5 py-4 uppercase text-[11px] font-mono">${s.type}</td>
-        <td class="px-5 py-4 font-bold text-blue-600" style="color:${getGraphColor(s.current_value, s.type)}">${s.current_value}${s.unit}</td>
-        <td class="px-5 py-4 text-gray-400 font-mono text-[11px]">${lastSync}</td>
-      </tr>
-    `}).join('');
-  } catch(e) { console.error(e); }
+async function deleteAlert(id) {
+  if (!confirm('Archive this entry?')) return;
+  try {
+    await fetch(`${API_BASE}/alerts/${id}`, {method:'DELETE'});
+    allAlerts = allAlerts.filter(a => a.id !== id);
+    renderAlertsTable();
+  } catch(e) {}
+}
+
+function renderCalendar() {
+  const strip = document.getElementById('cal-strip');
+  strip.innerHTML = '';
+  const dayEls = [];
+  for (let i = 0; i < TOTAL_DAYS; i++) {
+    const date = addDays(WIN_START, i);
+    const key = localKey(date);
+    const isToday = key === localKey(TODAY);
+    const inSel = date >= selStart && date <= selEnd;
+    const isSelS = localKey(date) === localKey(selStart);
+    const isSelE = localKey(date) === localKey(selEnd);
+    const wrap = document.createElement('div');
+    wrap.style.cssText = `flex:0 0 calc(100%/${TOTAL_DAYS});min-width:26px;text-align:center;cursor:pointer;position:relative;user-select:none;z-index:20;height:32px;`;
+    const numBg  = isToday ? '#111827' : (isSelS||isSelE) ? '#2563eb' : 'transparent';
+    const numClr = (isToday||isSelS||isSelE) ? '#fff' : '#374151';
+    let intervalStyle = '';
+    if (inSel && !isSelS && !isSelE)   intervalStyle = 'background:#eff6ff;';
+    if (isSelS && !isSelE)             intervalStyle = 'background:linear-gradient(to right,transparent 50%,#eff6ff 50%);';
+    if (isSelE && !isSelS)             intervalStyle = 'background:linear-gradient(to left,transparent 50%,#eff6ff 50%);';
+    wrap.innerHTML = `
+      <div class="num-wrap" style="height:22px;${intervalStyle}position:relative;">
+        <div class="cal-num" style="width:22px;height:22px;border-radius:50%;background:${numBg};color:${numClr};font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto;transition:background .1s;position:relative;z-index:30;">${date.getDate()}</div>
+      </div>`;
+    wrap.onclick = () => {
+      const d2 = addDays(WIN_START, i);
+      if (Math.abs(daysBetween(d2, selStart)) <= Math.abs(daysBetween(d2, selEnd))) { if (d2 <= selEnd) selStart = d2; }
+      else { if (d2 >= selStart) selEnd = d2; }
+      renderCalendar();
+      renderAlertsTable();
+    };
+    strip.appendChild(wrap);
+  }
 }
 
 document.getElementById('sidebarToggle').onclick = () => document.getElementById('sidebar').classList.toggle('closed');
 document.getElementById('areaFilter').onchange = (e) => { 
   activeArea = e.target.value; 
-  document.getElementById('graphGrid').innerHTML = ''; 
-  fetchData(); 
+  fetchActiveAlerts();
+  renderAlertsTable();
 };
 
-fetchAreas();
-fetchSettings();
-setInterval(fetchAreas, 10000);
-setInterval(fetchSettings, 30000);
-setInterval(fetchData, REFRESH_INTERVAL);
-fetchData();
+(async () => {
+  renderCalendar();
+  await fetchAreas();
+  await fetchSettings();
+  await fetchAISummary();
+  await fetchAlerts();
+  await fetchActiveAlerts();
+})();
+
+setInterval(async () => {
+  await fetchAlerts();
+  await fetchActiveAlerts();
+}, 5000);
 </script>
 </body>
 </html>

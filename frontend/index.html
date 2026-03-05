@@ -76,9 +76,22 @@
   <section id="stats-section" class="px-5 py-4 grid grid-cols-5 gap-3 shrink-0"></section>
 
   <section id="active-alerts-section" class="px-5 py-2 hidden">
-    <div class="bg-white rounded-xl border border-gray-200 p-4 mb-4 shadow-sm">
-      <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2">⚠️ Active Anomalies</h3>
-      <div id="active-alerts-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+      <!-- Left Half: Scrollable Alerts -->
+      <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex flex-col min-w-0">
+        <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">⚠️ Active Anomalies</h3>
+        <div id="active-alerts-list" class="flex overflow-x-auto gap-3 pb-2">
+          <!-- Cards injected here -->
+        </div>
+      </div>
+      <!-- Right Half: AI Summary -->
+      <div class="bg-blue-600 rounded-xl p-4 text-white shadow-lg relative overflow-hidden flex flex-col justify-center">
+        <div class="relative z-10">
+          <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">🤖 AI Intelligence Analysis</h3>
+          <p id="ai-summary-text" class="text-[14px] font-medium leading-relaxed italic">Analyzing telemetry vectors...</p>
+        </div>
+        <div class="absolute right-[-15px] bottom-[-15px] text-[80px] opacity-10 pointer-events-none">🤖</div>
+      </div>
     </div>
   </section>
 
@@ -96,7 +109,7 @@
             <th class="px-5 py-3 text-left">Status</th>
             <th class="px-5 py-3 text-left">Start Time</th>
             <th class="px-5 py-3 text-left">End Time</th>
-            <th class="px-5 py-3 text-left">Area</th>
+            <th class="px-5 py-3 text-left">Comment</th>
             <th class="px-5 py-3 text-left">Actions</th>
           </tr>
         </thead>
@@ -162,11 +175,18 @@ selEnd.setHours(23,59,59,999);
 document.getElementById('sidebarToggle').onclick = () =>
   document.getElementById('sidebar').classList.toggle('closed');
 
+async function fetchAISummary() {
+  try {
+    const data = await fetch(`${API_BASE}/ai/summary`).then(r => r.json());
+    document.getElementById('ai-summary-text').textContent = `"${data.summary}"`;
+  } catch(e) {}
+}
+
 async function fetchUser() {
   try {
     const u = await fetch(`${API_BASE}/user`).then(r => r.json());
     document.getElementById('welcome-text').textContent    = `Welcome, ${u.name}.`;
-    document.getElementById('last-alert-text').textContent = `Last sync: ${u.last_alert}`;
+    document.getElementById('last-alert-text').textContent = `Last event: ${u.last_alert}`;
     document.getElementById('user-avatar').src             = u.avatar;
   } catch(e) {}
 }
@@ -207,15 +227,15 @@ async function fetchActiveAlerts() {
     const list = document.getElementById('active-alerts-list');
     if (alerts.length === 0) { section.classList.add('hidden'); return; }
     section.classList.remove('hidden');
-    list.innerHTML = alerts.slice(0,4).map(a => {
+    list.innerHTML = alerts.map(a => {
         const color = a.status === 'alert' ? '#dc2626' : '#ca8a04';
         const bg = a.status === 'alert' ? '#fff1f2' : '#fefce8';
         const border = a.status === 'alert' ? '#fecaca' : '#fef08a';
         return `
-          <div class="p-3 rounded-lg border flex items-center justify-between shadow-sm" style="background:${bg}; border-color:${border}">
+          <div class="p-3 rounded-lg border flex items-center justify-between shadow-sm flex-shrink-0 w-64" style="background:${bg}; border-color:${border}">
             <div>
               <div class="text-[10px] font-bold text-gray-500 uppercase">${a.type} @ ${a.node}</div>
-              <div class="text-[13px] font-bold text-gray-900">${a.name}</div>
+              <div class="text-[13px] font-bold text-gray-900 truncate w-32">${a.name}</div>
             </div>
             <div class="text-right">
               <div class="text-[15px] font-bold" style="color:${color}">${a.value}${a.unit}</div>
@@ -243,7 +263,7 @@ function renderAlertsTable() {
   const filtered = filterByRange(allAlerts);
   const body = document.getElementById('alerts-table-body');
   const countEl = document.getElementById('alert-count');
-  if (countEl) countEl.textContent = `${filtered.length} active/historical entries`;
+  if (countEl) countEl.textContent = `${filtered.length} entries`;
   if (!filtered.length) {
     body.innerHTML = `<tr><td colspan="7" class="px-5 py-8 text-center text-[13px] text-gray-400">No telemetry log entries in selected range</td></tr>`;
     return;
@@ -268,12 +288,12 @@ function renderAlertsTable() {
       </td>
       <td class="px-5 py-3 text-[12px] text-gray-400 font-mono">${startTime}</td>
       <td class="px-5 py-3 text-[12px] text-gray-400 font-mono">${endTime}</td>
-      <td class="px-5 py-3">${areaCell}</td>
+      <td class="px-5 py-3 text-[12px] text-gray-500 max-w-[150px] truncate" title="${a.comment||''}">${a.comment || '—'}</td>
       <td class="px-5 py-3">
         <button onclick="deleteAlert(${a.id})" class="px-3 py-1 text-[12px] font-medium text-red-500 bg-red-50 hover:bg-red-100 rounded-lg transition-colors cursor-pointer">Archive</button>
       </td>
     </tr>`;
-  }).reverse().join(''); // Show latest first
+  }).reverse().join('');
 }
 
 async function fetchNodes() {
@@ -286,7 +306,7 @@ async function fetchAlerts() {
 }
 
 async function deleteAlert(id) {
-  if (!confirm('Archive this entry to system logs?')) return;
+  if (!confirm('Archive this entry?')) return;
   try {
     await fetch(`${API_BASE}/alerts/${id}`, {method:'DELETE'});
     allAlerts = allAlerts.filter(a => a.id !== id);
@@ -387,6 +407,7 @@ document.getElementById('cal-clear').onclick = () => {
   await fetchStats();
   await fetchAlerts();
   await fetchActiveAlerts();
+  await fetchAISummary();
   renderCalendar();
   const strip = document.getElementById('cal-strip');
   const todayIdx = daysBetween(WIN_START, TODAY);
@@ -395,6 +416,7 @@ document.getElementById('cal-clear').onclick = () => {
 })();
 
 setInterval(() => { fetchStats(); fetchAlerts(); fetchActiveAlerts(); }, 5000);
+setInterval(() => { fetchAISummary(); }, 30000);
 </script>
 </body>
 </html>

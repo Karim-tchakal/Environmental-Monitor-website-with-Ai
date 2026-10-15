@@ -1,2 +1,4 @@
-[{ "name": "global", "report": "System is stable. hhhh" },
-{ "name": "new1", "report": "Extreme heat detected." }]
+[
+{ "name": "global", "report": "System is stable." },
+{ "name": "new1", "report": "Extreme heat detected." }
+]

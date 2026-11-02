@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Settings - Polaris</title>
+<title>Settings - Agritech</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: 'DM Sans', sans-serif; }
-  .form-input { @apply w-full border border-gray-200 rounded-lg px-3 py-2 text-[13px] focus:outline-none focus:border-blue-400; }
-  .form-label { @apply block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1; }
+  .form-input { width:100%; border:1px solid #e5e7eb; border-radius:.5rem; padding:.5rem .75rem; font-size:13px; }
+  .form-input:focus { outline:none; border-color:#60a5fa; box-shadow:0 0 0 2px #dbeafe; }
+  .form-label { display:block; margin-bottom:.25rem; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:#9ca3af; }
 </style>
 </head>
 <body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
@@ -17,20 +18,23 @@
 <aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
   <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
     <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
-    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Agritech</span>
   </div>
   <nav class="flex-1 p-2 overflow-y-auto">
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
-    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⬡ Dashboard</a>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
-    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
+    <a href="/alerts" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Alerts</a>
+    <a href="/alerts?status=incident" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Reports</a>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Map</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
-    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
-    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">🔧 Settings</a>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Analysis</a>
+    <a href="/admin" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">Settings</a>
   </nav>
 </aside>
 
@@ -38,17 +42,17 @@
   <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
     <h2 class="text-[15px] font-semibold text-gray-900">System Settings</h2>
     <div class="flex items-center gap-3">
-      <img src="" class="w-8 h-8 rounded-full border border-gray-200">
+      <div aria-label="Admin profile" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></div>
     </div>
   </header>
 
   <main class="flex-1 overflow-auto p-6">
     <div class="max-w-2xl bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-      <h3 class="text-[16px] font-bold text-gray-900 mb-6">⚠️ Sensor Thresholds</h3>
+      <h3 class="text-[16px] font-bold text-gray-900 mb-6">Sensor thresholds</h3>
       <form id="settingsForm" class="space-y-8">
         
         <div class="space-y-4">
-            <h4 class="text-[13px] font-semibold text-gray-600 border-b border-gray-50 pb-2">📊 General Thresholds</h4>
+            <h4 class="text-[13px] font-semibold text-gray-600 border-b border-gray-50 pb-2">General thresholds</h4>
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="form-label">Warning Level</label>
@@ -62,7 +66,7 @@
         </div>
 
         <div class="space-y-4">
-            <h4 class="text-[13px] font-semibold text-blue-600 border-b border-blue-50 pb-2">🌡️ Temperature Thresholds (°C)</h4>
+            <h4 class="text-[13px] font-semibold text-blue-600 border-b border-blue-50 pb-2">Temperature thresholds (°C)</h4>
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="form-label">Warning Level</label>
@@ -76,7 +80,7 @@
         </div>
 
         <div class="space-y-4">
-            <h4 class="text-[13px] font-semibold text-green-600 border-b border-green-50 pb-2">💧 Humidity Thresholds (%)</h4>
+            <h4 class="text-[13px] font-semibold text-green-600 border-b border-green-50 pb-2">Humidity thresholds (%)</h4>
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="form-label">Warning Level</label>
@@ -90,7 +94,7 @@
         </div>
 
         <div class="space-y-4">
-            <h4 class="text-[13px] font-semibold text-orange-600 border-b border-orange-50 pb-2">🌱 Soil Moisture Thresholds (%)</h4>
+            <h4 class="text-[13px] font-semibold text-orange-600 border-b border-orange-50 pb-2">Soil moisture thresholds (%)</h4>
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="form-label">Warning Level (Below)</label>
@@ -103,27 +107,31 @@
             </div>
         </div>
 
-        <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg text-[13px] font-semibold hover:bg-blue-700 transition-colors">Save Configuration</button>
+        <div class="flex items-center gap-4">
+          <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg text-[13px] font-semibold hover:bg-blue-700 transition-colors">Save configuration</button>
+          <p id="settings-message" role="status" class="text-[13px] text-gray-500"></p>
+        </div>
       </form>
     </div>
 
-    <div class="mt-8 text-center text-gray-400 text-[12px]">
-      More settings coming soon...
-    </div>
   </main>
 </div>
 
 <script>
 const API_BASE = '/api';
+let settingsCache = null;
 
 async function loadSettings() {
-    const s = await fetch(`${API_BASE}/settings`).then(r => r.json());
-    const t = s.thresholds;
-    
-    if (t.general) {
-        document.getElementById('gen_warning').value = t.general.warning;
-        document.getElementById('gen_alert').value = t.general.alert;
-    }
+    const response = await fetch(`${API_BASE}/settings`);
+    if (!response.ok) throw new Error(`Settings request failed (${response.status})`);
+    settingsCache = await response.json();
+    const defaults = {
+        general: { warning:50, alert:80 }, smoke: { warning:50, alert:150 }
+    };
+    settingsCache.thresholds = { ...defaults, ...settingsCache.thresholds };
+    const t = settingsCache.thresholds;
+    document.getElementById('gen_warning').value = t.general.warning;
+    document.getElementById('gen_alert').value = t.general.alert;
     
     document.getElementById('temp_warning').value = t.temperature.warning;
     document.getElementById('temp_alert').value = t.temperature.alert;
@@ -135,41 +143,49 @@ async function loadSettings() {
     document.getElementById('moist_alert').value = t.moisture.alert;
 }
 
-document.getElementById('settingsForm').onsubmit = async (e) => {
+document.getElementById('settingsForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = {
-        thresholds: {
-            general: {
-                warning: parseFloat(document.getElementById('gen_warning').value),
-                alert: parseFloat(document.getElementById('gen_alert').value)
-            },
-            temperature: {
-                warning: parseFloat(document.getElementById('temp_warning').value),
-                alert: parseFloat(document.getElementById('temp_alert').value)
-            },
-            humidity: {
-                warning: parseFloat(document.getElementById('hum_warning').value),
-                alert: parseFloat(document.getElementById('hum_alert').value)
-            },
-            moisture: {
-                warning: parseFloat(document.getElementById('moist_warning').value),
-                alert: parseFloat(document.getElementById('moist_alert').value)
-            },
-            smoke: { warning: 50.0, alert: 150.0 }
-        }
+    const value = id => Number(document.getElementById(id).value);
+    const thresholds = {
+        ...settingsCache.thresholds,
+        general: { warning: value('gen_warning'), alert: value('gen_alert') },
+        temperature: { warning: value('temp_warning'), alert: value('temp_alert') },
+        humidity: { warning: value('hum_warning'), alert: value('hum_alert') },
+        moisture: { warning: value('moist_warning'), alert: value('moist_alert') }
     };
+    const moistureValid = thresholds.moisture.alert <= thresholds.moisture.warning;
+    const otherThresholdsValid = ['general', 'temperature', 'humidity'].every(
+        type => thresholds[type].warning <= thresholds[type].alert
+    );
+    const message = document.getElementById('settings-message');
+    if (!moistureValid || !otherThresholdsValid) {
+        message.textContent = 'Alert limits must be higher than warning limits (moisture alert must be lower).';
+        message.className = 'text-[13px] text-red-600';
+        return;
+    }
     
-    const res = await fetch(`${API_BASE}/settings`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    });
-    
-    if (res.ok) alert('Settings updated successfully!');
-    else alert('Failed to update settings');
-};
+    try {
+        const response = await fetch(`${API_BASE}/settings`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ thresholds })
+        });
+        if (!response.ok) throw new Error(`Settings save failed (${response.status})`);
+        settingsCache.thresholds = thresholds;
+        message.textContent = 'Settings saved.';
+        message.className = 'text-[13px] text-green-700';
+    } catch (error) {
+        message.textContent = 'Unable to save settings. Check the server and try again.';
+        message.className = 'text-[13px] text-red-600';
+        console.error(error);
+    }
+});
 
-loadSettings();
+loadSettings().catch(error => {
+    document.getElementById('settings-message').textContent = 'Unable to load settings.';
+    document.getElementById('settings-message').className = 'text-[13px] text-red-600';
+    console.error(error);
+});
 </script>
 </body>
 </html>

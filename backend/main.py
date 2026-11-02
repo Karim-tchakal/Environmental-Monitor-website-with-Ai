@@ -150,8 +150,7 @@ def get_computed_nodes():
                 max_rank = RANK.get(s_status)
                 max_status = s_status
         n["status"] = max_status
-        ICONS = {"alert": "⚠️", "warning": "⚡", "incident": "❗", "normal": "✅"}
-        n["icon"] = ICONS.get(n["status"], "📍")
+        n["icon"] = ""
     return nodes
 
 def get_ai_summary_text(context="global"):
@@ -170,8 +169,39 @@ def get_ai_summary_text(context="global"):
     node_rep = next((r for r in reports if r.get("name", "").lower() == context.lower()), None)
     if node_rep:
         return node_rep.get("report")
-        
-    return "Station diagnostic stable. No anomalies reported in node_report.json."
+
+    sensors = read_json(SENSORS_FILE)
+    area_sensors = [
+        sensor for sensor in sensors
+        if context.lower() == "global"
+        or sensor.get("node", "").lower() == context.lower()
+    ]
+    if not area_sensors:
+        return "No sensor telemetry is available for this selection."
+
+    status_labels = {"alert": "alert", "warning": "warning", "incident": "incident"}
+    counts = {
+        status: sum(
+            1 for sensor in area_sensors
+            if str(sensor.get("status", "normal")).lower() == status
+        )
+        for status in status_labels
+    }
+    active_statuses = [
+        f"{count} {status_labels[status]}{'s' if count != 1 else ''}"
+        for status, count in counts.items()
+        if count
+    ]
+    if not active_statuses:
+        return "Live telemetry: no active alerts, warnings, or incidents."
+
+    if len(active_statuses) == 2:
+        summary = " and ".join(active_statuses)
+    elif len(active_statuses) > 2:
+        summary = f"{', '.join(active_statuses[:-1])}, and {active_statuses[-1]}"
+    else:
+        summary = active_statuses[0]
+    return f"Live telemetry: {summary} across {len(area_sensors)} sensors."
 
 # ── Pydantic Models ────────────────────────────────────────────────────────
 
@@ -181,7 +211,7 @@ class NodeModel(BaseModel):
     lat: float
     lng: float
     status: Optional[str] = "normal"
-    icon: Optional[str] = "📍"
+    icon: Optional[str] = ""
 
 class SensorModel(BaseModel):
     id: str
@@ -200,39 +230,43 @@ class SettingsModel(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 async def dashboard(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html", {"request": request})
 
 @app.get("/maps", response_class=HTMLResponse)
 async def maps(request: Request):
-    return templates.TemplateResponse("maps.html", {"request": request})
+    return templates.TemplateResponse(request, "maps.html", {"request": request})
 
 @app.get("/sensors", response_class=HTMLResponse)
 async def sensors_page(request: Request):
-    return templates.TemplateResponse("sensors.html", {"request": request})
+    return templates.TemplateResponse(request, "sensors.html", {"request": request})
 
 @app.get("/reports", response_class=HTMLResponse)
 async def reports(request: Request):
-    return templates.TemplateResponse("reports.html", {"request": request})
+    return templates.TemplateResponse(request, "reports.html", {"request": request})
+
+@app.get("/alerts", response_class=HTMLResponse)
+async def alerts_page(request: Request):
+    return templates.TemplateResponse(request, "alerts.html", {"request": request})
 
 @app.get("/admin", response_class=HTMLResponse)
 async def admin(request: Request):
-    return templates.TemplateResponse("admin.html", {"request": request})
+    return templates.TemplateResponse(request, "admin.html", {"request": request})
 
 @app.get("/settings", response_class=HTMLResponse)
 async def settings(request: Request):
-    return templates.TemplateResponse("settings.html", {"request": request})
+    return templates.TemplateResponse(request, "settings.html", {"request": request})
 
 @app.get("/ai", response_class=HTMLResponse)
 async def ai(request: Request):
-    return templates.TemplateResponse("ai.html", {"request": request})
+    return templates.TemplateResponse(request, "ai.html", {"request": request})
 
 @app.get("/sense_dashboard", response_class=HTMLResponse)
 async def sense(request: Request):
-    return templates.TemplateResponse("sense_dashboard.html", {"request": request})
+    return templates.TemplateResponse(request, "sense_dashboard.html", {"request": request})
 
 @app.get("/logout", response_class=HTMLResponse)
 async def logout(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html", {"request": request})
 
 @app.get("/dashboard/{station_id}", response_class=HTMLResponse)
 async def station_dashboard(request: Request, station_id: int):
@@ -241,7 +275,7 @@ async def station_dashboard(request: Request, station_id: int):
     node  = next((n for n in nodes if str(n.get("id")) == str(station_id)), None)
     if not node:
         raise HTTPException(status_code=404, detail="Station not found")
-    return templates.TemplateResponse("station.html", {"request": request, "station": node})
+    return templates.TemplateResponse(request, "station.html", {"request": request, "station": node})
 
 # ── API Endpoints ─────────────────────────────────────────────────────────
 
@@ -314,16 +348,16 @@ def populate_dummy_data():
 @app.get("/api/settings")
 def get_settings():
     settings = read_json(SETTINGS_FILE)
-    if not settings or "thresholds" not in settings:
-        settings = {
-            "thresholds": {
-                "general": {"warning": 50.0, "alert": 80.0},
-                "temperature": {"warning": 25.0, "alert": 35.0},
-                "humidity": {"warning": 70.0, "alert": 85.0},
-                "moisture": {"warning": 20.0, "alert": 10.0},
-                "smoke": {"warning": 50.0, "alert": 150.0}
-            }
-        }
+    defaults = {
+        "general": {"warning": 50.0, "alert": 80.0},
+        "temperature": {"warning": 25.0, "alert": 35.0},
+        "humidity": {"warning": 70.0, "alert": 85.0},
+        "moisture": {"warning": 20.0, "alert": 10.0},
+        "smoke": {"warning": 50.0, "alert": 150.0}
+    }
+    thresholds = settings.get("thresholds", {}) if isinstance(settings, dict) else {}
+    settings = {"thresholds": {**defaults, **thresholds}}
+    if settings != read_json(SETTINGS_FILE):
         write_json(SETTINGS_FILE, settings)
     return settings
 
@@ -337,8 +371,9 @@ def get_user():
     sync_from_status_file()
     user_data = read_json(USER_FILE)
     if not user_data:
-        user_data = {"name": "Admin", "avatar": "https://i.pravatar.cc/32"}
+        user_data = {"name": "Admin"}
         write_json(USER_FILE, user_data)
+    user_data.pop("avatar", None)
     
     alerts = read_json(ALERT_FILE)
     if alerts:
@@ -397,6 +432,7 @@ def get_alerts_api():
 
 @app.get("/api/alerts/active")
 def get_active_alerts():
+    sync_from_status_file()
     sensors = read_json(SENSORS_FILE)
     active = []
     for s in sensors:
@@ -474,6 +510,12 @@ def update_node(item_id: int, node_update: NodeModel):
 @app.delete("/api/nodes/{item_id}")
 def delete_node(item_id: str):
     data = read_json(NODES_FILE)
+    node = next((node for node in data if str(node.get("id")) == str(item_id)), None)
+    if node is None:
+        raise HTTPException(status_code=404, detail="Node not found")
+    sensors = read_json(SENSORS_FILE)
+    if any(sensor.get("node") == node.get("name") for sensor in sensors):
+        raise HTTPException(status_code=409, detail="Remove this node's sensors before deleting it")
     new_data = [i for i in data if str(i.get("id")) != str(item_id)]
     write_json(NODES_FILE, new_data)
     return {"status": "deleted"}

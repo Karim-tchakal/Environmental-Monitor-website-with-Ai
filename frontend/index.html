@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polaris Dashboard</title>
+<title>Agritech Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -20,27 +20,27 @@
 <aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
   <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
     <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
-    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Agritech</span>
   </div>
   <nav class="flex-1 p-2 overflow-y-auto">
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
-    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">⬡ Dashboard</a>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
-    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
-    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+    <a href="/alerts" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Alerts</a>
+    <a href="/alerts?status=incident" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Reports</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
-    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Map</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
-    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Analysis</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
-    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
-    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Settings</a>
   </nav>
 </aside>
 
@@ -48,15 +48,17 @@
 
   <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
     <div class="flex items-center gap-3">
-      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
+      <button id="sidebarToggle" aria-label="Toggle navigation" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
       <div>
         <h2 id="welcome-text" class="text-[15px] font-semibold text-gray-900">Welcome, Admin.</h2>
         <p id="last-alert-text" class="text-[12px] text-gray-400 mt-0.5">Fetching telemetry...</p>
       </div>
     </div>
     <div class="flex items-center gap-3">
-      <input type="text" placeholder="Search…" class="border border-gray-200 rounded-lg px-3 py-1.5 text-[13px] text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-400 w-44">
-      <img id="user-avatar" src="" class="w-8 h-8 rounded-full border border-gray-200">
+      <input id="alert-search" type="search" placeholder="Search alerts…" aria-label="Search alerts" class="border border-gray-200 rounded-lg px-3 py-1.5 text-[13px] text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-400 w-44">
+      <div aria-label="Admin profile" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
+        <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>
+      </div>
     </div>
   </header>
 
@@ -65,7 +67,7 @@
       <span id="cal-title" class="text-[12px] font-semibold text-gray-700"></span>
       <div class="flex items-center gap-2">
         <span id="cal-range-label" class="hidden text-[11px] font-medium text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg"></span>
-        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">✕ Reset</button>
+        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">Reset</button>
       </div>
     </div>
     <div style="position:relative;">
@@ -79,7 +81,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
       <!-- Left Half: Scrollable Alerts -->
       <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex flex-col min-w-0">
-        <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">⚠️ Active Anomalies</h3>
+        <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">Active alerts</h3>
         <div id="active-alerts-list" class="flex overflow-x-auto gap-3 pb-2">
           <!-- Cards injected here -->
         </div>
@@ -87,10 +89,9 @@
       <!-- Right Half: AI Summary -->
       <div class="bg-blue-600 rounded-xl p-4 text-white shadow-lg relative overflow-hidden flex flex-col justify-center">
         <div class="relative z-10">
-          <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">🤖 AI Intelligence Analysis</h3>
+          <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">Operational summary</h3>
           <p id="ai-summary-text" class="text-[14px] font-medium leading-relaxed italic">Analyzing telemetry vectors...</p>
         </div>
-        <div class="absolute right-[-15px] bottom-[-15px] text-[80px] opacity-10 pointer-events-none">🤖</div>
       </div>
     </div>
   </section>
@@ -132,17 +133,17 @@ const CARD_STYLE = {
 };
 
 const STAT_META = {
-  'Alerts':         { icon:'🔔', sub:'Critical alerts in log'  },
-  'Incidents':      { icon:'📋', sub:'Incidents reported'  },
-  'Warnings':       { icon:'⚠️',  sub:'Warnings requiring attention' },
-  'Active Sensors': { icon:'📡', sub:'Sensors currently operating'   },
-  'Maps':           { icon:'🗺',  sub:'Active monitoring zones'       },
+  'Alerts':         { sub:'Critical alerts in log'  },
+  'Incidents':      { sub:'Incidents reported'  },
+  'Warnings':       { sub:'Warnings requiring attention' },
+  'Active Sensors': { sub:'Sensors currently operating'   },
+  'Maps':           { sub:'Active monitoring zones'       },
 };
 
 const CARD_ROUTES = {
-  'Alerts':         '/sense_dashboard',
-  'Incidents':      '/sense_dashboard',
-  'Warnings':       '/sense_dashboard',
+  'Alerts':         '/alerts',
+  'Incidents':      '/alerts?status=incident',
+  'Warnings':       '/alerts?status=warning',
   'Active Sensors': '/sensors',
   'Maps':           '/maps',
 };
@@ -174,6 +175,7 @@ selEnd.setHours(23,59,59,999);
 
 document.getElementById('sidebarToggle').onclick = () =>
   document.getElementById('sidebar').classList.toggle('closed');
+document.getElementById('alert-search').addEventListener('input', renderAlertsTable);
 
 async function fetchAISummary() {
   try {
@@ -187,7 +189,6 @@ async function fetchUser() {
     const u = await fetch(`${API_BASE}/user`).then(r => r.json());
     document.getElementById('welcome-text').textContent    = `Welcome, ${u.name}.`;
     document.getElementById('last-alert-text').textContent = `Last event: ${u.last_alert}`;
-    document.getElementById('user-avatar').src             = u.avatar;
   } catch(e) {}
 }
 
@@ -196,7 +197,7 @@ async function fetchStats() {
     const stats = await fetch(`${API_BASE}/stats`).then(r => r.json());
     document.getElementById('stats-section').innerHTML = stats.map(s => {
       const cs   = CARD_STYLE[s.color] || { bg:'#f9fafb', border:'#e5e7eb', accent:'#6b7280' };
-      const meta = STAT_META[s.title]  || { icon:'📊', sub:'' };
+      const meta = STAT_META[s.title]  || { sub:'' };
       const href = CARD_ROUTES[s.title] || '/';
       return `
       <a href="${href}" class="block">
@@ -205,7 +206,6 @@ async function fetchStats() {
           onmouseout="this.style.transform='';this.style.boxShadow=''">
           <div class="flex items-start justify-between">
             <span class="text-[13px] font-semibold text-gray-700">${s.title}</span>
-            <span class="text-[19px] leading-none">${meta.icon}</span>
           </div>
           <div>
             <div class="text-[30px] font-bold text-gray-900 leading-none">${s.value}</div>
@@ -260,7 +260,12 @@ function filterByRange(alerts) {
 }
 
 function renderAlertsTable() {
-  const filtered = filterByRange(allAlerts);
+  const query = document.getElementById('alert-search').value.trim().toLowerCase();
+  const filtered = filterByRange(allAlerts).filter(a =>
+    [a.type, a.sensor, a.status, a.area, a.comment].some(value =>
+      String(value || '').toLowerCase().includes(query)
+    )
+  );
   const body = document.getElementById('alerts-table-body');
   const countEl = document.getElementById('alert-count');
   if (countEl) countEl.textContent = `${filtered.length} entries`;

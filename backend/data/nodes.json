@@ -2,200 +2,200 @@
   {
     "id": 1,
     "name": "Mitidja West Sector",
-    "lat": 36.69331347297883,
-    "lng": 2.708620188623539,
+    "lat": 36.4705,
+    "lng": 2.6253,
     "status": "normal",
     "icon": "\ud83c\udf3e"
   },
   {
     "id": 2,
     "name": "Blida Fruit Belt",
-    "lat": 36.41858435402542,
-    "lng": 2.7636000242100063,
+    "lat": 36.4703,
+    "lng": 2.8277,
     "status": "normal",
     "icon": "\ud83c\udf3d"
   },
   {
     "id": 3,
     "name": "Highlands Plateau A",
-    "lat": 36.37493115774625,
-    "lng": 2.8109344542817603,
+    "lat": 36.2675,
+    "lng": 2.7500,
     "status": "normal",
     "icon": "\ud83e\udd55"
   },
   {
     "id": 4,
     "name": "Chlef River Basin",
-    "lat": 36.493557414145116,
-    "lng": 3.8403321063323155,
+    "lat": 36.1653,
+    "lng": 1.3347,
     "status": "normal",
     "icon": "\ud83c\udf4e"
   },
   {
     "id": 5,
     "name": "Boumerdes Coastal Farm",
-    "lat": 36.37561745071246,
-    "lng": 3.0302950466464376,
+    "lat": 36.7276,
+    "lng": 3.4092,
     "status": "normal",
     "icon": "\ud83e\udd55"
   },
   {
     "id": 6,
     "name": "Tipaza Vineyards",
-    "lat": 36.64436227291428,
-    "lng": 3.857966980263164,
+    "lat": 36.5128,
+    "lng": 2.4131,
     "status": "normal",
     "icon": "\ud83c\udf3d"
   },
   {
     "id": 7,
     "name": "Medea Olive Groves",
-    "lat": 36.425786541242346,
-    "lng": 3.5144867465903573,
+    "lat": 36.1352,
+    "lng": 2.9137,
     "status": "normal",
     "icon": "\ud83c\udf3b"
   },
   {
     "id": 8,
     "name": "Ain Defla Grain Zone",
-    "lat": 36.43065712550776,
-    "lng": 3.1467375803838356,
+    "lat": 36.2641,
+    "lng": 1.9679,
     "status": "normal",
     "icon": "\ud83c\udf33"
   },
   {
     "id": 9,
     "name": "Bouira Valley",
-    "lat": 36.40713585740763,
-    "lng": 3.0616462375526092,
+    "lat": 36.3749,
+    "lng": 3.9020,
     "status": "normal",
     "icon": "\ud83c\udf45"
   },
   {
     "id": 10,
     "name": "Tizi Ouzou Hills",
-    "lat": 36.41174123487716,
-    "lng": 2.5245206146680412,
+    "lat": 36.7118,
+    "lng": 4.0459,
     "status": "normal",
     "icon": "\ud83e\udd54"
   },
   {
     "id": 11,
     "name": "Green Plain Delta",
-    "lat": 36.38314824742125,
-    "lng": 3.174526914470798,
+    "lat": 36.4668,
+    "lng": 2.6890,
     "status": "normal",
     "icon": "\ud83c\udf33"
   },
   {
     "id": 12,
     "name": "Sunrise Orchard",
-    "lat": 36.402867642042715,
-    "lng": 3.504053850572155,
+    "lat": 36.2619,
+    "lng": 2.2207,
     "status": "normal",
     "icon": "\ud83c\udf3e"
   },
   {
     "id": 13,
     "name": "Southern Oasis Rim",
-    "lat": 36.655756427024954,
-    "lng": 3.1917689163657474,
+    "lat": 33.8000,
+    "lng": 2.8650,
     "status": "normal",
     "icon": "\ud83c\udf47"
   },
   {
     "id": 14,
     "name": "Atlas Foothills B",
-    "lat": 36.38497800756234,
-    "lng": 2.98553623796835,
+    "lat": 34.6728,
+    "lng": 3.2630,
     "status": "normal",
     "icon": "\ud83c\udf4e"
   },
   {
     "id": 15,
     "name": "Coastal Berry Hub",
-    "lat": 36.52695204114795,
-    "lng": 2.607476136271329,
+    "lat": 36.5747,
+    "lng": 2.9121,
     "status": "normal",
     "icon": "\ud83c\udf4e"
   },
   {
     "id": 16,
     "name": "Riverbend Pastures",
-    "lat": 36.41321190551544,
-    "lng": 2.6454019842386076,
+    "lat": 36.1850,
+    "lng": 1.5320,
     "status": "normal",
     "icon": "\ud83e\udd54"
   },
   {
     "id": 17,
     "name": "Golden Wheat Sector 4",
-    "lat": 36.5706561964939,
-    "lng": 3.4879703670185256,
+    "lat": 36.1900,
+    "lng": 5.4100,
     "status": "normal",
     "icon": "\ud83e\udd54"
   },
   {
     "id": 18,
     "name": "Emerald Forest Rim",
-    "lat": 36.55163934839698,
-    "lng": 3.559553326187922,
+    "lat": 36.7400,
+    "lng": 4.4600,
     "status": "normal",
     "icon": "\ud83c\udf4e"
   },
   {
     "id": 19,
     "name": "Morning Mist Basin",
-    "lat": 36.326812290793704,
-    "lng": 3.093660793635652,
+    "lat": 35.8890,
+    "lng": 2.7490,
     "status": "normal",
     "icon": "\ud83c\udf3b"
   },
   {
     "id": 20,
     "name": "Crimson Tulip Row",
-    "lat": 36.64176841421747,
-    "lng": 3.5241390839819875,
+    "lat": 36.5650,
+    "lng": 3.5900,
     "status": "normal",
     "icon": "\ud83c\udf3b"
   },
   {
     "id": 21,
     "name": "Northern Pastures",
-    "lat": 36.51657493909398,
-    "lng": 3.947606644554825,
+    "lat": 36.3665,
+    "lng": 3.6730,
     "status": "normal",
     "icon": "\ud83c\udf33"
   },
   {
     "id": 22,
     "name": "Southern Irrigation Loop",
-    "lat": 36.30086398864908,
-    "lng": 3.104671932965873,
+    "lat": 34.8500,
+    "lng": 5.7300,
     "status": "normal",
     "icon": "\ud83c\udf3f"
   },
   {
     "id": 23,
     "name": "Coastal Berry Patch",
-    "lat": 36.64587967776775,
-    "lng": 3.0200813912317432,
+    "lat": 36.5360,
+    "lng": 2.4550,
     "status": "normal",
     "icon": "\ud83c\udf3f"
   },
   {
     "id": 24,
     "name": "Shadow Peak Valley",
-    "lat": 36.62712791401739,
-    "lng": 3.992581556593086,
+    "lat": 36.5650,
+    "lng": 4.3100,
     "status": "normal",
     "icon": "\ud83c\udf45"
   },
   {
     "id": 25,
     "name": "Sunflower Prairie",
-    "lat": 36.31907391419143,
-    "lng": 2.881173337404858,
+    "lat": 35.9600,
+    "lng": 1.5400,
     "status": "normal",
     "icon": "\ud83c\udf3d"
   }

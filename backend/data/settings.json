@@ -1,5 +1,9 @@
 {
   "thresholds": {
+    "general": {
+      "warning": 50.0,
+      "alert": 80.0
+    },
     "temperature": {
       "warning": 20.0,
       "alert": 30.0

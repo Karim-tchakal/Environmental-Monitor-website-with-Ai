@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polaris - Real-Time Sensor Monitor</title>
+<title>Agritech - Real-Time Sensor Monitor</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
   body { font-family: 'DM Sans', sans-serif; }
   * { scrollbar-width: none; -ms-overflow-style: none; }
@@ -19,44 +20,41 @@
 <aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0 z-50">
   <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
     <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
-    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Agritech</span>
   </div>
   <nav class="flex-1 p-2 overflow-y-auto">
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
-    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⬡ Dashboard</a>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
-    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">📡 Sensors</a>
-    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+    <a href="/alerts" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Alerts</a>
+    <a href="/alerts?status=incident" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Reports</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
-    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Map</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
-    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Analysis</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
-    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
-    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Settings</a>
   </nav>
-  <div class="p-2 border-t border-gray-200">
-    <a href="/logout" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] font-medium text-red-500 hover:bg-red-50 transition-colors">↩ Logout</a>
-  </div>
 </aside>
 
 <div class="flex-1 flex flex-col overflow-hidden">
   <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
     <div class="flex items-center gap-3">
-      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
-      <h2 class="text-[15px] font-semibold text-gray-900">Agri-Node Telemetry</h2>
+      <button id="sidebarToggle" aria-label="Toggle navigation" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <h2 class="text-[15px] font-semibold text-gray-900">Sensor monitoring</h2>
     </div>
     <div class="flex items-center gap-3">
       <select id="areaFilter" class="border border-gray-200 rounded-lg px-3 py-1.5 text-[13px] text-gray-700 focus:outline-none focus:border-blue-400 bg-white shadow-sm">
-        <option value="">📍 All Areas</option>
+        <option value="">All areas</option>
       </select>
-      <img src="" class="w-8 h-8 rounded-full border border-gray-200">
+      <div aria-label="Admin profile" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></div>
     </div>
   </header>
 
@@ -65,7 +63,7 @@
       <span id="cal-title" class="text-[12px] font-semibold text-gray-700"></span>
       <div class="flex items-center gap-2">
         <span id="cal-range-label" class="hidden text-[11px] font-medium text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg"></span>
-        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">✕ Reset</button>
+        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">Reset</button>
       </div>
     </div>
     <div style="position:relative;">
@@ -78,17 +76,26 @@
     <section id="active-alerts-section" class="mb-6 hidden">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex flex-col min-w-0">
-          <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">⚠️ Active Anomalies</h3>
+          <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">Active alerts</h3>
           <div id="active-alerts-list" class="flex overflow-x-auto gap-3 pb-2"></div>
         </div>
         <div class="bg-blue-600 rounded-xl p-4 text-white shadow-lg relative overflow-hidden flex flex-col justify-center">
           <div class="relative z-10">
-            <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">🤖 AI Fleet Analysis</h3>
+            <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">Operational summary</h3>
             <p id="ai-summary-text" class="text-[14px] font-medium leading-relaxed italic">Analyzing current telemetry vectors...</p>
           </div>
-          <div class="absolute right-[-15px] bottom-[-15px] text-[80px] opacity-10 pointer-events-none">🤖</div>
         </div>
       </div>
+    </section>
+
+    <section class="mb-8">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-[15px] font-semibold text-gray-800">Sensor readings</h3>
+          <p id="sensor-grid-status" class="text-[12px] text-gray-400 mt-1">Loading sensor graphs...</p>
+        </div>
+      </div>
+      <div id="sensor-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
     </section>
 
     <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
@@ -120,6 +127,8 @@ let activeArea = "";
 let settingsCache = null;
 let allAlerts = [];
 let nodesCache = [];
+let sensorCharts = new Map();
+let displayedSensorIds = [];
 
 const BADGE_CONFIG = {
   'alert':    { bg:'#fef2f2', text:'#dc2626', dot:'#ef4444' },
@@ -130,6 +139,125 @@ const BADGE_CONFIG = {
 
 function getBadge(status) {
   return BADGE_CONFIG[status.toLowerCase()] || { bg:'#f1f5f9', text:'#475569', dot:'#94a3b8' };
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+}
+
+function getGraphColor(value, type) {
+  const thresholds = settingsCache?.thresholds?.[type];
+  if (!thresholds || typeof value !== 'number') return '#3b82f6';
+  if (type === 'moisture') {
+    if (value <= thresholds.alert) return '#ef4444';
+    if (value <= thresholds.warning) return '#eab308';
+  } else {
+    if (value >= thresholds.alert) return '#ef4444';
+    if (value >= thresholds.warning) return '#eab308';
+  }
+  return '#3b82f6';
+}
+
+function createSensorCard(sensor) {
+  return `
+    <article id="sensor-card-${escapeHtml(sensor.id)}" class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm min-w-0">
+      <div class="flex items-start justify-between gap-3 mb-3">
+        <div class="min-w-0">
+          <span class="block text-[10px] font-semibold uppercase tracking-wider text-gray-400 truncate">${escapeHtml(sensor.node)}</span>
+          <h4 class="text-[14px] font-semibold text-gray-800 truncate" title="${escapeHtml(sensor.name)}">${escapeHtml(sensor.name)}</h4>
+        </div>
+        <span class="text-[11px] text-gray-500 whitespace-nowrap">${escapeHtml(sensor.unit)}</span>
+      </div>
+      <div class="flex items-baseline gap-2 mb-3">
+        <span class="sensor-value text-[24px] leading-none font-bold">—</span>
+        <span class="text-[10px] text-gray-400">latest</span>
+      </div>
+      <div class="relative h-28">
+        <canvas id="chart-${escapeHtml(sensor.id)}" aria-label="${escapeHtml(sensor.name)} readings"></canvas>
+      </div>
+    </article>`;
+}
+
+function updateSensorChart(sensor) {
+  const readings = sensor.readings || [];
+  const value = readings.length ? readings[readings.length - 1] : null;
+  const color = getGraphColor(value, sensor.type);
+  const card = document.getElementById(`sensor-card-${sensor.id}`);
+  const valueElement = card?.querySelector('.sensor-value');
+  if (valueElement) {
+    valueElement.textContent = value === null ? '—' : value;
+    valueElement.style.color = color;
+  }
+
+  const labels = (sensor.timestamps || []).map(timestamp => {
+    const time = timestamp.split('T')[1];
+    return time ? time.slice(0, 5) : timestamp;
+  });
+  let chart = sensorCharts.get(sensor.id);
+  if (!chart) {
+    const canvas = document.getElementById(`chart-${sensor.id}`);
+    if (!canvas) return;
+    chart = new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          data: readings,
+          borderColor: color,
+          backgroundColor: `${color}12`,
+          borderWidth: 1.75,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { grid: { color: '#f3f4f6' }, ticks: { color: '#9ca3af', maxTicksLimit: 4, font: { size: 9 } } }
+        }
+      }
+    });
+    sensorCharts.set(sensor.id, chart);
+    return;
+  }
+
+  chart.data.labels = labels;
+  chart.data.datasets[0].data = readings;
+  chart.data.datasets[0].borderColor = color;
+  chart.data.datasets[0].backgroundColor = `${color}12`;
+  chart.update('none');
+}
+
+async function fetchSensorGraphs() {
+  const status = document.getElementById('sensor-grid-status');
+  try {
+    const query = activeArea ? `?area=${encodeURIComponent(activeArea)}` : '';
+    const response = await fetch(`${API_BASE}/sensors${query}`);
+    if (!response.ok) throw new Error(`Sensor request failed (${response.status})`);
+    const sensors = await response.json();
+    const ids = sensors.map(sensor => sensor.id);
+    const grid = document.getElementById('sensor-grid');
+    if (ids.length !== displayedSensorIds.length || ids.some((id, index) => id !== displayedSensorIds[index])) {
+      sensorCharts.forEach(chart => chart.destroy());
+      sensorCharts.clear();
+      displayedSensorIds = ids;
+      grid.innerHTML = sensors.length
+        ? sensors.map(createSensorCard).join('')
+        : '<p class="col-span-full text-[13px] text-gray-500">No sensors are assigned to this area.</p>';
+    }
+    sensors.forEach(updateSensorChart);
+    status.textContent = `${sensors.length} sensor${sensors.length === 1 ? '' : 's'} · refreshed ${new Date().toLocaleTimeString()}`;
+  } catch (error) {
+    status.textContent = 'Unable to load sensor readings. Check the connection and try again.';
+    console.error(error);
+  }
 }
 
 async function fetchSettings() {
@@ -233,7 +361,7 @@ async function fetchAreas() {
     nodesCache = nodes;
     const filter = document.getElementById('areaFilter');
     const current = filter.value;
-    filter.innerHTML = '<option value="">📍 All Areas</option>' + 
+    filter.innerHTML = '<option value="">All areas</option>' +
       nodes.map(n => `<option value="${n.name}" ${n.name === current ? 'selected' : ''}>${n.name}</option>`).join('');
   } catch(e) {}
 }
@@ -291,6 +419,7 @@ document.getElementById('areaFilter').onchange = (e) => {
   activeArea = e.target.value; 
   fetchActiveAlerts();
   renderAlertsTable();
+  fetchSensorGraphs();
 };
 
 (async () => {
@@ -300,12 +429,14 @@ document.getElementById('areaFilter').onchange = (e) => {
   await fetchAISummary();
   await fetchAlerts();
   await fetchActiveAlerts();
+  await fetchSensorGraphs();
 })();
 
 setInterval(async () => {
   await fetchAlerts();
   await fetchActiveAlerts();
 }, 5000);
+setInterval(fetchSensorGraphs, 15000);
 </script>
 </body>
 </html>

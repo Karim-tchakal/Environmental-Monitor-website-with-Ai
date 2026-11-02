@@ -1,8 +1,17 @@
-# Polaris Dashboard - Hackathon Technical Guide
+# Agritech Dashboard - Hackathon Technical Guide
 
 ## 🚀 Launching the System
 Local server:
     uvicorn backend.main:app --host 0.0.0.0 --port 8000
+
+Refresh the dashboard's synthetic sample readings:
+    conda activate HyperVenv
+    python backend/test.py
+
+The generator keeps the current node and sensor inventory, refreshes the CSV
+readings, generates a balanced mix of sample sensor statuses, and refreshes
+alert timestamps under `backend/data/`. These generated values are for
+demonstration only; they are not live sensor measurements.
 
 ---
 

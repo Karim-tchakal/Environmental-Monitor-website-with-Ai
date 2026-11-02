@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Intelligence Map - Polaris</title>
+<title>Global Intelligence Map - Agritech</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -28,7 +28,8 @@
   }
   .marker-flash { animation: markerFlash 1.2s ease-in-out infinite; }
   
-  .form-input { @apply w-full border border-gray-200 rounded-lg px-3 py-2 text-[13px] focus:outline-none focus:border-blue-400 mb-3; }
+  .form-input { width:100%; margin-bottom:.75rem; border:1px solid #e5e7eb; border-radius:.5rem; padding:.5rem .75rem; font-size:13px; }
+  .form-input:focus { outline:none; border-color:#60a5fa; box-shadow:0 0 0 2px #dbeafe; }
   
   /* Pin Mode Cursor */
   .pin-mode-active { cursor: crosshair !important; }
@@ -39,27 +40,27 @@
 <aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
   <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
     <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
-    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Agritech</span>
   </div>
   <nav class="flex-1 p-2 overflow-y-auto">
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
-    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⬡ Dashboard</a>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
-    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
-    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+    <a href="/alerts" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Alerts</a>
+    <a href="/alerts?status=incident" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Reports</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
-    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">🗺 Maps</a>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">Map</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
-    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Analysis</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
-    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
-    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+    <a href="/admin" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Settings</a>
   </nav>
 </aside>
 
@@ -67,8 +68,8 @@
   <div id="map"></div>
 
   <div class="absolute top-3 left-3 z-[400] flex flex-col gap-1.5">
-    <button id="toggleBtn" title="Toggle Sidebar" class="w-9 h-9 bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors text-base cursor-pointer">☰</button>
-    <button id="pinBtn" title="Drop Pin (Add Node)" class="w-9 h-9 bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors text-base cursor-pointer">📍</button>
+    <button id="toggleBtn" title="Toggle sidebar" aria-label="Toggle sidebar" class="w-9 h-9 bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors text-base cursor-pointer"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <button id="pinBtn" title="Add node" aria-label="Add node" class="w-9 h-9 bg-white border border-gray-200 rounded-xl shadow-sm flex items-center justify-center text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors text-base cursor-pointer">+</button>
     <div id="zoom-wrap"></div>
   </div>
 
@@ -78,7 +79,7 @@
   </div>
 
   <div id="add-hint" class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-[400] bg-blue-600 text-white px-4 py-2 rounded-full text-[12px] font-medium shadow-2xl animate-bounce">
-    📍 Select area on map to register node
+    Select a location on the map to add a node
   </div>
 </div>
 
@@ -86,8 +87,8 @@
 <div id="nodeModal" class="hidden fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
     <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
         <div class="p-6 border-b border-gray-100">
-            <h3 class="text-[16px] font-bold text-gray-900">📍 Register New Area</h3>
-            <p class="text-[12px] text-gray-400 mt-1">Deploying monitoring vector at <span id="display-coords" class="font-mono text-blue-500"></span></p>
+            <h3 class="text-[16px] font-bold text-gray-900">Register monitoring node</h3>
+            <p class="text-[12px] text-gray-400 mt-1">Location: <span id="display-coords" class="font-mono text-blue-500"></span></p>
         </div>
         <form id="nodeForm" class="p-6">
             <input type="hidden" id="nodeLat">
@@ -98,16 +99,7 @@
             
             <div class="grid grid-cols-2 gap-3">
                 <div>
-                    <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1 ml-1">Initial Status</label>
-                    <select id="nodeStatus" class="form-input">
-                        <option value="normal">Normal</option>
-                        <option value="warning">Warning</option>
-                        <option value="alert">Alert</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1 ml-1">Icon (Emoji)</label>
-                    <input type="text" id="nodeIcon" class="form-input" value="📍">
+                    <p class="text-[12px] text-gray-500">Node status is calculated from its assigned sensors.</p>
                 </div>
             </div>
 
@@ -131,6 +123,11 @@ const STATUS_COLORS = {
 };
 
 const map = L.map('map', {zoomControl:false, attributionControl:false}).setView([36.7, 3.0], 10);
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+}
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
@@ -143,6 +140,7 @@ document.getElementById('zoom-wrap').appendChild(document.querySelector('.leafle
 
 const layer = L.layerGroup().addTo(map);
 let nodes = [];
+let hasFittedNodes = false;
 
 function render() {
   layer.clearLayers();
@@ -153,7 +151,7 @@ function render() {
     
     const icon = L.divIcon({
       className: '',
-      html: `<div class="${isCritical?'marker-flash':''}" style="width:34px;height:34px;border-radius:10px;background:${config.bg};display:flex;align-items:center;justify-content:center;font-size:18px;border:2px solid ${config.dot};box-shadow:0 2px 10px rgba(0,0,0,0.1);">${n.icon||'📍'}</div>`,
+      html: `<div class="${isCritical?'marker-flash':''}" title="${escapeHtml(n.status)}" style="width:20px;height:20px;border-radius:50%;background:${config.dot};border:3px solid white;box-shadow:0 1px 5px rgba(0,0,0,.35);"></div>`,
       iconSize:[34,34], iconAnchor:[17,17]
     });
 
@@ -167,12 +165,12 @@ function render() {
 
     m.bindPopup(`
         <div style="padding:10px; font-family:'DM Sans',sans-serif; min-width:140px;">
-            <div style="font-weight:700; font-size:14px; margin-bottom:4px;">${n.name}</div>
+            <div style="font-weight:700; font-size:14px; margin-bottom:4px;">${escapeHtml(n.name)}</div>
             <div style="display:flex; align-items:center; gap:5px; font-size:11px; margin-bottom:10px;">
                 <span style="width:6px; height:6px; background:${config.dot}; border-radius:50%;"></span>
                 <span class="uppercase font-bold" style="color:${config.dot}">${status}</span>
             </div>
-            <a href="/dashboard/${n.id}" style="display:block; background:#2563eb; color:white; text-align:center; padding:6px; border-radius:6px; font-size:11px; font-weight:600; text-decoration:none;">View Dashboard</a>
+            <a href="/dashboard/${Number(n.id)}" style="display:block; background:#2563eb; color:white; text-align:center; padding:6px; border-radius:6px; font-size:11px; font-weight:600; text-decoration:none;">View details</a>
         </div>
     `);
   });
@@ -181,9 +179,18 @@ function render() {
 async function load() {
   try {
     const res = await fetch(`${API_BASE}/nodes`);
+    if (!res.ok) throw new Error(`Node request failed (${res.status})`);
     nodes = await res.json();
     render();
-  } catch(e) {}
+    if (!hasFittedNodes && nodes.length) {
+      const bounds = L.latLngBounds(nodes.map(node => [node.lat, node.lng]));
+      map.fitBounds(bounds, {padding:[40, 40], maxZoom:9});
+      hasFittedNodes = true;
+    }
+  } catch(error) {
+    document.getElementById('live-badge').innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-red-500"></span> Connection error';
+    console.error(error);
+  }
 }
 
 document.getElementById('pinBtn').onclick = () => {
@@ -229,8 +236,7 @@ document.getElementById('nodeForm').onsubmit = async (e) => {
         name: document.getElementById('nodeName').value,
         lat: parseFloat(document.getElementById('nodeLat').value),
         lng: parseFloat(document.getElementById('nodeLng').value),
-        status: document.getElementById('nodeStatus').value,
-        icon: document.getElementById('nodeIcon').value
+        icon: ''
     };
 
     try {
@@ -243,7 +249,8 @@ document.getElementById('nodeForm').onsubmit = async (e) => {
             closeModal();
             load();
         } else {
-            alert('Failed to save area');
+            const error = await res.json();
+            alert(error.detail || 'Failed to save node.');
         }
     } catch(err) { alert('Network error'); }
 };

@@ -3,20 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Assistant - Hackathon</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Analysis - Agritech</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: 'DM Sans', sans-serif; }
-</style>L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
+  #sidebar { transition: width .25s ease, min-width .25s ease, opacity .2s ease; }
+  #sidebar.closed { width: 0 !important; min-width: 0 !important; opacity: 0; pointer-events: none; overflow: hidden; }
+</style>
 </head>
 <body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
-<div class="w-full h-full flex items-center justify-center">
-  <div class="text-center">
-    <h1 class="text-3xl font-bold mb-4">🤖 AI Assistant</h1>
-    <p class="text-gray-500">Coming soon...</p>
-    <a href="/" class="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">← Back to Dashboard</a>
-  </div>
-</div>
+<aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
+  <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200"><span class="w-2 h-2 rounded-full bg-blue-600"></span><span class="text-[17px] font-semibold">Agritech</span></div>
+  <nav class="flex-1 p-2 overflow-y-auto">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
+    <a href="/" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Dashboard</a>
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
+    <a href="/alerts" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Alerts</a>
+    <a href="/alerts?status=incident" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Incidents</a>
+    <a href="/sensors" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Sensors</a>
+    <a href="/reports" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Reports</a>
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
+    <a href="/maps" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Map</a>
+    <a href="/ai" class="block px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">Analysis</a>
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
+    <a href="/admin" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Administration</a>
+    <a href="/settings" class="block px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100">Settings</a>
+  </nav>
+</aside>
+<main class="flex min-w-0 flex-1 flex-col overflow-hidden">
+  <header class="flex items-center justify-between border-b border-gray-200 bg-white px-5 py-3.5">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" aria-label="Toggle navigation" class="h-9 w-9 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50"><svg viewBox="0 0 24 24" class="m-auto h-4 w-4 fill-none stroke-current" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div><h1 class="text-[15px] font-semibold">Operational analysis</h1><p class="text-[12px] text-gray-400">Sensor summaries by monitoring area</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <select id="area-select" aria-label="Select monitoring area" class="max-w-64 rounded-lg border border-gray-200 bg-white px-3 py-2 text-[13px]"><option value="global">All areas</option></select>
+      <button id="refresh" class="rounded-lg border border-gray-200 px-3 py-2 text-[13px] text-gray-600 hover:bg-gray-50">Refresh</button>
+      <div aria-label="Admin profile" class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-500"><svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></div>
+    </div>
+  </header>
+  <section class="flex-1 space-y-5 overflow-auto p-5">
+    <article class="rounded-xl border border-gray-200 bg-white p-6">
+      <div class="flex flex-wrap items-start justify-between gap-3"><div><p id="summary-context" class="text-[11px] font-semibold uppercase tracking-wider text-gray-400">All areas</p><h2 class="mt-1 text-[18px] font-semibold">Monitoring summary</h2></div><span id="summary-updated" class="text-[12px] text-gray-400"></span></div>
+      <p id="summary-text" class="mt-4 max-w-4xl text-[14px] leading-7 text-gray-700">Loading summary…</p>
+      <p class="mt-5 border-t border-gray-100 pt-4 text-[11px] text-gray-400">Summaries are provided by the project’s node report data.</p>
+    </article>
+    <div class="flex items-center justify-between"><div><h2 class="text-[14px] font-semibold">Area status</h2><p class="mt-1 text-[12px] text-gray-500">Select an area to view its summary.</p></div><span id="area-count" class="text-[12px] text-gray-400"></span></div>
+    <div id="report-grid" class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+  </section>
+</main>
+<script>
+const API_BASE = '/api';
+let reports = [];
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+}
+
+function statusStyle(status) {
+  return {
+    alert: 'bg-red-50 text-red-700', warning: 'bg-amber-50 text-amber-700',
+    incident: 'bg-orange-50 text-orange-700', normal: 'bg-green-50 text-green-700'
+  }[status] || 'bg-gray-100 text-gray-700';
+}
+
+async function loadReports() {
+  const response = await fetch(`${API_BASE}/reports`);
+  if (!response.ok) throw new Error(`Reports request failed (${response.status})`);
+  reports = await response.json();
+  const select = document.getElementById('area-select');
+  const selected = select.value || 'global';
+  select.innerHTML = '<option value="global">All areas</option>' +
+    reports.map(item => `<option value="${escapeHtml(item.area)}">${escapeHtml(item.area)}</option>`).join('');
+  if ([...select.options].some(option => option.value === selected)) select.value = selected;
+  document.getElementById('area-count').textContent = `${reports.length} areas`;
+  document.getElementById('report-grid').innerHTML = reports.map(item => `
+    <button type="button" data-area="${escapeHtml(item.area)}" class="rounded-xl border border-gray-200 bg-white p-4 text-left hover:border-blue-300 hover:shadow-sm">
+      <div class="flex items-start justify-between gap-3"><h3 class="text-[13px] font-semibold text-gray-800">${escapeHtml(item.area)}</h3><span class="rounded-full px-2 py-1 text-[10px] font-semibold uppercase ${statusStyle(item.status)}">${escapeHtml(item.status)}</span></div>
+      <p class="mt-3 text-[12px] text-gray-500">${Number(item.sensors_count)} sensors</p>
+      <p class="mt-2 line-clamp-2 text-[12px] leading-5 text-gray-600">${escapeHtml(item.summary)}</p>
+    </button>
+  `).join('');
+  document.querySelectorAll('[data-area]').forEach(button => button.addEventListener('click', () => {
+    select.value = button.dataset.area;
+    loadSummary();
+  }));
+}
+
+async function loadSummary() {
+  const area = document.getElementById('area-select').value || 'global';
+  const context = area === 'global' ? 'All areas' : area;
+  const response = await fetch(`${API_BASE}/ai/summary?node=${encodeURIComponent(area)}`);
+  if (!response.ok) throw new Error(`Summary request failed (${response.status})`);
+  const data = await response.json();
+  document.getElementById('summary-context').textContent = context;
+  document.getElementById('summary-text').textContent = data.summary;
+  document.getElementById('summary-updated').textContent = `Updated ${new Date().toLocaleTimeString()}`;
+}
+
+async function refresh() {
+  const summary = document.getElementById('summary-text');
+  try {
+    await loadReports();
+    await loadSummary();
+  } catch (error) {
+    summary.textContent = 'Unable to load analysis. Check the server and try again.';
+    console.error(error);
+  }
+}
+
+document.getElementById('area-select').addEventListener('change', () => loadSummary().catch(console.error));
+document.getElementById('refresh').addEventListener('click', refresh);
+document.getElementById('sidebarToggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('closed'));
+refresh();
+setInterval(refresh, 30000);
+</script>
 </body>
 </html>

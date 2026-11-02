@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sense Dashboard - Polaris</title>
+<title>Sense Dashboard - Agritech</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -20,47 +20,41 @@
 <aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
   <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
     <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
-    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Agritech</span>
   </div>
   <nav class="flex-1 p-2 overflow-y-auto">
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
-    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">⬡ Dashboard</a>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/alerts"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">🔔 Alerts</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">⚡ Incidents</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">📡 Sensors</a>
+    <a href="/alerts" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Alerts</a>
+    <a href="/alerts?status=incident" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Sensors</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
-    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">🗺 Maps</a>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Map</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
-    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
-    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">🔧 Settings</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Reports</a>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Analysis</a>
+    <a href="/admin" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Settings</a>
   </nav>
 </aside>
 
 <div class="flex-1 flex flex-col overflow-hidden">
   <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
     <div class="flex items-center gap-3">
-      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
+      <button id="sidebarToggle" aria-label="Toggle navigation" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
       <h2 class="text-[15px] font-semibold text-gray-900">Telemetry Intelligence</h2>
     </div>
     <div class="flex items-center gap-3">
-      <img src="" class="w-8 h-8 rounded-full border border-gray-200">
+      <div aria-label="Admin profile" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></div>
     </div>
   </header>
 
-  <!-- Fix: Date bar taking full width to right -->
-  <div class="px-5 py-2 bg-white border-b border-gray-100 shrink-0 w-full">
-    <div class="flex items-center justify-between mb-1">
-      <span id="cal-title" class="text-[12px] font-semibold text-gray-700">Diagnostic Calendar</span>
-      <span class="text-[10px] text-blue-500 font-bold uppercase">Live Sync Active</span>
-    </div>
-    <div id="cal-strip" class="flex overflow-x-auto w-full pb-1"></div>
-  </div>
-
   <main class="flex-1 overflow-auto p-5">
+  <p id="last-updated" class="mb-4 text-[12px] text-gray-400"></p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="sense-grid"></div>
 
     <div class="mt-8 bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -88,9 +82,15 @@ let charts = {};
 let settingsCache = null;
 
 async function fetchSettings() {
-    try {
-        settingsCache = await fetch(`${API_BASE}/settings`).then(r => r.json());
-    } catch(e) {}
+    const response = await fetch(`${API_BASE}/settings`);
+    if (!response.ok) throw new Error(`Settings request failed (${response.status})`);
+    settingsCache = await response.json();
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
 }
 
 function getGraphColor(value, type) {
@@ -114,13 +114,13 @@ function createCard(s) {
     <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm" id="card-${s.id}">
         <div class="flex justify-between items-start mb-4">
             <div>
-                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">${s.node}</span>
-                <h3 class="text-[16px] font-bold text-gray-800">${s.name}</h3>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">${escapeHtml(s.node)}</span>
+                <h3 class="text-[16px] font-bold text-gray-800">${escapeHtml(s.name)}</h3>
             </div>
             <span class="text-[12px] font-bold" style="color:${color}">${s.unit}</span>
         </div>
         <div class="flex items-end gap-2 mb-4">
-            <span class="text-2xl font-bold" style="color: ${color}">${lastVal}</span>
+            <span class="sensor-value text-2xl font-bold" style="color: ${color}">${lastVal}</span>
         </div>
         <div class="h-24">
             <canvas id="chart-${s.id}"></canvas>
@@ -140,13 +140,14 @@ async function loadData() {
 
         body.innerHTML = sensors.map(s => {
             const lastVal = s.readings?.length ? s.readings[s.readings.length - 1] : "—";
+            const previousVal = s.readings?.length > 1 ? s.readings[s.readings.length - 2] : null;
             const color = getGraphColor(lastVal, s.type);
             return `
                 <tr class="border-t border-gray-100 hover:bg-gray-50">
-                    <td class="px-5 py-3 font-medium text-gray-800">${s.node}</td>
-                    <td class="px-5 py-3">${s.name}</td>
-                    <td class="px-5 py-3 font-bold" style="color:${color}">${lastVal}${s.unit}</td>
-                    <td class="px-5 py-3 text-[11px] font-mono text-gray-400">±${(Math.random()*0.5).toFixed(2)}</td>
+                    <td class="px-5 py-3 font-medium text-gray-800">${escapeHtml(s.node)}</td>
+                    <td class="px-5 py-3">${escapeHtml(s.name)}</td>
+                    <td class="px-5 py-3 font-bold" style="color:${color}">${lastVal} ${escapeHtml(s.unit)}</td>
+                    <td class="px-5 py-3 text-[11px] font-mono text-gray-400">${previousVal === null ? '—' : `${(lastVal - previousVal >= 0 ? '+' : '')}${(lastVal - previousVal).toFixed(2)}`}</td>
                 </tr>
             `;
         }).join('');
@@ -154,6 +155,11 @@ async function loadData() {
         sensors.forEach(s => {
             const lastVal = s.readings?.length ? s.readings[s.readings.length - 1] : 0;
             const color = getGraphColor(lastVal, s.type);
+            const valueElement = document.querySelector(`#card-${CSS.escape(s.id)} .sensor-value`);
+            if (valueElement) {
+                valueElement.textContent = lastVal;
+                valueElement.style.color = color;
+            }
             const chartLabels = s.timestamps?.map(t => t.split('T')[1].slice(0,5)) || [];
             const chartData = s.readings || [];
 
@@ -190,20 +196,10 @@ async function loadData() {
                 }
             }
         });
-    } catch(e) {}
-}
-
-function renderCal() {
-    const strip = document.getElementById('cal-strip');
-    strip.innerHTML = "";
-    for(let i=-15; i<5; i++) {
-        const d = new Date(); d.setDate(d.getDate() + i);
-        const isToday = i === 0;
-        strip.innerHTML += `
-            <div class="flex-shrink-0 w-12 text-center">
-                <div class="text-[9px] text-gray-400 uppercase mb-1">${d.toLocaleDateString('default', {weekday:'short'})}</div>
-                <div class="w-8 h-8 mx-auto flex items-center justify-center rounded-lg text-[12px] ${isToday ? 'bg-blue-600 text-white font-bold' : 'bg-white border border-gray-100 text-gray-700 shadow-sm'}">${d.getDate()}</div>
-            </div>`;
+        document.getElementById('last-updated').textContent = `Updated ${new Date().toLocaleTimeString()}`;
+    } catch(error) {
+        document.getElementById('last-updated').textContent = 'Unable to refresh sensor data.';
+        console.error(error);
     }
 }
 
@@ -212,12 +208,11 @@ document.getElementById('sidebarToggle').onclick = () => document.getElementById
 (async () => {
     await fetchSettings();
     await loadData();
-    renderCal();
 })();
 setInterval(async () => {
     await fetchSettings();
     await loadData();
-}, 5000);
+}, 15000);
 </script>
 </body>
 </html>

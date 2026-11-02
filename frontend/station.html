@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polaris - Station Monitor</title>
+<title>Agritech - Station Monitor</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -20,41 +20,41 @@
 <aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
   <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
     <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
-    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Agritech</span>
   </div>
   <nav class="flex-1 p-2 overflow-y-auto">
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
-    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">⬡ Dashboard</a>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 transition-colors">Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/sense_dashboard"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
-    <a href="/sense_dashboard" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
-    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+    <a href="/alerts" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Alerts</a>
+    <a href="/alerts?status=incident" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Reports</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
-    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Map</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
-    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Analysis</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
-    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚙ Administration</a>
-    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+    <a href="/admin" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Settings</a>
   </nav>
 </aside>
 
 <div class="flex-1 flex flex-col overflow-hidden">
   <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
     <div class="flex items-center gap-3">
-      <button id="sidebarToggle" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0">☰</button>
+      <button id="sidebarToggle" aria-label="Toggle navigation" class="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer shrink-0"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
       <div>
         <h2 id="welcome-text" class="text-[15px] font-semibold text-gray-900">Station Monitor</h2>
         <p id="station-subtitle" class="text-[12px] text-gray-400 mt-0.5">Fetching location details...</p>
       </div>
     </div>
     <div class="flex items-center gap-3">
-      <img id="user-avatar" src="" class="w-8 h-8 rounded-full border border-gray-200">
+      <div aria-label="Admin profile" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></div>
     </div>
   </header>
 
@@ -63,7 +63,7 @@
       <span id="cal-title" class="text-[12px] font-semibold text-gray-700"></span>
       <div class="flex items-center gap-2">
         <span id="cal-range-label" class="hidden text-[11px] font-medium text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg"></span>
-        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">✕ Reset</button>
+        <button id="cal-clear" class="hidden text-[11px] text-gray-400 hover:text-gray-600 cursor-pointer px-1.5 py-0.5 rounded hover:bg-gray-100 transition-colors">Reset</button>
       </div>
     </div>
     <div style="position:relative;">
@@ -77,16 +77,15 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <!-- Left Half: Scrollable Alerts -->
         <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex flex-col min-w-0">
-          <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">⚠️ Active Anomalies</h3>
+          <h3 class="text-[13px] font-bold text-red-600 mb-3 flex items-center gap-2 shrink-0">Active alerts</h3>
           <div id="active-alerts-list" class="flex overflow-x-auto gap-3 pb-2"></div>
         </div>
         <!-- Right Half: AI Summary -->
         <div class="bg-blue-600 rounded-xl p-4 text-white shadow-lg relative overflow-hidden flex flex-col justify-center">
           <div class="relative z-10">
-            <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">🤖 AI Station Analysis</h3>
+            <h3 class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2">Operational summary</h3>
             <p id="ai-summary-text" class="text-[14px] font-medium leading-relaxed italic">Analyzing current anomaly vectors...</p>
           </div>
-          <div class="absolute right-[-15px] bottom-[-15px] text-[80px] opacity-10 pointer-events-none">🤖</div>
         </div>
       </div>
     </section>
@@ -125,13 +124,13 @@ let stationName = "";
 let allAlerts = [];
 
 const SENSOR_TEMPLATES = {
-    "general":     { icon: "📊", unit: "" },
-    "temperature": { icon: "🌡️", unit: "°C" },
-    "humidity":    { icon: "💧", unit: "%" },
-    "co2":         { icon: "☁️", unit: "ppm" },
-    "smoke":       { icon: "🔥", unit: "idx" },
-    "pm25":        { icon: "🌫️", unit: "µg/m³" },
-    "moisture":    { icon: "🌱", unit: "%" }
+    "general":     { unit: "" },
+    "temperature": { unit: "°C" },
+    "humidity":    { unit: "%" },
+    "co2":         { unit: "ppm" },
+    "smoke":       { unit: "idx" },
+    "pm25":        { unit: "µg/m³" },
+    "moisture":    { unit: "%" }
 };
 
 const BADGE_CONFIG = {
@@ -145,6 +144,12 @@ function getBadge(status) {
   return BADGE_CONFIG[status.toLowerCase()] || { bg:'#f1f5f9', text:'#475569', dot:'#94a3b8' };
 }
 
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+}
+
 async function fetchSettings() {
     try {
         settingsCache = await fetch(`${API_BASE}/settings`).then(r => r.json());
@@ -154,7 +159,7 @@ async function fetchSettings() {
 async function fetchAISummary() {
   if (!stationName) return;
   try {
-    const data = await fetch(`${API_BASE}/ai/summary?node=${stationName}`).then(r => r.json());
+    const data = await fetch(`${API_BASE}/ai/summary?node=${encodeURIComponent(stationName)}`).then(r => r.json());
     document.getElementById('ai-summary-text').textContent = `"${data.summary}"`;
   } catch(e) {}
 }
@@ -174,22 +179,21 @@ function getGraphColor(value, type) {
 }
 
 function createSensorBlock(sensor) {
-    const config = SENSOR_TEMPLATES[sensor.type] || { icon: "📊", unit: "" };
+    const config = SENSOR_TEMPLATES[sensor.type] || { unit: "" };
     const lastVal = sensor.readings?.length ? sensor.readings[sensor.readings.length - 1] : "N/A";
     const color = getGraphColor(lastVal, sensor.type);
     
     return `
-    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm" id="sensor-card-${sensor.id}">
+    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm" id="sensor-card-${escapeHtml(sensor.id)}">
         <div class="flex justify-between items-start mb-4">
             <div>
-                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">${sensor.type}</span>
-                <h3 class="text-[18px] font-bold text-gray-800">${sensor.name || sensor.type}</h3>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400">${escapeHtml(sensor.type)}</span>
+                <h3 class="text-[18px] font-bold text-gray-800">${escapeHtml(sensor.name || sensor.type)}</h3>
             </div>
-            <span class="text-2xl">${config.icon}</span>
         </div>
         <div class="flex items-end gap-2 mb-4">
             <span class="text-3xl font-bold sensor-value" style="color: ${color}">${lastVal}</span>
-            <span class="text-sm font-medium text-gray-400 mb-1">${sensor.unit || config.unit}</span>
+            <span class="text-sm font-medium text-gray-400 mb-1">${escapeHtml(sensor.unit || config.unit)}</span>
         </div>
         <div class="h-32">
             <canvas id="chart-${sensor.id}"></canvas>
@@ -200,15 +204,19 @@ function createSensorBlock(sensor) {
 async function loadData() {
     try {
         const res = await fetch(`${API_BASE}/station/${stationId}`);
+        if (!res.ok) throw new Error(`Station request failed (${res.status})`);
         const data = await res.json();
         
         stationName = data.info.name;
-        document.getElementById('station-subtitle').textContent = `Location: ${data.info.name} • Status: ${data.info.status}`;
+        document.getElementById('station-subtitle').textContent = `Location: ${data.info.name} · Status: ${data.info.status}`;
         
         const grid = document.getElementById('sensor-grid');
         if (grid.children.length !== data.sensors.length) {
-            grid.innerHTML = "";
-            data.sensors.forEach(s => grid.innerHTML += createSensorBlock(s));
+            Object.values(charts).forEach(chart => chart.destroy());
+            charts = {};
+            grid.innerHTML = data.sensors.length
+              ? data.sensors.map(createSensorBlock).join('')
+              : '<p class="text-[13px] text-gray-500">No sensors are assigned to this node.</p>';
         }
 
         data.sensors.forEach(s => {
@@ -259,7 +267,10 @@ async function loadData() {
                 }
             }
         });
-    } catch(e) {}
+    } catch(error) {
+        document.getElementById('station-subtitle').textContent = 'Unable to load station telemetry.';
+        console.error(error);
+    }
 }
 
 async function fetchActiveAlerts() {

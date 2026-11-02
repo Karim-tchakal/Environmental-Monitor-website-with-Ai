@@ -8,7 +8,7 @@
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -18,10 +18,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "76",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-01-02",
@@ -30,10 +30,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "61",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "incident",
+    "comment": "Incident: Critical sensor condition reported.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "incident"
   },
   {
     "id": "s-01-03",
@@ -44,7 +44,7 @@
     "battery": "68",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -56,7 +56,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -68,7 +68,7 @@
     "battery": "51",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -76,11 +76,11 @@
     "name": "Aerosol Node 7",
     "node": "Mitidja West Sector",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "79",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -92,7 +92,7 @@
     "battery": "51",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -104,7 +104,7 @@
     "battery": "86",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -116,7 +116,7 @@
     "battery": "52",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -128,7 +128,7 @@
     "battery": "64",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -138,21 +138,21 @@
     "type": "humidity",
     "unit": "%",
     "battery": "100",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-01-12",
     "name": "Thermal Node 13",
     "node": "Mitidja West Sector",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "86",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -162,22 +162,22 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "94",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-01-14",
     "name": "Thermal Node 15",
     "node": "Mitidja West Sector",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "41",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-01-15",
@@ -188,7 +188,7 @@
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -200,7 +200,7 @@
     "battery": "59",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -212,7 +212,7 @@
     "battery": "73",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -224,7 +224,7 @@
     "battery": "71",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -234,10 +234,10 @@
     "type": "general",
     "unit": "lvl",
     "battery": "66",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-01-20",
@@ -248,7 +248,7 @@
     "battery": "62",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -256,11 +256,11 @@
     "name": "Aerosol Node 22",
     "node": "Mitidja West Sector",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "66",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -268,11 +268,11 @@
     "name": "Thermal Node 1",
     "node": "Blida Fruit Belt",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "58",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -280,11 +280,11 @@
     "name": "Thermal Node 2",
     "node": "Blida Fruit Belt",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "79",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -294,10 +294,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "47",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-02-03",
@@ -308,7 +308,7 @@
     "battery": "92",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -320,7 +320,7 @@
     "battery": "98",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -330,10 +330,10 @@
     "type": "general",
     "unit": "lx",
     "battery": "67",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-02-06",
@@ -344,7 +344,7 @@
     "battery": "51",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -354,10 +354,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "51",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-02-08",
@@ -368,7 +368,7 @@
     "battery": "96",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -380,7 +380,7 @@
     "battery": "41",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -388,11 +388,11 @@
     "name": "Aerosol Node 1",
     "node": "Highlands Plateau A",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "50",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -400,11 +400,11 @@
     "name": "Aerosol Node 2",
     "node": "Highlands Plateau A",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "97",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -416,7 +416,7 @@
     "battery": "49",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -428,7 +428,7 @@
     "battery": "57",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -440,7 +440,7 @@
     "battery": "98",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -450,10 +450,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "71",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-03-06",
@@ -464,7 +464,7 @@
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -476,7 +476,7 @@
     "battery": "71",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -484,23 +484,23 @@
     "name": "Aerosol Node 9",
     "node": "Highlands Plateau A",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "84",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-03-09",
     "name": "Thermal Node 10",
     "node": "Highlands Plateau A",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "98",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -510,10 +510,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "68",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-03-11",
@@ -524,7 +524,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -536,7 +536,7 @@
     "battery": "40",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -548,7 +548,7 @@
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -556,11 +556,11 @@
     "name": "Aerosol Node 15",
     "node": "Highlands Plateau A",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "74",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -572,7 +572,7 @@
     "battery": "91",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -580,11 +580,11 @@
     "name": "Aerosol Node 17",
     "node": "Highlands Plateau A",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "72",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -596,7 +596,7 @@
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -608,7 +608,7 @@
     "battery": "62",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -616,11 +616,11 @@
     "name": "Aerosol Node 3",
     "node": "Chlef River Basin",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "100",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -632,7 +632,7 @@
     "battery": "96",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -644,7 +644,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -656,7 +656,7 @@
     "battery": "95",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -668,7 +668,7 @@
     "battery": "41",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -680,7 +680,7 @@
     "battery": "57",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -692,7 +692,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -704,7 +704,7 @@
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -716,7 +716,7 @@
     "battery": "67",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -726,10 +726,10 @@
     "type": "general",
     "unit": "lx",
     "battery": "90",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-05-02",
@@ -740,7 +740,7 @@
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -750,10 +750,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "70",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-05-04",
@@ -764,7 +764,7 @@
     "battery": "50",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -776,7 +776,7 @@
     "battery": "93",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -788,7 +788,7 @@
     "battery": "59",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -796,11 +796,11 @@
     "name": "Aerosol Node 8",
     "node": "Boumerdes Coastal Farm",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "47",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -811,8 +811,8 @@
     "unit": "m/s",
     "battery": "63",
     "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "warning"
   },
   {
@@ -824,7 +824,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -834,10 +834,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "69",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-05-11",
@@ -848,7 +848,7 @@
     "battery": "62",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -858,10 +858,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "47",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-05-13",
@@ -872,7 +872,7 @@
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -880,11 +880,11 @@
     "name": "Thermal Node 15",
     "node": "Boumerdes Coastal Farm",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "77",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -892,11 +892,11 @@
     "name": "Aerosol Node 16",
     "node": "Boumerdes Coastal Farm",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "93",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -904,11 +904,11 @@
     "name": "Aerosol Node 1",
     "node": "Tipaza Vineyards",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "84",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -920,7 +920,7 @@
     "battery": "85",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -932,7 +932,7 @@
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -944,7 +944,7 @@
     "battery": "72",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -954,10 +954,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "63",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-06-05",
@@ -968,7 +968,7 @@
     "battery": "92",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -978,10 +978,10 @@
     "type": "general",
     "unit": "lvl",
     "battery": "86",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-06-07",
@@ -990,22 +990,22 @@
     "type": "general",
     "unit": "pH",
     "battery": "75",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-06-08",
     "name": "Aerosol Node 9",
     "node": "Tipaza Vineyards",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "47",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-06-09",
@@ -1016,7 +1016,7 @@
     "battery": "46",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1026,21 +1026,21 @@
     "type": "moisture",
     "unit": "%",
     "battery": "62",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-06-11",
     "name": "Thermal Node 12",
     "node": "Tipaza Vineyards",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "76",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1048,11 +1048,11 @@
     "name": "Thermal Node 1",
     "node": "Medea Olive Groves",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "85",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1064,7 +1064,7 @@
     "battery": "64",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1072,11 +1072,11 @@
     "name": "Thermal Node 3",
     "node": "Medea Olive Groves",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "62",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1084,12 +1084,12 @@
     "name": "Aerosol Node 4",
     "node": "Medea Olive Groves",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "45",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-07-04",
@@ -1100,7 +1100,7 @@
     "battery": "46",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1110,10 +1110,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "79",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-07-06",
@@ -1124,7 +1124,7 @@
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1136,7 +1136,7 @@
     "battery": "76",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1148,7 +1148,7 @@
     "battery": "59",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1160,7 +1160,7 @@
     "battery": "57",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1172,7 +1172,7 @@
     "battery": "88",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1184,7 +1184,7 @@
     "battery": "74",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1196,7 +1196,7 @@
     "battery": "59",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1206,10 +1206,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "89",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-07-14",
@@ -1220,7 +1220,7 @@
     "battery": "70",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1230,10 +1230,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "49",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-07-16",
@@ -1244,7 +1244,7 @@
     "battery": "94",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1256,7 +1256,7 @@
     "battery": "60",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1266,10 +1266,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "47",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-07-19",
@@ -1280,7 +1280,7 @@
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1292,7 +1292,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1300,12 +1300,12 @@
     "name": "Aerosol Node 1",
     "node": "Ain Defla Grain Zone",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "83",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-01",
@@ -1314,10 +1314,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "91",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-02",
@@ -1326,10 +1326,10 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "58",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-08-03",
@@ -1338,10 +1338,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "82",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-04",
@@ -1352,7 +1352,7 @@
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1364,7 +1364,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1374,10 +1374,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "92",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-07",
@@ -1386,22 +1386,22 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "93",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-08",
     "name": "Thermal Node 9",
     "node": "Ain Defla Grain Zone",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "53",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-09",
@@ -1410,10 +1410,10 @@
     "type": "general",
     "unit": "pH",
     "battery": "85",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-10",
@@ -1424,7 +1424,7 @@
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1436,7 +1436,7 @@
     "battery": "91",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1446,10 +1446,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "64",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-08-13",
@@ -1460,7 +1460,7 @@
     "battery": "76",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1472,7 +1472,7 @@
     "battery": "85",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1484,7 +1484,7 @@
     "battery": "61",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1494,21 +1494,21 @@
     "type": "moisture",
     "unit": "%",
     "battery": "79",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-17",
     "name": "Thermal Node 18",
     "node": "Ain Defla Grain Zone",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1518,10 +1518,10 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "40",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-19",
@@ -1532,7 +1532,7 @@
     "battery": "81",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1544,7 +1544,7 @@
     "battery": "65",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1552,12 +1552,12 @@
     "name": "Aerosol Node 22",
     "node": "Ain Defla Grain Zone",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "66",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-22",
@@ -1566,10 +1566,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "98",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-08-23",
@@ -1578,10 +1578,10 @@
     "type": "general",
     "unit": "pH",
     "battery": "96",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-08-24",
@@ -1592,7 +1592,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1604,7 +1604,7 @@
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1614,10 +1614,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "47",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-09-02",
@@ -1628,7 +1628,7 @@
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1636,12 +1636,12 @@
     "name": "Thermal Node 4",
     "node": "Bouira Valley",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "47",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-09-04",
@@ -1650,10 +1650,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "75",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-09-05",
@@ -1664,7 +1664,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1676,7 +1676,7 @@
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1686,10 +1686,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "93",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-09-08",
@@ -1700,7 +1700,7 @@
     "battery": "42",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1712,7 +1712,7 @@
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1724,7 +1724,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1734,10 +1734,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "48",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-09-12",
@@ -1746,10 +1746,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "75",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-09-13",
@@ -1758,10 +1758,10 @@
     "type": "general",
     "unit": "lvl",
     "battery": "57",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-09-14",
@@ -1772,7 +1772,7 @@
     "battery": "78",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1784,7 +1784,7 @@
     "battery": "43",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1792,11 +1792,11 @@
     "name": "Aerosol Node 17",
     "node": "Bouira Valley",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "94",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1808,7 +1808,7 @@
     "battery": "94",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1820,7 +1820,7 @@
     "battery": "62",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1832,7 +1832,7 @@
     "battery": "93",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1842,10 +1842,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "64",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-09-21",
@@ -1856,7 +1856,7 @@
     "battery": "73",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1864,12 +1864,12 @@
     "name": "Aerosol Node 23",
     "node": "Bouira Valley",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "94",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-10-00",
@@ -1880,7 +1880,7 @@
     "battery": "79",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1892,7 +1892,7 @@
     "battery": "92",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1900,12 +1900,12 @@
     "name": "Aerosol Node 3",
     "node": "Tizi Ouzou Hills",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "88",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-10-03",
@@ -1916,7 +1916,7 @@
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1928,7 +1928,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1938,10 +1938,10 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "50",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-10-06",
@@ -1950,10 +1950,10 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "70",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-10-07",
@@ -1962,10 +1962,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "60",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-10-08",
@@ -1976,7 +1976,7 @@
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1984,11 +1984,11 @@
     "name": "Aerosol Node 10",
     "node": "Tizi Ouzou Hills",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "79",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -1996,12 +1996,12 @@
     "name": "Thermal Node 11",
     "node": "Tizi Ouzou Hills",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "73",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-10-11",
@@ -2010,10 +2010,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "95",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-10-12",
@@ -2024,7 +2024,7 @@
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2036,7 +2036,7 @@
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2046,10 +2046,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "49",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-10-15",
@@ -2058,21 +2058,21 @@
     "type": "general",
     "unit": "lx",
     "battery": "70",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "incident",
+    "comment": "Incident: Critical sensor condition reported.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "incident"
   },
   {
     "id": "s-10-16",
     "name": "Aerosol Node 17",
     "node": "Tizi Ouzou Hills",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2084,7 +2084,7 @@
     "battery": "91",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2096,7 +2096,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2108,7 +2108,7 @@
     "battery": "91",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2120,7 +2120,7 @@
     "battery": "97",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2128,12 +2128,12 @@
     "name": "Thermal Node 1",
     "node": "Green Plain Delta",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "76",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-11-01",
@@ -2142,10 +2142,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "60",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-11-02",
@@ -2156,7 +2156,7 @@
     "battery": "73",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2168,7 +2168,7 @@
     "battery": "53",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2178,21 +2178,21 @@
     "type": "humidity",
     "unit": "%",
     "battery": "58",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-11-05",
     "name": "Thermal Node 6",
     "node": "Green Plain Delta",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2204,7 +2204,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2216,7 +2216,7 @@
     "battery": "78",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2224,11 +2224,11 @@
     "name": "Aerosol Node 9",
     "node": "Green Plain Delta",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "86",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2236,11 +2236,11 @@
     "name": "Aerosol Node 10",
     "node": "Green Plain Delta",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2252,7 +2252,7 @@
     "battery": "63",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2262,10 +2262,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "96",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-11-12",
@@ -2276,7 +2276,7 @@
     "battery": "47",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2288,7 +2288,7 @@
     "battery": "62",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2300,7 +2300,7 @@
     "battery": "63",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2310,10 +2310,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "54",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-12-03",
@@ -2322,10 +2322,10 @@
     "type": "general",
     "unit": "lvl",
     "battery": "67",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-12-04",
@@ -2336,7 +2336,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2344,12 +2344,12 @@
     "name": "Thermal Node 6",
     "node": "Sunrise Orchard",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "83",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-12-06",
@@ -2358,10 +2358,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "73",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-12-07",
@@ -2370,10 +2370,10 @@
     "type": "general",
     "unit": "pH",
     "battery": "68",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-12-08",
@@ -2382,21 +2382,21 @@
     "type": "general",
     "unit": "lx",
     "battery": "100",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-12-09",
     "name": "Thermal Node 10",
     "node": "Sunrise Orchard",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "84",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2408,7 +2408,7 @@
     "battery": "97",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2420,7 +2420,7 @@
     "battery": "70",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2432,7 +2432,7 @@
     "battery": "79",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2442,21 +2442,21 @@
     "type": "general",
     "unit": "lvl",
     "battery": "61",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-12-14",
     "name": "Thermal Node 15",
     "node": "Sunrise Orchard",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "92",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2464,11 +2464,11 @@
     "name": "Aerosol Node 16",
     "node": "Sunrise Orchard",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2478,10 +2478,10 @@
     "type": "general",
     "unit": "lx",
     "battery": "47",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-13-00",
@@ -2490,10 +2490,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "71",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-13-01",
@@ -2502,10 +2502,10 @@
     "type": "general",
     "unit": "pH",
     "battery": "52",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-13-02",
@@ -2516,7 +2516,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2526,10 +2526,10 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "93",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "incident",
+    "comment": "Incident: Critical sensor condition reported.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "incident"
   },
   {
     "id": "s-13-04",
@@ -2540,7 +2540,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2550,21 +2550,21 @@
     "type": "general",
     "unit": "m/s",
     "battery": "42",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-13-06",
     "name": "Thermal Node 7",
     "node": "Southern Oasis Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "52",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2576,7 +2576,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2584,11 +2584,11 @@
     "name": "Thermal Node 9",
     "node": "Southern Oasis Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "84",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2600,7 +2600,7 @@
     "battery": "79",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2608,11 +2608,11 @@
     "name": "Aerosol Node 11",
     "node": "Southern Oasis Rim",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2620,23 +2620,23 @@
     "name": "Thermal Node 12",
     "node": "Southern Oasis Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "47",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-13-12",
     "name": "Thermal Node 13",
     "node": "Southern Oasis Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "43",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2648,7 +2648,7 @@
     "battery": "84",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2660,7 +2660,7 @@
     "battery": "49",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2672,7 +2672,7 @@
     "battery": "72",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2684,7 +2684,7 @@
     "battery": "98",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2696,7 +2696,7 @@
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2708,7 +2708,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2720,7 +2720,7 @@
     "battery": "49",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2728,11 +2728,11 @@
     "name": "Aerosol Node 21",
     "node": "Southern Oasis Rim",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2744,7 +2744,7 @@
     "battery": "58",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2756,7 +2756,7 @@
     "battery": "76",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2766,10 +2766,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "75",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-14-01",
@@ -2780,7 +2780,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2792,7 +2792,7 @@
     "battery": "87",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2804,7 +2804,7 @@
     "battery": "47",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2814,21 +2814,21 @@
     "type": "general",
     "unit": "m/s",
     "battery": "61",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-14-05",
     "name": "Thermal Node 6",
     "node": "Atlas Foothills B",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "63",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2840,7 +2840,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2848,23 +2848,23 @@
     "name": "Aerosol Node 8",
     "node": "Atlas Foothills B",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "74",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-14-08",
     "name": "Thermal Node 9",
     "node": "Atlas Foothills B",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "93",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2876,7 +2876,7 @@
     "battery": "53",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2884,11 +2884,11 @@
     "name": "Aerosol Node 11",
     "node": "Atlas Foothills B",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2900,7 +2900,7 @@
     "battery": "85",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2912,7 +2912,7 @@
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2924,7 +2924,7 @@
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2932,11 +2932,11 @@
     "name": "Aerosol Node 15",
     "node": "Atlas Foothills B",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "52",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2948,7 +2948,7 @@
     "battery": "42",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2956,12 +2956,12 @@
     "name": "Thermal Node 17",
     "node": "Atlas Foothills B",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "48",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-14-17",
@@ -2972,7 +2972,7 @@
     "battery": "88",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2984,7 +2984,7 @@
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -2996,7 +2996,7 @@
     "battery": "51",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3008,7 +3008,7 @@
     "battery": "63",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3020,7 +3020,7 @@
     "battery": "64",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3032,7 +3032,7 @@
     "battery": "97",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3044,7 +3044,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3056,7 +3056,7 @@
     "battery": "71",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3068,7 +3068,7 @@
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3078,10 +3078,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "54",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-15-09",
@@ -3092,7 +3092,7 @@
     "battery": "44",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3100,11 +3100,11 @@
     "name": "Thermal Node 11",
     "node": "Coastal Berry Hub",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "58",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3114,10 +3114,10 @@
     "type": "general",
     "unit": "pH",
     "battery": "95",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-15-12",
@@ -3128,7 +3128,7 @@
     "battery": "70",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3140,7 +3140,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3150,10 +3150,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "42",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-16-00",
@@ -3162,10 +3162,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "72",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-16-01",
@@ -3174,10 +3174,10 @@
     "type": "general",
     "unit": "pH",
     "battery": "77",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-16-02",
@@ -3188,7 +3188,7 @@
     "battery": "73",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3200,7 +3200,7 @@
     "battery": "72",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3210,10 +3210,10 @@
     "type": "general",
     "unit": "lx",
     "battery": "43",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-16-05",
@@ -3224,7 +3224,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3236,7 +3236,7 @@
     "battery": "96",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3248,7 +3248,7 @@
     "battery": "62",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3256,11 +3256,11 @@
     "name": "Aerosol Node 9",
     "node": "Riverbend Pastures",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3272,7 +3272,7 @@
     "battery": "43",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3284,7 +3284,7 @@
     "battery": "53",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3296,7 +3296,7 @@
     "battery": "50",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3306,22 +3306,22 @@
     "type": "general",
     "unit": "m/s",
     "battery": "74",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-16-13",
     "name": "Thermal Node 14",
     "node": "Riverbend Pastures",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "59",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-16-14",
@@ -3330,10 +3330,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "63",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-16-15",
@@ -3344,7 +3344,7 @@
     "battery": "96",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3356,7 +3356,7 @@
     "battery": "99",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3366,22 +3366,22 @@
     "type": "humidity",
     "unit": "%",
     "battery": "76",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-16-18",
     "name": "Thermal Node 19",
     "node": "Riverbend Pastures",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "83",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-16-19",
@@ -3392,7 +3392,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3404,7 +3404,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3416,7 +3416,7 @@
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3428,7 +3428,7 @@
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3438,10 +3438,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "91",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-17-00",
@@ -3452,7 +3452,7 @@
     "battery": "72",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3464,7 +3464,7 @@
     "battery": "40",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3476,7 +3476,7 @@
     "battery": "59",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3488,7 +3488,7 @@
     "battery": "70",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3500,7 +3500,7 @@
     "battery": "65",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3512,7 +3512,7 @@
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3524,7 +3524,7 @@
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3532,11 +3532,11 @@
     "name": "Thermal Node 8",
     "node": "Golden Wheat Sector 4",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "76",
     "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "warning"
   },
   {
@@ -3548,7 +3548,7 @@
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3560,7 +3560,7 @@
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3568,12 +3568,12 @@
     "name": "Aerosol Node 11",
     "node": "Golden Wheat Sector 4",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "64",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-17-11",
@@ -3584,7 +3584,7 @@
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3596,7 +3596,7 @@
     "battery": "65",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3608,7 +3608,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3620,7 +3620,7 @@
     "battery": "40",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3632,7 +3632,7 @@
     "battery": "61",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3644,7 +3644,7 @@
     "battery": "51",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3656,7 +3656,7 @@
     "battery": "93",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3668,7 +3668,7 @@
     "battery": "73",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3680,7 +3680,7 @@
     "battery": "77",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3692,7 +3692,7 @@
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3702,33 +3702,33 @@
     "type": "general",
     "unit": "lvl",
     "battery": "42",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-18-08",
     "name": "Aerosol Node 9",
     "node": "Emerald Forest Rim",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "41",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-18-09",
     "name": "Thermal Node 10",
     "node": "Emerald Forest Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3736,12 +3736,12 @@
     "name": "Thermal Node 11",
     "node": "Emerald Forest Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "70",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-18-11",
@@ -3752,7 +3752,7 @@
     "battery": "63",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3760,11 +3760,11 @@
     "name": "Thermal Node 13",
     "node": "Emerald Forest Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "95",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3776,7 +3776,7 @@
     "battery": "53",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3788,7 +3788,7 @@
     "battery": "72",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3800,7 +3800,7 @@
     "battery": "67",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3812,7 +3812,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3824,7 +3824,7 @@
     "battery": "53",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3832,23 +3832,23 @@
     "name": "Aerosol Node 19",
     "node": "Emerald Forest Rim",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "51",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-18-19",
     "name": "Thermal Node 20",
     "node": "Emerald Forest Rim",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3860,7 +3860,7 @@
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3870,10 +3870,10 @@
     "type": "general",
     "unit": "lx",
     "battery": "75",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-19-02",
@@ -3884,7 +3884,7 @@
     "battery": "55",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3896,7 +3896,7 @@
     "battery": "84",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3908,7 +3908,7 @@
     "battery": "75",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3916,11 +3916,11 @@
     "name": "Thermal Node 6",
     "node": "Morning Mist Basin",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "98",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3928,11 +3928,11 @@
     "name": "Thermal Node 7",
     "node": "Morning Mist Basin",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "44",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3944,7 +3944,7 @@
     "battery": "88",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3956,7 +3956,7 @@
     "battery": "47",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -3966,10 +3966,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "89",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-19-10",
@@ -3979,8 +3979,8 @@
     "unit": "%",
     "battery": "44",
     "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "warning"
   },
   {
@@ -3992,7 +3992,7 @@
     "battery": "84",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4002,33 +4002,33 @@
     "type": "general",
     "unit": "lx",
     "battery": "91",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-20-01",
     "name": "Aerosol Node 2",
     "node": "Crimson Tulip Row",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "53",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-20-02",
     "name": "Aerosol Node 3",
     "node": "Crimson Tulip Row",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "83",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4036,11 +4036,11 @@
     "name": "Aerosol Node 4",
     "node": "Crimson Tulip Row",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "47",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4048,11 +4048,11 @@
     "name": "Aerosol Node 5",
     "node": "Crimson Tulip Row",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "91",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4062,10 +4062,10 @@
     "type": "general",
     "unit": "lx",
     "battery": "70",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-20-06",
@@ -4076,7 +4076,7 @@
     "battery": "92",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4088,7 +4088,7 @@
     "battery": "96",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4096,11 +4096,11 @@
     "name": "Aerosol Node 9",
     "node": "Crimson Tulip Row",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4112,7 +4112,7 @@
     "battery": "74",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4124,7 +4124,7 @@
     "battery": "68",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4134,10 +4134,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "72",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-20-12",
@@ -4148,7 +4148,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4156,11 +4156,11 @@
     "name": "Aerosol Node 14",
     "node": "Crimson Tulip Row",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "100",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4172,7 +4172,7 @@
     "battery": "59",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4184,7 +4184,7 @@
     "battery": "40",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4196,7 +4196,7 @@
     "battery": "61",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4208,7 +4208,7 @@
     "battery": "96",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4216,12 +4216,12 @@
     "name": "Aerosol Node 19",
     "node": "Crimson Tulip Row",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "48",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-20-19",
@@ -4232,7 +4232,7 @@
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4244,7 +4244,7 @@
     "battery": "88",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4256,7 +4256,7 @@
     "battery": "91",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4268,7 +4268,7 @@
     "battery": "74",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4280,7 +4280,7 @@
     "battery": "47",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4290,10 +4290,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "53",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-21-04",
@@ -4304,7 +4304,7 @@
     "battery": "69",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4316,7 +4316,7 @@
     "battery": "58",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4326,22 +4326,22 @@
     "type": "general",
     "unit": "lvl",
     "battery": "70",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-21-07",
     "name": "Thermal Node 8",
     "node": "Northern Pastures",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "58",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "incident",
+    "comment": "Incident: Critical sensor condition reported.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "incident"
   },
   {
     "id": "s-21-08",
@@ -4350,10 +4350,10 @@
     "type": "general",
     "unit": "lvl",
     "battery": "76",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-21-09",
@@ -4364,7 +4364,7 @@
     "battery": "71",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4372,12 +4372,12 @@
     "name": "Thermal Node 11",
     "node": "Northern Pastures",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "46",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-22-00",
@@ -4388,7 +4388,7 @@
     "battery": "70",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4400,7 +4400,7 @@
     "battery": "76",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4410,21 +4410,21 @@
     "type": "general",
     "unit": "m/s",
     "battery": "64",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-22-03",
     "name": "Aerosol Node 4",
     "node": "Southern Irrigation Loop",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "84",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4436,7 +4436,7 @@
     "battery": "76",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4448,7 +4448,7 @@
     "battery": "94",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4456,12 +4456,12 @@
     "name": "Thermal Node 7",
     "node": "Southern Irrigation Loop",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "41",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-22-07",
@@ -4472,7 +4472,7 @@
     "battery": "74",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4484,7 +4484,7 @@
     "battery": "88",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4494,10 +4494,10 @@
     "type": "general",
     "unit": "lvl",
     "battery": "86",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-22-10",
@@ -4508,7 +4508,7 @@
     "battery": "67",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4518,10 +4518,10 @@
     "type": "moisture",
     "unit": "%",
     "battery": "46",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-22-12",
@@ -4532,7 +4532,7 @@
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4544,7 +4544,7 @@
     "battery": "77",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4556,7 +4556,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4568,7 +4568,7 @@
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4578,10 +4578,10 @@
     "type": "humidity",
     "unit": "%",
     "battery": "51",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-22-17",
@@ -4592,7 +4592,7 @@
     "battery": "71",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4602,21 +4602,21 @@
     "type": "co2",
     "unit": "ppm",
     "battery": "82",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-22-19",
     "name": "Thermal Node 20",
     "node": "Southern Irrigation Loop",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "67",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4624,11 +4624,11 @@
     "name": "Thermal Node 21",
     "node": "Southern Irrigation Loop",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4636,12 +4636,12 @@
     "name": "Aerosol Node 22",
     "node": "Southern Irrigation Loop",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "100",
-    "status": "alert",
-    "comment": "CRITICAL: Threshold breach detected!",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "alert"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-22-22",
@@ -4650,10 +4650,10 @@
     "type": "general",
     "unit": "lvl",
     "battery": "52",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-23-00",
@@ -4664,7 +4664,7 @@
     "battery": "89",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4672,12 +4672,12 @@
     "name": "Thermal Node 2",
     "node": "Coastal Berry Patch",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "56",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-23-02",
@@ -4686,10 +4686,10 @@
     "type": "general",
     "unit": "m/s",
     "battery": "82",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-23-03",
@@ -4700,7 +4700,7 @@
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4712,7 +4712,7 @@
     "battery": "95",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4724,7 +4724,7 @@
     "battery": "42",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4734,21 +4734,21 @@
     "type": "general",
     "unit": "lvl",
     "battery": "47",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-23-07",
     "name": "Aerosol Node 8",
     "node": "Coastal Berry Patch",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "56",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4758,21 +4758,21 @@
     "type": "moisture",
     "unit": "%",
     "battery": "90",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-23-09",
     "name": "Aerosol Node 10",
     "node": "Coastal Berry Patch",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "61",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4784,7 +4784,7 @@
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4796,7 +4796,7 @@
     "battery": "57",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4808,7 +4808,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4820,7 +4820,7 @@
     "battery": "57",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4832,7 +4832,7 @@
     "battery": "70",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4844,7 +4844,7 @@
     "battery": "90",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4856,7 +4856,7 @@
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4868,7 +4868,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4880,7 +4880,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4892,7 +4892,7 @@
     "battery": "94",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4900,11 +4900,11 @@
     "name": "Thermal Node 21",
     "node": "Coastal Berry Patch",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "65",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4914,33 +4914,33 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "73",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-23-22",
     "name": "Thermal Node 23",
     "node": "Coastal Berry Patch",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "88",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "warning",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "warning"
   },
   {
     "id": "s-23-23",
     "name": "Thermal Node 24",
     "node": "Coastal Berry Patch",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "61",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4950,10 +4950,10 @@
     "type": "general",
     "unit": "pH",
     "battery": "72",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-24-00",
@@ -4963,8 +4963,8 @@
     "unit": "m/s",
     "battery": "91",
     "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "comment": "Warning: Sensor readings need attention.",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "warning"
   },
   {
@@ -4976,7 +4976,7 @@
     "battery": "81",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -4988,7 +4988,7 @@
     "battery": "82",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5000,7 +5000,7 @@
     "battery": "50",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5012,7 +5012,7 @@
     "battery": "61",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5020,11 +5020,11 @@
     "name": "Thermal Node 6",
     "node": "Shadow Peak Valley",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "61",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5036,7 +5036,7 @@
     "battery": "54",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5044,11 +5044,11 @@
     "name": "Aerosol Node 8",
     "node": "Shadow Peak Valley",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "45",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5060,7 +5060,7 @@
     "battery": "63",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5070,21 +5070,21 @@
     "type": "general",
     "unit": "lvl",
     "battery": "46",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-24-10",
     "name": "Aerosol Node 11",
     "node": "Shadow Peak Valley",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "60",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5096,7 +5096,7 @@
     "battery": "95",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5104,24 +5104,24 @@
     "name": "Aerosol Node 13",
     "node": "Shadow Peak Valley",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "67",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-24-13",
     "name": "Aerosol Node 14",
     "node": "Shadow Peak Valley",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "90",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-24-14",
@@ -5132,7 +5132,7 @@
     "battery": "65",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5144,7 +5144,7 @@
     "battery": "77",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5154,33 +5154,33 @@
     "type": "general",
     "unit": "lvl",
     "battery": "93",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-24-17",
     "name": "Thermal Node 18",
     "node": "Shadow Peak Valley",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "71",
-    "status": "normal",
-    "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "normal"
+    "status": "alert",
+    "comment": "Alert: Sensor readings exceeded the normal range.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "alert"
   },
   {
     "id": "s-24-18",
     "name": "Thermal Node 19",
     "node": "Shadow Peak Valley",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "95",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5188,12 +5188,12 @@
     "name": "Aerosol Node 20",
     "node": "Shadow Peak Valley",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "73",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-24-20",
@@ -5204,7 +5204,7 @@
     "battery": "81",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5216,7 +5216,7 @@
     "battery": "71",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5228,7 +5228,7 @@
     "battery": "80",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5238,10 +5238,10 @@
     "type": "smoke",
     "unit": "ppm",
     "battery": "62",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-25-02",
@@ -5252,7 +5252,7 @@
     "battery": "60",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5260,11 +5260,11 @@
     "name": "Thermal Node 4",
     "node": "Sunflower Prairie",
     "type": "temperature",
-    "unit": "\u00b0C",
+    "unit": "°C",
     "battery": "79",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5276,7 +5276,7 @@
     "battery": "48",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5286,21 +5286,21 @@
     "type": "general",
     "unit": "pH",
     "battery": "100",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-25-06",
     "name": "Aerosol Node 7",
     "node": "Sunflower Prairie",
     "type": "pm25",
-    "unit": "\u00b5g/m\u00b3",
+    "unit": "µg/m³",
     "battery": "50",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5310,10 +5310,10 @@
     "type": "general",
     "unit": "lx",
     "battery": "50",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   },
   {
     "id": "s-25-08",
@@ -5324,7 +5324,7 @@
     "battery": "53",
     "status": "normal",
     "comment": "System nominal.",
-    "last_sync": "2026-03-04T21:34:41.881112",
+    "last_sync": "2026-11-02T07:34:00Z",
     "last_reported_status": "normal"
   },
   {
@@ -5334,9 +5334,9 @@
     "type": "general",
     "unit": "lx",
     "battery": "74",
-    "status": "warning",
-    "comment": "Warning: Fluctuating values detected.",
-    "last_sync": "2026-03-04T21:34:41.881112",
-    "last_reported_status": "warning"
+    "status": "normal",
+    "comment": "System nominal.",
+    "last_sync": "2026-11-02T07:34:00Z",
+    "last_reported_status": "normal"
   }
 ]

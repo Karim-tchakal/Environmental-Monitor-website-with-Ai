@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Administration - Polaris</title>
+<title>Administration - Agritech</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: 'DM Sans', sans-serif; }
-  .form-input { @apply w-full border border-gray-200 rounded-lg px-3 py-2 text-[13px] focus:outline-none focus:border-blue-400; }
-  .form-label { @apply block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1; }
+  .form-input { width:100%; border:1px solid #e5e7eb; border-radius:.5rem; padding:.5rem .75rem; font-size:13px; }
+  .form-input:focus { outline:none; border-color:#60a5fa; box-shadow:0 0 0 2px #dbeafe; }
+  .form-label { display:block; margin-bottom:.25rem; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:#9ca3af; }
 </style>
 </head>
 <body class="flex h-screen bg-[#f4f5f7] text-gray-900 overflow-hidden">
@@ -17,27 +18,27 @@
 <aside id="sidebar" class="w-56 min-w-[220px] bg-white border-r border-gray-200 flex flex-col shrink-0">
   <div class="flex items-center gap-2 px-5 py-6 border-b border-gray-200">
     <div class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>
-    <span class="text-[17px] font-semibold whitespace-nowrap">Polaris</span>
+    <span class="text-[17px] font-semibold whitespace-nowrap">Agritech</span>
   </div>
   <nav class="flex-1 p-2 overflow-y-auto">
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">Overview</p>
-    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⬡ Dashboard</a>
+    <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Dashboard</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Monitoring</p>
-    <a href="/alerts"  class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔔 Alerts</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">⚡ Incidents</a>
-    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📡 Sensors</a>
-    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">📊 Reports</a>
+    <a href="/alerts" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Alerts</a>
+    <a href="/alerts?status=incident" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Incidents</a>
+    <a href="/sensors" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Sensors</a>
+    <a href="/reports" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Reports</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Explore</p>
-    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🗺 Maps</a>
+    <a href="/maps" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Map</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">Intelligence</p>
-    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🤖 AI Assistant</a>
+    <a href="/ai" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Analysis</a>
 
     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-2 pt-4 pb-1">System</p>
-    <a href="/admin"    class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">⚙ Administration</a>
-    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">🔧 Settings</a>
+    <a href="/admin" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] bg-blue-50 text-blue-600 font-medium">Administration</a>
+    <a href="/settings" class="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors">Settings</a>
   </nav>
 </aside>
 
@@ -45,20 +46,22 @@
   <header class="flex items-center justify-between px-5 py-3.5 bg-white border-b border-gray-200 shrink-0">
     <h2 class="text-[15px] font-semibold text-gray-900">System Administration</h2>
     <div class="flex items-center gap-3">
-      <img src="" class="w-8 h-8 rounded-full border border-gray-200">
+      <div aria-label="Admin profile" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></div>
     </div>
   </header>
 
   <main class="flex-1 overflow-auto p-6">
+    <p id="admin-message" role="status" class="mb-4 text-[13px] text-gray-600"></p>
+    <p id="admin-message" role="status" class="mb-4 text-[13px] text-gray-600"></p>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       
       <!-- Add Node Section -->
       <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-        <h3 class="text-[16px] font-bold text-gray-900 mb-4">📍 Add New Monitoring Node</h3>
+        <h3 class="text-[16px] font-bold text-gray-900 mb-4">Add monitoring node</h3>
         <form id="nodeForm" class="space-y-4">
           <div>
-            <label class="form-label">Node ID (Numeric)</label>
-            <input type="number" id="nodeId" class="form-input" placeholder="e.g. 15" required>
+            <label class="form-label">Node ID (optional)</label>
+            <input type="number" id="nodeId" class="form-input" placeholder="Assigned automatically">
           </div>
           <div>
             <label class="form-label">Node Name</label>
@@ -74,16 +77,8 @@
               <input type="number" step="any" id="nodeLng" class="form-input" placeholder="3.05" required>
             </div>
           </div>
-          <div>
-            <label class="form-label">Status</label>
-            <select id="nodeStatus" class="form-input">
-              <option value="normal">Normal</option>
-              <option value="warning">Warning</option>
-              <option value="incident">Incident</option>
-              <option value="alert">Alert</option>
-            </select>
-          </div>
-          <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded-lg text-[13px] font-semibold hover:bg-blue-700 transition-colors">Register Node</button>
+          <p class="text-[12px] text-gray-500">Node status is calculated from its assigned sensors.</p>
+          <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded-lg text-[13px] font-semibold hover:bg-blue-700 transition-colors">Register node</button>
         </form>
 
         <div class="mt-8">
@@ -94,7 +89,7 @@
 
       <!-- Add Sensor Section -->
       <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-        <h3 class="text-[16px] font-bold text-gray-900 mb-4">📡 Add New Sensor</h3>
+        <h3 class="text-[16px] font-bold text-gray-900 mb-4">Add sensor</h3>
         <form id="sensorForm" class="space-y-4">
           <div>
             <label class="form-label">Sensor ID (Unique String)</label>
@@ -130,7 +125,7 @@
             <label class="form-label">Initial Battery %</label>
             <input type="number" id="sensorBattery" class="form-input" value="100" min="0" max="100">
           </div>
-          <button type="submit" class="w-full py-2 bg-green-600 text-white rounded-lg text-[13px] font-semibold hover:bg-green-700 transition-colors">Deploy Sensor</button>
+          <button type="submit" class="w-full py-2 bg-green-600 text-white rounded-lg text-[13px] font-semibold hover:bg-green-700 transition-colors">Register sensor</button>
         </form>
 
         <div class="mt-8">
@@ -141,128 +136,148 @@
 
     </div>
 
-    <!-- Coming Soon Section Kept Intact but shifted -->
-    <div class="mt-12 text-center border-t border-gray-200 pt-8">
-       <h4 class="text-gray-400 text-[13px] font-medium italic">More administrative tools coming soon...</h4>
-       <p class="text-gray-300 text-[11px] mt-1">User Management • System Logs • Firmware Updates</p>
-    </div>
   </main>
 </div>
 
 <script>
 const API_BASE = '/api';
+let nodesCache = [];
 
-async function loadNodes() {
-  try {
-    const nodes = await fetch(`${API_BASE}/nodes`).then(r => r.json());
-    const select = document.getElementById('sensorNode');
-    select.innerHTML = '<option value="">Select a node...</option>' + 
-      nodes.map(n => `<option value="${n.name}">${n.name}</option>`).join('');
-      
-    const list = document.getElementById('nodeList');
-    list.innerHTML = nodes.map(n => `
-      <div id="node-item-${n.id}" class="p-3 bg-gray-50 rounded-lg border border-gray-100">
-        <div class="flex items-center justify-between">
-          <span class="text-[13px] font-medium">${n.icon} ${n.name} (ID: ${n.id}) — <span class="uppercase text-[10px] font-bold text-blue-500">${n.status}</span></span>
-          <div class="flex gap-2">
-            <button onclick="editNode(${n.id}, '${n.name}', ${n.lat}, ${n.lng}, '${n.icon}')" class="text-blue-500 hover:text-blue-700 text-[11px] font-bold">EDIT</button>
-            <button onclick="deleteNode(${n.id})" class="text-red-500 hover:text-red-700 text-[11px] font-bold">DELETE</button>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  } catch(e) {}
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
 }
 
-function editNode(id, name, lat, lng, icon) {
+async function request(path, options) {
+  const response = await fetch(`${API_BASE}${path}`, options);
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    throw new Error(body.detail || `Request failed (${response.status})`);
+  }
+  return response.status === 204 ? null : response.json();
+}
+
+function showMessage(message, isError = false) {
+  const element = document.getElementById('admin-message');
+  element.textContent = message;
+  element.className = `mb-4 text-[13px] ${isError ? 'text-red-600' : 'text-green-700'}`;
+}
+
+async function loadNodes() {
+  nodesCache = await request('/nodes');
+  const select = document.getElementById('sensorNode');
+  select.innerHTML = '<option value="">Select a node...</option>' +
+    nodesCache.map(node => `<option value="${escapeHtml(node.name)}">${escapeHtml(node.name)}</option>`).join('');
+  const list = document.getElementById('nodeList');
+  list.innerHTML = nodesCache.length ? nodesCache.map(node => `
+    <div id="node-item-${Number(node.id)}" class="p-3 bg-gray-50 rounded-lg border border-gray-100">
+      <div class="flex items-center justify-between gap-3">
+        <span class="text-[13px] font-medium">${escapeHtml(node.name)} (ID: ${Number(node.id)}) — <span class="uppercase text-[10px] font-bold text-blue-500">${escapeHtml(node.status)}</span></span>
+        <div class="flex gap-2 shrink-0">
+          <button type="button" data-edit-node="${Number(node.id)}" class="text-blue-600 hover:text-blue-800 text-[11px] font-bold">Edit</button>
+          <button type="button" data-delete-node="${Number(node.id)}" class="text-red-600 hover:text-red-800 text-[11px] font-bold">Delete</button>
+        </div>
+      </div>
+    </div>
+  `).join('') : '<p class="text-[13px] text-gray-400">No nodes registered.</p>';
+  list.querySelectorAll('[data-edit-node]').forEach(button => button.addEventListener('click', () => editNode(Number(button.dataset.editNode))));
+  list.querySelectorAll('[data-delete-node]').forEach(button => button.addEventListener('click', () => deleteNode(Number(button.dataset.deleteNode))));
+}
+
+function editNode(id) {
+  const node = nodesCache.find(item => Number(item.id) === id);
+  if (!node) return;
   const div = document.getElementById(`node-item-${id}`);
   div.innerHTML = `
     <div class="space-y-2">
-      <input type="text" id="edit-name-${id}" value="${name}" class="form-input text-[12px]">
+      <input type="text" id="edit-name-${id}" value="${escapeHtml(node.name)}" class="form-input text-[12px]" aria-label="Node name">
       <div class="grid grid-cols-2 gap-2">
-        <input type="number" step="any" id="edit-lat-${id}" value="${lat}" class="form-input text-[12px]">
-        <input type="number" step="any" id="edit-lng-${id}" value="${lng}" class="form-input text-[12px]">
+        <input type="number" step="any" id="edit-lat-${id}" value="${Number(node.lat)}" class="form-input text-[12px]" aria-label="Latitude">
+        <input type="number" step="any" id="edit-lng-${id}" value="${Number(node.lng)}" class="form-input text-[12px]" aria-label="Longitude">
       </div>
-      <input type="text" id="edit-icon-${id}" value="${icon}" class="form-input text-[12px]" placeholder="Icon (emoji)">
       <div class="flex gap-2 mt-2">
-        <button onclick="saveNodeEdit(${id})" class="flex-1 bg-blue-600 text-white py-1 rounded text-[11px] font-bold">SAVE</button>
-        <button onclick="loadNodes()" class="flex-1 bg-gray-200 text-gray-600 py-1 rounded text-[11px] font-bold">CANCEL</button>
+        <button type="button" id="save-node-${id}" class="flex-1 bg-blue-600 text-white py-1 rounded text-[11px] font-bold">Save</button>
+        <button type="button" id="cancel-node-${id}" class="flex-1 bg-gray-200 text-gray-600 py-1 rounded text-[11px] font-bold">Cancel</button>
       </div>
     </div>
   `;
+  document.getElementById(`save-node-${id}`).addEventListener('click', () => saveNodeEdit(id));
+  document.getElementById(`cancel-node-${id}`).addEventListener('click', () => loadNodes().catch(showLoadError));
 }
 
 async function saveNodeEdit(id) {
   const data = {
     name: document.getElementById(`edit-name-${id}`).value,
     lat: parseFloat(document.getElementById(`edit-lat-${id}`).value),
-    lng: parseFloat(document.getElementById(`edit-lng-${id}`).value),
-    icon: document.getElementById(`edit-icon-${id}`).value
+    lng: parseFloat(document.getElementById(`edit-lng-${id}`).value)
   };
-  
-  await fetch(`${API_BASE}/nodes/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  loadNodes();
+  try {
+    await request(`/nodes/${id}`, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+    await loadNodes();
+    showMessage('Node updated.');
+  } catch (error) {
+    showMessage(error.message, true);
+  }
 }
 
 async function loadSensors() {
-  try {
-    const sensors = await fetch(`${API_BASE}/sensors`).then(r => r.json());
-    const list = document.getElementById('sensorList');
-    list.innerHTML = sensors.map(s => `
-      <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-100">
-        <span class="text-[13px] font-medium">📡 ${s.name} (${s.id}) @ ${s.node}</span>
-        <button onclick="deleteSensor('${s.id}')" class="text-red-500 hover:text-red-700 text-[11px] font-bold">DELETE</button>
-      </div>
-    `).join('');
-  } catch(e) {}
+  const sensors = await request('/sensors');
+  const list = document.getElementById('sensorList');
+  list.innerHTML = sensors.length ? sensors.map(sensor => `
+    <div class="flex items-center justify-between gap-3 p-2 bg-gray-50 rounded-lg border border-gray-100">
+      <span class="text-[13px] font-medium">${escapeHtml(sensor.name)} (${escapeHtml(sensor.id)}) @ ${escapeHtml(sensor.node)}</span>
+      <button type="button" data-delete-sensor="${escapeHtml(sensor.id)}" class="text-red-600 hover:text-red-800 text-[11px] font-bold shrink-0">Delete</button>
+    </div>
+  `).join('') : '<p class="text-[13px] text-gray-400">No sensors registered.</p>';
+  list.querySelectorAll('[data-delete-sensor]').forEach(button => button.addEventListener('click', () => deleteSensor(button.dataset.deleteSensor)));
 }
 
 async function deleteNode(id) {
-  if (!confirm('Are you sure you want to delete this node?')) return;
-  await fetch(`${API_BASE}/nodes/${id}`, { method: 'DELETE' });
-  loadNodes();
+  if (!confirm('Delete this node? Nodes with assigned sensors cannot be removed.')) return;
+  try {
+    await request(`/nodes/${id}`, { method:'DELETE' });
+    await loadNodes();
+    showMessage('Node deleted.');
+  } catch (error) {
+    showMessage(error.message, true);
+  }
 }
 
 async function deleteSensor(id) {
-  if (!confirm('Are you sure you want to delete this sensor and its data?')) return;
-  await fetch(`${API_BASE}/sensors/${id}`, { method: 'DELETE' });
-  loadSensors();
+  if (!confirm(`Delete sensor "${id}" and its stored readings?`)) return;
+  try {
+    await request(`/sensors/${encodeURIComponent(id)}`, { method:'DELETE' });
+    await Promise.all([loadSensors(), loadNodes()]);
+    showMessage('Sensor deleted.');
+  } catch (error) {
+    showMessage(error.message, true);
+  }
 }
 
-document.getElementById('nodeForm').onsubmit = async (e) => {
+document.getElementById('nodeForm').addEventListener('submit', async e => {
   e.preventDefault();
+  const form = e.currentTarget;
+  const id = document.getElementById('nodeId').value;
   const data = {
-    id: parseInt(document.getElementById('nodeId').value),
+    ...(id ? { id:Number(id) } : {}),
     name: document.getElementById('nodeName').value,
-    lat: float(document.getElementById('nodeLat').value),
-    lng: float(document.getElementById('nodeLng').value),
-    status: document.getElementById('nodeStatus').value,
-    icon: document.getElementById('nodeStatus').value === 'normal' ? '✅' : '⚠️'
+    lat: Number(document.getElementById('nodeLat').value),
+    lng: Number(document.getElementById('nodeLng').value)
   };
-  
   try {
-    const res = await fetch(`${API_BASE}/nodes`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (res.ok) {
-      alert('Node registered successfully!');
-      document.getElementById('nodeForm').reset();
-      loadNodes();
-    } else {
-      const err = await res.json();
-      alert('Error: ' + err.detail);
-    }
-  } catch(err) { alert('Failed to connect to server'); }
-};
+    await request('/nodes', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+    form.reset();
+    await loadNodes();
+    showMessage('Node registered.');
+  } catch (error) {
+    showMessage(error.message, true);
+  }
+});
 
-document.getElementById('sensorForm').onsubmit = async (e) => {
+document.getElementById('sensorForm').addEventListener('submit', async e => {
   e.preventDefault();
+  const form = e.currentTarget;
   const data = {
     id: document.getElementById('sensorId').value,
     name: document.getElementById('sensorName').value,
@@ -270,31 +285,25 @@ document.getElementById('sensorForm').onsubmit = async (e) => {
     type: document.getElementById('sensorType').value,
     unit: document.getElementById('sensorUnit').value,
     battery: document.getElementById('sensorBattery').value,
-    status: 'ok'
+    status: 'normal'
   };
-  
   try {
-    const res = await fetch(`${API_BASE}/sensors`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (res.ok) {
-      alert('Sensor deployed successfully!');
-      document.getElementById('sensorForm').reset();
-      loadSensors();
-    } else {
-      const err = await res.json();
-      alert('Error: ' + err.detail);
-    }
-  } catch(err) { alert('Failed to connect to server'); }
-};
+    await request('/sensors', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+    form.reset();
+    document.getElementById('sensorBattery').value = '100';
+    await Promise.all([loadSensors(), loadNodes()]);
+    showMessage('Sensor registered.');
+  } catch (error) {
+    showMessage(error.message, true);
+  }
+});
 
-// Helper for float parsing
-function float(v) { return parseFloat(v) || 0; }
+function showLoadError(error) {
+  showMessage('Unable to load administration data. ' + error.message, true);
+  console.error(error);
+}
 
-loadNodes();
-loadSensors();
+Promise.all([loadNodes(), loadSensors()]).catch(showLoadError);
 </script>
 </body>
 </html>
